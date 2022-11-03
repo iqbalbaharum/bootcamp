@@ -1,6 +1,7 @@
 #[warn(unused_imports)]
 use crate::*;
 use near_sdk::{Balance, CryptoHash, Promise};
+use std::mem::size_of;
 
 pub(crate) fn hash_account_id(account_id: &AccountId) -> CryptoHash {
     let mut hash = CryptoHash::default();
@@ -31,6 +32,10 @@ pub(crate) fn refund_deposit(storage_used: u64) {
     if refund > 1 {
         Promise::new(env::predecessor_account_id()).transfer(refund);
     }
+}
+
+pub(crate) fn bytes_for_approved_account_id(account_id: &AccountId) -> u64 {
+    account_id.as_str().len() as u64 + 4 + size_of::<u64>() as u64
 }
 
 impl Contract {

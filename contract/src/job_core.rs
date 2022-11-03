@@ -5,6 +5,7 @@ pub trait JobCore {
     fn total_jobs_count(&self) -> U128;
     fn get_job_by_id(&self, job_id: JobId) -> Option<JsonJob>;
     fn get_all_jobs(&self, from_index: Option<U128>, limit: Option<u64>) -> Vec<JsonJob>;
+    // fn refer_a_job(&mut self, job_id: JobId, referee_id: &AccountId, referal_id: &AccountId);
 }
 
 #[near_bindgen]
@@ -36,4 +37,27 @@ impl JobCore for Contract {
             .map(|job_id| self.get_job_by_id(job_id.clone()).unwrap())
             .collect()
     }
+
+    // TODO
+    // Add another cross contract call - which send back the notification to
+    // fn refer_a_job(&mut self, job_id: JobId, referee_id: &AccountId, referal_id: &AccountId) {
+    //     let mut job = self.job_by_id.get(&job_id).expect("No Job");
+
+    //     assert_ne!(referal_id, referee_id, "Can't refer yourselves");
+
+    //     let is_new_referal = job
+    //         .referrals
+    //         .insert(referee_id.clone(), referal_id.clone())
+    //         .is_none();
+
+    //     let storage_used = if is_new_referal {
+    //         bytes_for_approved_account_id(&account_id)
+    //     } else {
+    //         0
+    //     };
+
+    //     self.job_by_id.insert(&job_id, &job);
+
+    //     refund_deposit(storage_used);
+    // }
 }

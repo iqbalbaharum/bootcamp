@@ -10,6 +10,7 @@ pub type JobId = u64;
 pub struct JobDetail {
     pub reference: String,
     pub reference_hash: Option<Base64VecU8>,
+    // pub referrals: HashMap<AccountId, AccountId>,
 }
 
 #[derive(BorshDeserialize, BorshSerialize)]
