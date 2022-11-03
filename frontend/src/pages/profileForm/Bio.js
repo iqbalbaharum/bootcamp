@@ -1,60 +1,67 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProfileFormContext } from ".";
 
 import image from "../../../assets/img/image.png";
 
 function Bio() {
+
+  const profileFormContext = useContext(ProfileFormContext)
+
   return (
-    <div className="px-[10rem] py-[3rem] mt-8 font-robotoMono">
+    <div className="px-[10rem] py-[3rem] mt- font-robotoMono">
       <div className="text-4xl font-bold text-left py-3 px-3">
         <p>MY WEB3 PROFILE</p>
       </div>
 
-      <div className="bg-[#DAFF3E] rounded-[30px]">
+      <div className="bg-[#DAFF3E] rounded-xl shadow-md">
         <div className="mx-[5rem] py-[2rem]">
           <div className="text-xl">
             <b>BIO</b>
           </div>
-          <form>
-            <div className="flex flex-row">
-              {/* upload profile pic */}
-              <div className="flex flex-col">
-                <div>
-                  <img src={image} alt="" />
-                </div>
-                <div className="py-[1rem]">
-                  <button
-                    type="button"
-                    className="bg-black text-[#DAFF3E] px-5 py-1 rounded-full"
-                  >
-                    UPLOAD
-                  </button>
-                </div>
+          <div>
+            <div className="mt-5 mb-2">
+              <div className="flex justify-center">
+                <img src={image} alt="" />
               </div>
-              {/* end upload profile pic */}
-              <div className="w-full ml-7 mb-2 text-left py-[2rem]">
+              <div className="py-[1rem]">
+                <button
+                  type="button"
+                  className="bg-black text-[#DAFF3E] px-5 py-1 rounded-full"
+                >
+                  UPLOAD
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-row">
+              <div className="w-full mb-2 text-left">
                 <label
                   htmlFor="email"
                   className="block text-sm font-semibold text-gray-800 px-4"
                 >
-                  NAME
+                  FULL NAME *
                 </label>
                 <input
-                  type=""
-                  className="block w-full px-7 py-2 mt-4 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  required
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  name="name"
+                  value={profileFormContext.name}
+                  onChange={profileFormContext.handleChange}
                 />
               </div>
             </div>
             <div className="mb-2 text-left">
               <label
-                htmlFor="email"
+                htmlFor="handler"
                 className="block text-sm font-semibold text-gray-800 px-4"
               >
-                HANDLE*
+                SEED HANDLER *
               </label>
               <input
-                type=""
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                name="handle"
+                value={profileFormContext.handle}
+                onChange={profileFormContext.handleChange}
               />
             </div>
             <div className="mb-2 text-left">
@@ -64,9 +71,11 @@ function Bio() {
               >
                 ONE-LINER BIO
               </label>
-              <input
-                type=""
+              <textarea
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                name="bio"
+                value={profileFormContext.bio}
+                onChange={profileFormContext.handleChange}
               />
             </div>
             <div className="mb-2 text-left">
@@ -80,21 +89,12 @@ function Bio() {
                 type="email"
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                name="email"
+                value={profileFormContext.email}
+                onChange={profileFormContext.handleChange}
               />
             </div>
-            <div className="mb-2 text-left">
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold text-gray-800 px-4"
-              >
-                LOCATION
-              </label>
-              <input
-                type=""
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
   "name": "my-near-app",
   "version": "1.0.0",
   "license": "(MIT AND Apache-2.0)",
+  "homepage": ".",
   "scripts": {
     "start": "env-cmd -f ./.env parcel index.html --open",
     "build": "parcel build index.html --public-url ./"

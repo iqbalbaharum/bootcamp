@@ -8,7 +8,7 @@ function WebCredential() {
           <div className="text-xl py-[1rem]">
             <b>WEB3 CREDENTIAL</b>
           </div>
-          <form>
+          <div>
             <div className="mb-2 px-[1rem] py-[2rem]">
               <div className="grid grid-rows-1 grid-flow-col gap-1 rounded-lg">
                 <div>
@@ -27,7 +27,7 @@ function WebCredential() {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

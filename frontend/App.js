@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './assets/index.css';
 
@@ -15,7 +15,7 @@ import Navbar from './src/components/Navbar';
 // Pages
 import Home from "./src/pages/home";
 import Login from "./src/pages/authentication/Login";
-import ProfileForm from "./src/pages/profileForm/IndexProfileForm";
+import Profile from "./src/pages/ProfileForm";
 import ProfileDisplay from "./src/pages/ProfileDisplay/IndexProfileDisplay";
 import Wallet from "./src/pages/profileConnect/ConnectWallet";
 import IssueEndors from "./src/pages/profileConnect/IssueEndors";
@@ -33,10 +33,10 @@ import { NearWalletContext } from './context/wallet.context';
 
 export default function App({ isSignedIn, wallet }) {
 
-  const config = {
+  const [config, setConfig] = useState({
     isAuthEnabled: true,
-    isNavsEnabled: false
-  }
+    isNavsEnabled: true,
+  })
 
   const near = {
     isSignedIn,
@@ -44,7 +44,7 @@ export default function App({ isSignedIn, wallet }) {
   }
 
   return (
-    <ConfigContext.Provider value={config}>
+    <ConfigContext.Provider value={{ config, setConfig }}>
       <NearWalletContext.Provider value={near}>
         <div className="App">
           <div className="w-full h-screen flex flex-col justify-start ">
@@ -66,7 +66,7 @@ export default function App({ isSignedIn, wallet }) {
               <Route exact path="/joblisting" element={<JobListing />} />
 
               {/* Profile Form */}
-              <Route exact path="/profileForm" element={<ProfileForm />} />
+              <Route path="/profile/form" element={<Profile />} />
 
               {/* Job Listing */}
               <Route exact path="/listjobdisplay" element={<ListJobDisplay />} />

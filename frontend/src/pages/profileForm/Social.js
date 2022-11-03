@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProfileFormContext } from ".";
 
-function Social() {
+const Social = () => {
+
+  const profileFormContext = useContext(ProfileFormContext)
+  
   return (
-    <div className="px-[10rem] py-[2rem] mt-12 font-robotoMono">
-      <div className="bg-[#DAFF3E] rounded-[30px]">
+    <div className="px-[10rem] mt-[2rem] font-robotoMono">
+      <div className="bg-[#DAFF3E] rounded-xl shadow-md">
         <div className="mx-[5rem] py-[2rem]">
-          <div className="text-xl py-[1rem]">
+          <div className="text-xl py-sm">
             <b>SOCIAL</b>
           </div>
-          <form>
+          <div>
             <div className="mb-2 text-left">
               <label
                 htmlFor="email"
@@ -17,7 +21,9 @@ function Social() {
                 TWITTER
               </label>
               <input
-                type=""
+                name="twitter"
+                value={profileFormContext.twitter}
+                onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -29,7 +35,9 @@ function Social() {
                 GITHUB
               </label>
               <input
-                type=""
+                name="github"
+                value={profileFormContext.github}
+                onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -41,7 +49,9 @@ function Social() {
                 LINKEDIN
               </label>
               <input
-                type="email"
+                name="linkedin"
+                value={profileFormContext.linkedin}
+                onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -53,11 +63,13 @@ function Social() {
                 WEBSITE
               </label>
               <input
-                type=""
+                name="website"
+                value={profileFormContext.website}
+                onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

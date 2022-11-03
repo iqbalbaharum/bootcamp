@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ArticleCard from "./Article/index";
 import Graphic1 from "../../../assets/img/bowl2.png";
 import Graphic2 from "../../../assets/img/graphic.png";
 import Search from "../../../assets/img/search.png";
+import { ConfigContext } from "../../../context/config.context";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -43,7 +44,6 @@ function SearchTag(tag) {
 }
 
 function ListingA1(props) {
-
 
   const [tags] = useState([
     { name: "Full Stack Dev", selected: false },

@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProfileFormContext } from ".";
 
-function Skill() {
+const Skill = () => {
+
+  const profileFormContext = useContext(ProfileFormContext)
+
   return (
-    <div className="px-[10rem] py-[2rem] mt-12 font-robotoMono">
-      <div className="bg-[#DAFF3E] rounded-[30px]">
+    <div className="px-[10rem] font-robotoMono">
+      <div className="bg-[#DAFF3E] rounded-xl shadow-md">
         <div className="mx-[5rem] py-[2rem]">
-          <div className="text-xl py-[1rem]">
+          <div className="text-xl py-sm">
             <b>SKILL</b>
           </div>
-          <form>
+          <div>
             <div className="mb-2 text-left py-[2rem]">
               <label
                 htmlFor="email"
@@ -17,8 +21,10 @@ function Skill() {
                 MAIN SKILL
               </label>
               <input
-                type=""
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                name="mainSkill"
+                value={profileFormContext.mainSkill}
+                onChange={profileFormContext.handleChange}
               />
             </div>
             <div className="mb-2 text-left">
@@ -29,29 +35,10 @@ function Skill() {
                 OTHER SKILL
               </label>
               <input
-                type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-            <div className="mb-2 text-left py-1">
-              <b>
-                <input type="checkbox" />
-                &nbsp; Open to Job Opportunity?
-              </b>
-            </div>
-            <div className="mb-2 text-left py-1">
-              <b>
-                <input type="checkbox" />
-                &nbsp; Open to remote Job?
-              </b>
-            </div>
-            <div className="mb-2 text-left py-1">
-              <b>
-                <input type="checkbox" />
-                &nbsp; Received New Jobs in your mailbox?
-              </b>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

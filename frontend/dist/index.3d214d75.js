@@ -27103,8 +27103,8 @@ var _home = require("./src/pages/home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _login = require("./src/pages/authentication/Login");
 var _loginDefault = parcelHelpers.interopDefault(_login);
-var _indexProfileForm = require("./src/pages/profileForm/IndexProfileForm");
-var _indexProfileFormDefault = parcelHelpers.interopDefault(_indexProfileForm);
+var _profileForm = require("./src/pages/ProfileForm");
+var _profileFormDefault = parcelHelpers.interopDefault(_profileForm);
 var _indexProfileDisplay = require("./src/pages/ProfileDisplay/IndexProfileDisplay");
 var _indexProfileDisplayDefault = parcelHelpers.interopDefault(_indexProfileDisplay);
 var _connectWallet = require("./src/pages/profileConnect/ConnectWallet");
@@ -27132,17 +27132,22 @@ var _batchMintDefault = parcelHelpers.interopDefault(_batchMint);
 var _jobListing = require("./src/pages/ProfileDisplay/JobListing");
 var _jobListingDefault = parcelHelpers.interopDefault(_jobListing);
 var _walletContext = require("./context/wallet.context");
+var _s = $RefreshSig$();
 function App({ isSignedIn , wallet  }) {
-    const config = {
+    _s();
+    const [config, setConfig] = (0, _react.useState)({
         isAuthEnabled: true,
-        isNavsEnabled: false
-    };
+        isNavsEnabled: true
+    });
     const near = {
         isSignedIn,
         wallet
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _configContext.ConfigContext).Provider, {
-        value: config,
+        value: {
+            config,
+            setConfig
+        },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _walletContext.NearWalletContext).Provider, {
             value: near,
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27215,9 +27220,8 @@ function App({ isSignedIn , wallet  }) {
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                    exact: true,
-                                    path: "/profileForm",
-                                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _indexProfileFormDefault.default), {}, void 0, false, void 0, void 0)
+                                    path: "/profile/form",
+                                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileFormDefault.default), {}, void 0, false, void 0, void 0)
                                 }, void 0, false, {
                                     fileName: "App.js",
                                     lineNumber: 69,
@@ -27333,6 +27337,7 @@ function App({ isSignedIn , wallet  }) {
     }, this);
 }
 exports.default = App;
+_s(App, "yCq7nlNqeYPXpL+eKLrvUu4vdKg=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");
@@ -27342,7 +27347,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","regenerator-runtime/runtime":"dXNgZ","react":"21dqq","./assets/index.css":"9lDpJ","react-router-dom":"9xmpe","./App.css":"7g3a6","./src/pages/error/NotFound":"bNsdS","./context/config.context":"cgGKe","./src/components/Navbar":"h700i","./src/pages/home":"d2RI6","./src/pages/authentication/Login":"h3n4P","./src/pages/profileForm/IndexProfileForm":"lwKIS","./src/pages/ProfileDisplay/IndexProfileDisplay":"4dd8t","./src/pages/profileConnect/ConnectWallet":"2FrBb","./src/pages/profileConnect/IssueEndors":"aRzeK","./src/pages/profileConnect/MintSuccess":"g1siM","./src/pages/authentication/EmailLogin":"dSdPW","./src/pages/Landingpage/IndexLandingPage":"9VerM","./src/pages/JobList/IndexJobListing":"jmz0J","./src/pages/JobList/ListJobDisplay":"4ixCU","./src/pages/RentTalent/IndexRentTalent":"84GI0","./src/pages/IssueNFT/IndexIssueNft":"j02Ow","./src/pages/IssueNFT/NftLink":"gq94b","./src/pages/IssueNFT/BatchMint":"c6J0v","./src/pages/ProfileDisplay/JobListing":"g4tDb","./context/wallet.context":"1JXUZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXNgZ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","regenerator-runtime/runtime":"dXNgZ","react":"21dqq","./assets/index.css":"9lDpJ","react-router-dom":"9xmpe","./App.css":"7g3a6","./src/pages/error/NotFound":"bNsdS","./context/config.context":"cgGKe","./src/components/Navbar":"h700i","./src/pages/home":"d2RI6","./src/pages/authentication/Login":"h3n4P","./src/pages/ProfileDisplay/IndexProfileDisplay":"4dd8t","./src/pages/profileConnect/ConnectWallet":"2FrBb","./src/pages/profileConnect/IssueEndors":"aRzeK","./src/pages/profileConnect/MintSuccess":"g1siM","./src/pages/authentication/EmailLogin":"dSdPW","./src/pages/Landingpage/IndexLandingPage":"9VerM","./src/pages/JobList/IndexJobListing":"jmz0J","./src/pages/JobList/ListJobDisplay":"4ixCU","./src/pages/RentTalent/IndexRentTalent":"84GI0","./src/pages/IssueNFT/IndexIssueNft":"j02Ow","./src/pages/IssueNFT/NftLink":"gq94b","./src/pages/IssueNFT/BatchMint":"c6J0v","./src/pages/ProfileDisplay/JobListing":"g4tDb","./context/wallet.context":"1JXUZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./src/pages/ProfileForm":"fCFJF"}],"dXNgZ":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -32547,10 +32552,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ConfigContext", ()=>ConfigContext);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const ConfigContext = /*#__PURE__*/ (0, _react.createContext)({
-    isAuthEnabled: true,
-    isNavsEnabled: false
-});
+const ConfigContext = /*#__PURE__*/ (0, _react.createContext)();
 
   $parcel$ReactRefreshHelpers$cd4e.postlude(module);
 } finally {
@@ -32575,27 +32577,7 @@ var _authEnabled = require("./AuthEnabled");
 const navigation = [
     {
         name: "My Profile",
-        href: "/profiledisplay",
-        current: false
-    },
-    {
-        name: "Jobs",
-        href: "#",
-        current: true
-    },
-    {
-        name: "Career Hub",
-        href: "#",
-        current: false
-    },
-    {
-        name: "Rent Talent",
-        href: "#",
-        current: false
-    },
-    {
-        name: "Academy",
-        href: "#",
+        href: "/profile/form",
         current: false
     }, 
 ];
@@ -32785,7 +32767,7 @@ const LoginButton = ({ wallet  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 type: "button",
                 className: "rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white",
-                onClick: wallet.signIn(),
+                onClick: ()=>wallet.signIn(),
                 children: "Login"
             }, void 0, false, {
                 fileName: "src/components/Navbar/AuthEnabled.jsx",
@@ -32813,14 +32795,28 @@ const LoginButton = ({ wallet  })=>{
 };
 _c = LoginButton;
 const ShowAccountId = ({ wallet  })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "rounded-md px-5 py-2.5 text-bold text-black ",
-        children: wallet.accountId
-    }, void 0, false, {
-        fileName: "src/components/Navbar/AuthEnabled.jsx",
-        lineNumber: 26,
-        columnNumber: 5
-    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "rounded-md px-5 py-2.5 text-bold text-black ",
+                children: wallet.accountId
+            }, void 0, false, {
+                fileName: "src/components/Navbar/AuthEnabled.jsx",
+                lineNumber: 27,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                type: "button",
+                className: "rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white",
+                onClick: ()=>wallet.signOut(),
+                children: "Logout"
+            }, void 0, false, {
+                fileName: "src/components/Navbar/AuthEnabled.jsx",
+                lineNumber: 30,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true);
 };
 _c1 = ShowAccountId;
 const AuthEnabled = ()=>{
@@ -32835,23 +32831,23 @@ const AuthEnabled = ()=>{
                     wallet: walletContext.wallet
                 }, void 0, false, {
                     fileName: "src/components/Navbar/AuthEnabled.jsx",
-                    lineNumber: 39,
+                    lineNumber: 48,
                     columnNumber: 11
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ShowAccountId, {
                     wallet: walletContext.wallet
                 }, void 0, false, {
                     fileName: "src/components/Navbar/AuthEnabled.jsx",
-                    lineNumber: 39,
+                    lineNumber: 48,
                     columnNumber: 59
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Navbar/AuthEnabled.jsx",
-                lineNumber: 37,
+                lineNumber: 46,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/Navbar/AuthEnabled.jsx",
-            lineNumber: 36,
+            lineNumber: 45,
             columnNumber: 7
         }, undefined)
     }, void 0, false);
@@ -33218,963 +33214,7 @@ module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "email.
 },{"./helpers/bundle-url":"lgJ39"}],"dRX8B":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "google.b22e1277.png" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"lwKIS":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$b798 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$b798.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _bio = require("./Bio");
-var _bioDefault = parcelHelpers.interopDefault(_bio);
-var _skill = require("./Skill");
-var _skillDefault = parcelHelpers.interopDefault(_skill);
-var _social = require("./Social");
-var _socialDefault = parcelHelpers.interopDefault(_social);
-var _webcredential = require("./webcredential");
-var _webcredentialDefault = parcelHelpers.interopDefault(_webcredential);
-var _buttons = require("./buttons");
-var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
-var _logoSmallPng = require("../../../assets/img/logoSmall.png");
-var _logoSmallPngDefault = parcelHelpers.interopDefault(_logoSmallPng);
-function IndexProfile() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "relative min-h-screen overflow-x-hidden bg-[#E5E5E5]",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "w-full flex ml-8 mt-4",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: (0, _logoSmallPngDefault.default),
-                    alt: "",
-                    className: "w-[140px] h-[40px]"
-                }, void 0, false, {
-                    fileName: "src/pages/profileForm/IndexProfileForm.js",
-                    lineNumber: 15,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/IndexProfileForm.js",
-                lineNumber: 14,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "grid grid-rows-1 grid-flow-col gap-1",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bioDefault.default), {}, void 0, false, {
-                                    fileName: "src/pages/profileForm/IndexProfileForm.js",
-                                    lineNumber: 21,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _skillDefault.default), {}, void 0, false, {
-                                    fileName: "src/pages/profileForm/IndexProfileForm.js",
-                                    lineNumber: 22,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _socialDefault.default), {}, void 0, false, {
-                                    fileName: "src/pages/profileForm/IndexProfileForm.js",
-                                    lineNumber: 23,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _webcredentialDefault.default), {}, void 0, false, {
-                                    fileName: "src/pages/profileForm/IndexProfileForm.js",
-                                    lineNumber: 24,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/pages/profileForm/IndexProfileForm.js",
-                            lineNumber: 20,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonsDefault.default), {}, void 0, false, {
-                                fileName: "src/pages/profileForm/IndexProfileForm.js",
-                                lineNumber: 27,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "src/pages/profileForm/IndexProfileForm.js",
-                            lineNumber: 26,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/pages/profileForm/IndexProfileForm.js",
-                    lineNumber: 19,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/IndexProfileForm.js",
-                lineNumber: 18,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/pages/profileForm/IndexProfileForm.js",
-        lineNumber: 13,
-        columnNumber: 5
-    }, this);
-}
-_c = IndexProfile;
-exports.default = IndexProfile;
-var _c;
-$RefreshReg$(_c, "IndexProfile");
-
-  $parcel$ReactRefreshHelpers$b798.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Bio":"15gpO","./Skill":"crI5C","./Social":"ds7kW","./webcredential":"6WSWO","./buttons":"geYYH","../../../assets/img/logoSmall.png":"h2WAL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"15gpO":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$bc82 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$bc82.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _imagePng = require("../../../assets/img/image.png");
-var _imagePngDefault = parcelHelpers.interopDefault(_imagePng);
-function Bio() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "px-[10rem] py-[3rem] mt-8 font-robotoMono",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "text-4xl font-bold text-left py-3 px-3",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: "MY WEB3 PROFILE"
-                }, void 0, false, {
-                    fileName: "src/pages/profileForm/Bio.js",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/Bio.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "bg-[#DAFF3E] rounded-[30px]",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "mx-[5rem] py-[2rem]",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "text-xl",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                                children: "BIO"
-                            }, void 0, false, {
-                                fileName: "src/pages/profileForm/Bio.js",
-                                lineNumber: 15,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "src/pages/profileForm/Bio.js",
-                            lineNumber: 14,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "flex flex-row",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "flex flex-col",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                                        src: (0, _imagePngDefault.default),
-                                                        alt: ""
-                                                    }, void 0, false, {
-                                                        fileName: "src/pages/profileForm/Bio.js",
-                                                        lineNumber: 22,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "src/pages/profileForm/Bio.js",
-                                                    lineNumber: 21,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                    className: "py-[1rem]",
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                        type: "button",
-                                                        className: "bg-black text-[#DAFF3E] px-5 py-1 rounded-full",
-                                                        children: "UPLOAD"
-                                                    }, void 0, false, {
-                                                        fileName: "src/pages/profileForm/Bio.js",
-                                                        lineNumber: 25,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "src/pages/profileForm/Bio.js",
-                                                    lineNumber: 24,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 20,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "w-full ml-7 mb-2 text-left py-[2rem]",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                    htmlFor: "email",
-                                                    className: "block text-sm font-semibold text-gray-800 px-4",
-                                                    children: "NAME"
-                                                }, void 0, false, {
-                                                    fileName: "src/pages/profileForm/Bio.js",
-                                                    lineNumber: 35,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                    type: "",
-                                                    className: "block w-full px-7 py-2 mt-4 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                                }, void 0, false, {
-                                                    fileName: "src/pages/profileForm/Bio.js",
-                                                    lineNumber: 41,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 34,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Bio.js",
-                                    lineNumber: 18,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "mb-2 text-left",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                            htmlFor: "email",
-                                            className: "block text-sm font-semibold text-gray-800 px-4",
-                                            children: "HANDLE*"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 48,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "",
-                                            required: true,
-                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 54,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Bio.js",
-                                    lineNumber: 47,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "mb-2 text-left",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                            htmlFor: "email",
-                                            className: "block text-sm font-semibold text-gray-800 px-4",
-                                            children: "ONE-LINER BIO"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 61,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "",
-                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 67,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Bio.js",
-                                    lineNumber: 60,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "mb-2 text-left",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                            htmlFor: "email",
-                                            className: "block text-sm font-semibold text-gray-800 px-4",
-                                            children: "EMAIL*"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 73,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "email",
-                                            required: true,
-                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 79,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Bio.js",
-                                    lineNumber: 72,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "mb-2 text-left",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                            htmlFor: "email",
-                                            className: "block text-sm font-semibold text-gray-800 px-4",
-                                            children: "LOCATION"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 86,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "",
-                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Bio.js",
-                                            lineNumber: 92,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Bio.js",
-                                    lineNumber: 85,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/pages/profileForm/Bio.js",
-                            lineNumber: 17,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/pages/profileForm/Bio.js",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/Bio.js",
-                lineNumber: 12,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/pages/profileForm/Bio.js",
-        lineNumber: 7,
-        columnNumber: 5
-    }, this);
-}
-_c = Bio;
-exports.default = Bio;
-var _c;
-$RefreshReg$(_c, "Bio");
-
-  $parcel$ReactRefreshHelpers$bc82.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/img/image.png":"a9V2u","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"a9V2u":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "image.bd413958.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"crI5C":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$a0f4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$a0f4.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-function Skill() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "px-[10rem] py-[2rem] mt-12 font-robotoMono",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "bg-[#DAFF3E] rounded-[30px]",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "mx-[5rem] py-[2rem]",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "text-xl py-[1rem]",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                            children: "SKILL"
-                        }, void 0, false, {
-                            fileName: "src/pages/profileForm/Skill.js",
-                            lineNumber: 9,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/pages/profileForm/Skill.js",
-                        lineNumber: 8,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left py-[2rem]",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        htmlFor: "email",
-                                        className: "block text-sm font-semibold text-gray-800 px-4",
-                                        children: "MAIN SKILL"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Skill.js",
-                                        lineNumber: 13,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        type: "",
-                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Skill.js",
-                                        lineNumber: 19,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/Skill.js",
-                                lineNumber: 12,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        htmlFor: "email",
-                                        className: "block text-sm font-semibold text-gray-800 px-4",
-                                        children: "OTHER SKILL"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Skill.js",
-                                        lineNumber: 25,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        type: "text",
-                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Skill.js",
-                                        lineNumber: 31,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/Skill.js",
-                                lineNumber: 24,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left py-1",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "checkbox"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Skill.js",
-                                            lineNumber: 38,
-                                            columnNumber: 17
-                                        }, this),
-                                        "\xa0 Open to Job Opportunity?"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Skill.js",
-                                    lineNumber: 37,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/pages/profileForm/Skill.js",
-                                lineNumber: 36,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left py-1",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "checkbox"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Skill.js",
-                                            lineNumber: 44,
-                                            columnNumber: 17
-                                        }, this),
-                                        "\xa0 Open to remote Job?"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Skill.js",
-                                    lineNumber: 43,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/pages/profileForm/Skill.js",
-                                lineNumber: 42,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left py-1",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "checkbox"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/Skill.js",
-                                            lineNumber: 50,
-                                            columnNumber: 17
-                                        }, this),
-                                        "\xa0 Received New Jobs in your mailbox?"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/profileForm/Skill.js",
-                                    lineNumber: 49,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/pages/profileForm/Skill.js",
-                                lineNumber: 48,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/pages/profileForm/Skill.js",
-                        lineNumber: 11,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/profileForm/Skill.js",
-                lineNumber: 7,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "src/pages/profileForm/Skill.js",
-            lineNumber: 6,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "src/pages/profileForm/Skill.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, this);
-}
-_c = Skill;
-exports.default = Skill;
-var _c;
-$RefreshReg$(_c, "Skill");
-
-  $parcel$ReactRefreshHelpers$a0f4.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ds7kW":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$8d43 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$8d43.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-function Social() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "px-[10rem] py-[2rem] mt-12 font-robotoMono",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "bg-[#DAFF3E] rounded-[30px]",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "mx-[5rem] py-[2rem]",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "text-xl py-[1rem]",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                            children: "SOCIAL"
-                        }, void 0, false, {
-                            fileName: "src/pages/profileForm/Social.js",
-                            lineNumber: 9,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/pages/profileForm/Social.js",
-                        lineNumber: 8,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        htmlFor: "email",
-                                        className: "block text-sm font-semibold text-gray-800 px-4",
-                                        children: "TWITTER"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 13,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        type: "",
-                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 19,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/Social.js",
-                                lineNumber: 12,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        htmlFor: "email",
-                                        className: "block text-sm font-semibold text-gray-800 px-4",
-                                        children: "GITHUB"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 25,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        type: "",
-                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 31,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/Social.js",
-                                lineNumber: 24,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        htmlFor: "email",
-                                        className: "block text-sm font-semibold text-gray-800 px-4",
-                                        children: "LINKEDIN"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 37,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        type: "email",
-                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 43,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/Social.js",
-                                lineNumber: 36,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2 text-left",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        htmlFor: "email",
-                                        className: "block text-sm font-semibold text-gray-800 px-4",
-                                        children: "WEBSITE"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 49,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        type: "",
-                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/Social.js",
-                                        lineNumber: 55,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/Social.js",
-                                lineNumber: 48,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/pages/profileForm/Social.js",
-                        lineNumber: 11,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/profileForm/Social.js",
-                lineNumber: 7,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "src/pages/profileForm/Social.js",
-            lineNumber: 6,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "src/pages/profileForm/Social.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, this);
-}
-_c = Social;
-exports.default = Social;
-var _c;
-$RefreshReg$(_c, "Social");
-
-  $parcel$ReactRefreshHelpers$8d43.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6WSWO":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$c32d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$c32d.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-function WebCredential() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "px-[10rem] py-[1rem] mt-12 font-robotoMono",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "bg-[#DAFF3E] rounded-[30px]",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "mx-[5rem] py-[2rem]",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "text-xl py-[1rem]",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                            children: "WEB3 CREDENTIAL"
-                        }, void 0, false, {
-                            fileName: "src/pages/profileForm/webcredential.js",
-                            lineNumber: 9,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/pages/profileForm/webcredential.js",
-                        lineNumber: 8,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "mb-2 px-[1rem] py-[2rem]",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "grid grid-rows-1 grid-flow-col gap-1 rounded-lg",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
-                                            children: [
-                                                "Don't have a wallet?",
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                                                    fileName: "src/pages/profileForm/webcredential.js",
-                                                    lineNumber: 17,
-                                                    columnNumber: 21
-                                                }, this),
-                                                " Create one here"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/pages/profileForm/webcredential.js",
-                                            lineNumber: 15,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/webcredential.js",
-                                        lineNumber: 14,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                            type: "button",
-                                            className: "bg-black border-solid border-2 border-black text-[#DAFF3E] px-5 py-3 rounded-lg font-bold",
-                                            children: "CONNECT WALLET"
-                                        }, void 0, false, {
-                                            fileName: "src/pages/profileForm/webcredential.js",
-                                            lineNumber: 21,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "src/pages/profileForm/webcredential.js",
-                                        lineNumber: 20,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/profileForm/webcredential.js",
-                                lineNumber: 13,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "src/pages/profileForm/webcredential.js",
-                            lineNumber: 12,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/pages/profileForm/webcredential.js",
-                        lineNumber: 11,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/profileForm/webcredential.js",
-                lineNumber: 7,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "src/pages/profileForm/webcredential.js",
-            lineNumber: 6,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "src/pages/profileForm/webcredential.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, this);
-}
-_c = WebCredential;
-exports.default = WebCredential;
-var _c;
-$RefreshReg$(_c, "WebCredential");
-
-  $parcel$ReactRefreshHelpers$c32d.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"geYYH":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$7143 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$7143.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactRouterDom = require("react-router-dom");
-function Buttons() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "py-[9rem]",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "py-3",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    type: "button",
-                    className: "bg-black border-solid border-2 border-black text-[#DAFF3E] px-16 py-3 rounded-lg font-bold",
-                    children: "SAVE"
-                }, void 0, false, {
-                    fileName: "src/pages/profileForm/buttons.js",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/buttons.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "py-3",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    type: "button",
-                    className: "bg-transparent border-solid border-2 border-black text-[#000000] px-14 py-3 rounded-lg font-bold",
-                    children: "DISCARD"
-                }, void 0, false, {
-                    fileName: "src/pages/profileForm/buttons.js",
-                    lineNumber: 19,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/buttons.js",
-                lineNumber: 18,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "py-3",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    type: "button",
-                    className: "bg-transparent border-solid border-2 border-black text-[#000000] px-14 py-3 rounded-lg font-bold",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                        to: "/profiledisplay",
-                        children: "PREVIEW"
-                    }, void 0, false, {
-                        fileName: "src/pages/profileForm/buttons.js",
-                        lineNumber: 33,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/pages/profileForm/buttons.js",
-                    lineNumber: 29,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/pages/profileForm/buttons.js",
-                lineNumber: 28,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/pages/profileForm/buttons.js",
-        lineNumber: 6,
-        columnNumber: 5
-    }, this);
-}
-_c = Buttons;
-exports.default = Buttons;
-var _c;
-$RefreshReg$(_c, "Buttons");
-
-  $parcel$ReactRefreshHelpers$7143.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4dd8t":[function(require,module,exports) {
+},{"./helpers/bundle-url":"lgJ39"}],"4dd8t":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$56a8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34402,7 +33442,10 @@ $RefreshReg$(_c, "Basicdetails");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/img/image.png":"a9V2u","../../../assets/img/shareIcon.png":"j7oP3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"j7oP3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/img/image.png":"a9V2u","../../../assets/img/shareIcon.png":"j7oP3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"a9V2u":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "image.bd413958.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"j7oP3":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "shareIcon.7257c3a8.png" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"dZxWs":[function(require,module,exports) {
@@ -38422,6 +37465,7 @@ var _graphicPng = require("../../../assets/img/graphic.png");
 var _graphicPngDefault = parcelHelpers.interopDefault(_graphicPng);
 var _searchPng = require("../../../assets/img/search.png");
 var _searchPngDefault = parcelHelpers.interopDefault(_searchPng);
+var _configContext = require("../../../context/config.context");
 var _s = $RefreshSig$();
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -38439,27 +37483,27 @@ function ToggleFilter(props) {
                         className: "peer sr-only"
                     }, void 0, false, {
                         fileName: "src/pages/JobList/ListJobDisplay.js",
-                        lineNumber: 17,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         className: "absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"
                     }, void 0, false, {
                         fileName: "src/pages/JobList/ListJobDisplay.js",
-                        lineNumber: 19,
+                        lineNumber: 20,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         className: "absolute inset-0 m-1 h-4 w-6 rounded-full bg-white transition peer-checked:translate-x-6"
                     }, void 0, false, {
                         fileName: "src/pages/JobList/ListJobDisplay.js",
-                        lineNumber: 21,
+                        lineNumber: 22,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/JobList/ListJobDisplay.js",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -38467,7 +37511,7 @@ function ToggleFilter(props) {
                 children: props.label
             }, void 0, false, {
                 fileName: "src/pages/JobList/ListJobDisplay.js",
-                lineNumber: 23,
+                lineNumber: 24,
                 columnNumber: 7
             }, this)
         ]
@@ -38481,7 +37525,7 @@ function SearchTag(tag) {
         children: tag.name
     }, tag.name, false, {
         fileName: "src/pages/JobList/ListJobDisplay.js",
-        lineNumber: 30,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }
@@ -38911,7 +37955,7 @@ $RefreshReg$(_c2, "ListingA1");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../components/Navbar":"h700i","./Article/index":"1qv00","../../../assets/img/bowl2.png":"ic9bH","../../../assets/img/graphic.png":"a0E54","../../../assets/img/search.png":"6ee8W","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1qv00":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../components/Navbar":"h700i","./Article/index":"1qv00","../../../assets/img/bowl2.png":"ic9bH","../../../assets/img/graphic.png":"a0E54","../../../assets/img/search.png":"6ee8W","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../context/config.context":"cgGKe"}],"1qv00":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$fec9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40966,7 +40010,1019 @@ module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "lightn
 },{"./helpers/bundle-url":"lgJ39"}],"aZnsO":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("UckoE") + "dollarbag.0892b8b3.png" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"lOjBx":[function(require,module,exports) {
+},{"./helpers/bundle-url":"lgJ39"}],"fCFJF":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$fd20 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fd20.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ProfileFormContext", ()=>ProfileFormContext);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _form = require("./Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _walletContext = require("../../../context/wallet.context");
+var _s = $RefreshSig$();
+const ProfileFormContext = /*#__PURE__*/ (0, _react.createContext)();
+const Profile = ()=>{
+    _s();
+    const walletContext = (0, _react.useContext)((0, _walletContext.NearWalletContext));
+    const [form, setForm] = (0, _react.useState)({
+        name: "",
+        handle: "",
+        bio: "",
+        nearAddress: walletContext.wallet.accountId,
+        email: "",
+        twitter: "",
+        github: "",
+        linkedin: "",
+        website: "",
+        mainSkill: "",
+        openToJobOpportunity: true,
+        openToRemoteJob: true,
+        receiveNewJobEmail: true,
+        showPublicAddress: true,
+        showLocation: true
+    });
+    const handleChange = (evt)=>{
+        const value = evt.target.value;
+        setForm({
+            ...form,
+            [evt.target.name]: value
+        });
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ProfileFormContext.Provider, {
+        value: {
+            form,
+            handleChange
+        },
+        children: walletContext.wallet.accountId && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {}, void 0, false, {
+            fileName: "src/pages/ProfileForm/index.jsx",
+            lineNumber: 39,
+            columnNumber: 42
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/pages/ProfileForm/index.jsx",
+        lineNumber: 38,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Profile, "fgA019tQHYemD+KauJyTv7N4plo=");
+_c = Profile;
+exports.default = Profile;
+var _c;
+$RefreshReg$(_c, "Profile");
+
+  $parcel$ReactRefreshHelpers$fd20.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../context/wallet.context":"1JXUZ","./Form":"jCzpu"}],"jCzpu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e29d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e29d.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _bio = require("./Bio");
+var _bioDefault = parcelHelpers.interopDefault(_bio);
+var _skill = require("./Skill");
+var _skillDefault = parcelHelpers.interopDefault(_skill);
+var _social = require("./Social");
+var _socialDefault = parcelHelpers.interopDefault(_social);
+var _buttons = require("./buttons");
+var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
+var _other = require("./Other");
+var _otherDefault = parcelHelpers.interopDefault(_other);
+function ProfileForm() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "relative min-h-screen overflow-x-hidden bg-[#E5E5E5]",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "grid grid-rows-1 grid-flow-col gap-1 mb-5",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bioDefault.default), {}, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Form.js",
+                                lineNumber: 16,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _skillDefault.default), {}, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Form.js",
+                                lineNumber: 17,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _socialDefault.default), {}, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Form.js",
+                                lineNumber: 18,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _otherDefault.default), {}, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Form.js",
+                                lineNumber: 19,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/ProfileForm/Form.js",
+                        lineNumber: 15,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonsDefault.default), {}, void 0, false, {
+                            fileName: "src/pages/ProfileForm/Form.js",
+                            lineNumber: 22,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/pages/ProfileForm/Form.js",
+                        lineNumber: 21,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/ProfileForm/Form.js",
+                lineNumber: 14,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "src/pages/ProfileForm/Form.js",
+            lineNumber: 13,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/pages/ProfileForm/Form.js",
+        lineNumber: 12,
+        columnNumber: 5
+    }, this);
+}
+_c = ProfileForm;
+exports.default = ProfileForm;
+var _c;
+$RefreshReg$(_c, "ProfileForm");
+
+  $parcel$ReactRefreshHelpers$e29d.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Bio":"jECNh","./Skill":"e0TUI","./Social":"k2vqn","./buttons":"1J6ZK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Other":"9ha60"}],"jECNh":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$6344 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$6344.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _ = require(".");
+var _imagePng = require("../../../assets/img/image.png");
+var _imagePngDefault = parcelHelpers.interopDefault(_imagePng);
+var _s = $RefreshSig$();
+function Bio() {
+    _s();
+    const profileFormContext = (0, _react.useContext)((0, _.ProfileFormContext));
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "px-[10rem] py-[3rem] mt- font-robotoMono",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "text-4xl font-bold text-left py-3 px-3",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: "MY WEB3 PROFILE"
+                }, void 0, false, {
+                    fileName: "src/pages/ProfileForm/Bio.js",
+                    lineNumber: 13,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/pages/ProfileForm/Bio.js",
+                lineNumber: 12,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "bg-[#DAFF3E] rounded-xl shadow-md",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "mx-[5rem] py-[2rem]",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "text-xl",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                children: "BIO"
+                            }, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Bio.js",
+                                lineNumber: 19,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/pages/ProfileForm/Bio.js",
+                            lineNumber: 18,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "mt-5 mb-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "flex justify-center",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                                src: (0, _imagePngDefault.default),
+                                                alt: ""
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ProfileForm/Bio.js",
+                                                lineNumber: 24,
+                                                columnNumber: 17
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 23,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "py-[1rem]",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                type: "button",
+                                                className: "bg-black text-[#DAFF3E] px-5 py-1 rounded-full",
+                                                children: "UPLOAD"
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ProfileForm/Bio.js",
+                                                lineNumber: 27,
+                                                columnNumber: 17
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 26,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Bio.js",
+                                    lineNumber: 22,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "flex flex-row",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "w-full mb-2 text-left",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                htmlFor: "email",
+                                                className: "block text-sm font-semibold text-gray-800 px-4",
+                                                children: "FULL NAME *"
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ProfileForm/Bio.js",
+                                                lineNumber: 37,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                required: true,
+                                                className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40",
+                                                name: "name",
+                                                value: profileFormContext.name,
+                                                onChange: profileFormContext.handleChange
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ProfileForm/Bio.js",
+                                                lineNumber: 43,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/pages/ProfileForm/Bio.js",
+                                        lineNumber: 36,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "src/pages/ProfileForm/Bio.js",
+                                    lineNumber: 35,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "mb-2 text-left",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            htmlFor: "handler",
+                                            className: "block text-sm font-semibold text-gray-800 px-4",
+                                            children: "SEED HANDLER *"
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 53,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            required: true,
+                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40",
+                                            name: "handle",
+                                            value: profileFormContext.handle,
+                                            onChange: profileFormContext.handleChange
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 59,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Bio.js",
+                                    lineNumber: 52,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "mb-2 text-left",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            htmlFor: "email",
+                                            className: "block text-sm font-semibold text-gray-800 px-4",
+                                            children: "ONE-LINER BIO"
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 68,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40",
+                                            name: "bio",
+                                            value: profileFormContext.bio,
+                                            onChange: profileFormContext.handleChange
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 74,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Bio.js",
+                                    lineNumber: 67,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "mb-2 text-left",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            htmlFor: "email",
+                                            className: "block text-sm font-semibold text-gray-800 px-4",
+                                            children: "EMAIL*"
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 82,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "email",
+                                            required: true,
+                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40",
+                                            name: "email",
+                                            value: profileFormContext.email,
+                                            onChange: profileFormContext.handleChange
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Bio.js",
+                                            lineNumber: 88,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Bio.js",
+                                    lineNumber: 81,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/pages/ProfileForm/Bio.js",
+                            lineNumber: 21,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/pages/ProfileForm/Bio.js",
+                    lineNumber: 17,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/pages/ProfileForm/Bio.js",
+                lineNumber: 16,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/ProfileForm/Bio.js",
+        lineNumber: 11,
+        columnNumber: 5
+    }, this);
+}
+_s(Bio, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+_c = Bio;
+exports.default = Bio;
+var _c;
+$RefreshReg$(_c, "Bio");
+
+  $parcel$ReactRefreshHelpers$6344.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/img/image.png":"a9V2u","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru",".":"fCFJF"}],"e0TUI":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$8449 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8449.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _ = require(".");
+var _s = $RefreshSig$();
+const Skill = ()=>{
+    _s();
+    const profileFormContext = (0, _react.useContext)((0, _.ProfileFormContext));
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "px-[10rem] font-robotoMono",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "bg-[#DAFF3E] rounded-xl shadow-md",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mx-[5rem] py-[2rem]",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "text-xl py-sm",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                            children: "SKILL"
+                        }, void 0, false, {
+                            fileName: "src/pages/ProfileForm/Skill.js",
+                            lineNumber: 13,
+                            columnNumber: 13
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/pages/ProfileForm/Skill.js",
+                        lineNumber: 12,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left py-[2rem]",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        htmlFor: "email",
+                                        className: "block text-sm font-semibold text-gray-800 px-4",
+                                        children: "MAIN SKILL"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Skill.js",
+                                        lineNumber: 17,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40",
+                                        name: "mainSkill",
+                                        value: profileFormContext.mainSkill,
+                                        onChange: profileFormContext.handleChange
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Skill.js",
+                                        lineNumber: 23,
+                                        columnNumber: 15
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/ProfileForm/Skill.js",
+                                lineNumber: 16,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        htmlFor: "email",
+                                        className: "block text-sm font-semibold text-gray-800 px-4",
+                                        children: "OTHER SKILL"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Skill.js",
+                                        lineNumber: 31,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Skill.js",
+                                        lineNumber: 37,
+                                        columnNumber: 15
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/ProfileForm/Skill.js",
+                                lineNumber: 30,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/ProfileForm/Skill.js",
+                        lineNumber: 15,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/ProfileForm/Skill.js",
+                lineNumber: 11,
+                columnNumber: 9
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/pages/ProfileForm/Skill.js",
+            lineNumber: 10,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/pages/ProfileForm/Skill.js",
+        lineNumber: 9,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Skill, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+_c = Skill;
+exports.default = Skill;
+var _c;
+$RefreshReg$(_c, "Skill");
+
+  $parcel$ReactRefreshHelpers$8449.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru",".":"fCFJF"}],"k2vqn":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$83c5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$83c5.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _ = require(".");
+var _s = $RefreshSig$();
+const Social = ()=>{
+    _s();
+    const profileFormContext = (0, _react.useContext)((0, _.ProfileFormContext));
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "px-[10rem] mt-[2rem] font-robotoMono",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "bg-[#DAFF3E] rounded-xl shadow-md",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mx-[5rem] py-[2rem]",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "text-xl py-sm",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                            children: "SOCIAL"
+                        }, void 0, false, {
+                            fileName: "src/pages/ProfileForm/Social.js",
+                            lineNumber: 13,
+                            columnNumber: 13
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/pages/ProfileForm/Social.js",
+                        lineNumber: 12,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        htmlFor: "email",
+                                        className: "block text-sm font-semibold text-gray-800 px-4",
+                                        children: "TWITTER"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 17,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        name: "twitter",
+                                        value: profileFormContext.twitter,
+                                        onChange: profileFormContext.handleChange,
+                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 23,
+                                        columnNumber: 15
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/ProfileForm/Social.js",
+                                lineNumber: 16,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        htmlFor: "email",
+                                        className: "block text-sm font-semibold text-gray-800 px-4",
+                                        children: "GITHUB"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 31,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        name: "github",
+                                        value: profileFormContext.github,
+                                        onChange: profileFormContext.handleChange,
+                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 37,
+                                        columnNumber: 15
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/ProfileForm/Social.js",
+                                lineNumber: 30,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        htmlFor: "email",
+                                        className: "block text-sm font-semibold text-gray-800 px-4",
+                                        children: "LINKEDIN"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 45,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        name: "linkedin",
+                                        value: profileFormContext.linkedin,
+                                        onChange: profileFormContext.handleChange,
+                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 51,
+                                        columnNumber: 15
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/ProfileForm/Social.js",
+                                lineNumber: 44,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        htmlFor: "email",
+                                        className: "block text-sm font-semibold text-gray-800 px-4",
+                                        children: "WEBSITE"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 59,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        name: "website",
+                                        value: profileFormContext.website,
+                                        onChange: profileFormContext.handleChange,
+                                        className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ProfileForm/Social.js",
+                                        lineNumber: 65,
+                                        columnNumber: 15
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/ProfileForm/Social.js",
+                                lineNumber: 58,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/ProfileForm/Social.js",
+                        lineNumber: 15,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/ProfileForm/Social.js",
+                lineNumber: 11,
+                columnNumber: 9
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/pages/ProfileForm/Social.js",
+            lineNumber: 10,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/pages/ProfileForm/Social.js",
+        lineNumber: 9,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Social, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+_c = Social;
+exports.default = Social;
+var _c;
+$RefreshReg$(_c, "Social");
+
+  $parcel$ReactRefreshHelpers$83c5.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru",".":"fCFJF"}],"1J6ZK":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$05b1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$05b1.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _ = require(".");
+var _s = $RefreshSig$();
+const Buttons = ()=>{
+    _s();
+    const profileFormContext = (0, _react.useContext)((0, _.ProfileFormContext));
+    const onSave = ()=>{
+        console.log(profileFormContext.form);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "py-[9rem]",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "py-3",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    type: "button",
+                    className: "bg-black border-solid border-2 border-black text-[#DAFF3E] px-16 py-3 rounded-lg font-bold",
+                    onClick: onSave,
+                    children: "SAVE"
+                }, void 0, false, {
+                    fileName: "src/pages/ProfileForm/buttons.js",
+                    lineNumber: 17,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/pages/ProfileForm/buttons.js",
+                lineNumber: 16,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "py-3",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    type: "button",
+                    className: "bg-transparent border-solid border-2 border-black text-[#000000] px-14 py-3 rounded-lg font-bold",
+                    children: "DISCARD"
+                }, void 0, false, {
+                    fileName: "src/pages/ProfileForm/buttons.js",
+                    lineNumber: 28,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/pages/ProfileForm/buttons.js",
+                lineNumber: 27,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "py-3",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    type: "button",
+                    className: "bg-transparent border-solid border-2 border-black text-[#000000] px-14 py-3 rounded-lg font-bold",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                        to: "/profiledisplay",
+                        children: "PREVIEW"
+                    }, void 0, false, {
+                        fileName: "src/pages/ProfileForm/buttons.js",
+                        lineNumber: 42,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/pages/ProfileForm/buttons.js",
+                    lineNumber: 38,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/pages/ProfileForm/buttons.js",
+                lineNumber: 37,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/ProfileForm/buttons.js",
+        lineNumber: 14,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Buttons, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+_c = Buttons;
+exports.default = Buttons;
+var _c;
+$RefreshReg$(_c, "Buttons");
+
+  $parcel$ReactRefreshHelpers$05b1.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru",".":"fCFJF"}],"9ha60":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$42a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$42a0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _ = require(".");
+var _s = $RefreshSig$();
+exports.default = Other = _s(()=>{
+    _s();
+    const profileFormContext = (0, _react.useContext)((0, _.ProfileFormContext));
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "px-[10rem] mt-[2rem] font-robotoMono",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "bg-[#DAFF3E] rounded-xl shadow-md",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mx-[5rem] py-[2rem]",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "text-xl py-sm",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                            children: "OTHER"
+                        }, void 0, false, {
+                            fileName: "src/pages/ProfileForm/Other.jsx",
+                            lineNumber: 13,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/pages/ProfileForm/Other.jsx",
+                        lineNumber: 12,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left py-[2rem]",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "mb-2 text-left",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            htmlFor: "location",
+                                            className: "block text-sm font-semibold text-gray-800 px-4",
+                                            children: "COUNTRY"
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            lineNumber: 18,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            lineNumber: 24,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    lineNumber: 17,
+                                    columnNumber: 13
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                lineNumber: 16,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left py-1",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "checkbox",
+                                            name: "openToJobOpportunity",
+                                            value: profileFormContext.openToJobOpportunity,
+                                            onChange: profileFormContext.handleChange
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            lineNumber: 31,
+                                            columnNumber: 17
+                                        }, undefined),
+                                        "\xa0 Open to job opportunity?"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    lineNumber: 30,
+                                    columnNumber: 15
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                lineNumber: 29,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left py-1",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "checkbox",
+                                            name: "openToRemoteJob",
+                                            value: profileFormContext.openToRemoteJob,
+                                            onChange: profileFormContext.handleChange
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            lineNumber: 41,
+                                            columnNumber: 17
+                                        }, undefined),
+                                        "\xa0 Open to remote job?"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    lineNumber: 40,
+                                    columnNumber: 15
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                lineNumber: 39,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2 text-left py-1",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "checkbox",
+                                            name: "receiveNewJobEmail",
+                                            value: profileFormContext.receiveNewJobEmail,
+                                            onChange: profileFormContext.handleChange
+                                        }, void 0, false, {
+                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            lineNumber: 52,
+                                            columnNumber: 17
+                                        }, undefined),
+                                        "\xa0 Received new jobs in your mailbox?"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    lineNumber: 51,
+                                    columnNumber: 15
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                lineNumber: 50,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/ProfileForm/Other.jsx",
+                        lineNumber: 15,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/ProfileForm/Other.jsx",
+                lineNumber: 11,
+                columnNumber: 7
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/pages/ProfileForm/Other.jsx",
+            lineNumber: 10,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/pages/ProfileForm/Other.jsx",
+        lineNumber: 9,
+        columnNumber: 5
+    }, undefined);
+}, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+
+  $parcel$ReactRefreshHelpers$42a0.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq",".":"fCFJF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("react-dom");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -54609,8 +54665,8 @@ async function signTransaction(...args) {
 exports.signTransaction = signTransaction;
 
 },{"buffer":"bSYe2","js-sha256":"ahVaM","./utils/enums":"kjmPo","borsh":"4JCmN","./utils/key_pair":"kBQFP"}],"ahVaM":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 /**
  * [js-sha256]{@link https://github.com/emn178/js-sha256}
  *

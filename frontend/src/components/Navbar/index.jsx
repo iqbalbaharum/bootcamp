@@ -3,11 +3,11 @@ import logo from "../../../assets/img/logoSmall.png";
 import { AuthEnabled } from "./AuthEnabled";
 
 const navigation = [
-  { name: "My Profile", href: "/profiledisplay", current: false },
-  { name: "Jobs", href: "#", current: true },
-  { name: "Career Hub", href: "#", current: false },
-  { name: "Rent Talent", href: "#", current: false },
-  { name: "Academy", href: "#", current: false },
+  { name: "My Profile", href: "/profile/form", current: false },
+  // { name: "Jobs", href: "#", current: false },
+  // { name: "Career Hub", href: "#", current: false },
+  // { name: "Rent Talent", href: "#", current: false },
+  // { name: "Academy", href: "#", current: false },
 ];
 
 function classNames(...classes) {

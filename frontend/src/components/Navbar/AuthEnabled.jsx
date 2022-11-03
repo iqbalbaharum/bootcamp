@@ -8,7 +8,7 @@ const LoginButton = ({ wallet }) => {
       <button
         type="button"
         className="rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white"
-        onClick={wallet.signIn()}
+        onClick={() => wallet.signIn()}
       >
         Login
       </button>
@@ -23,9 +23,18 @@ const LoginButton = ({ wallet }) => {
 
 const ShowAccountId = ({ wallet }) => {
   return (
-    <div className="rounded-md px-5 py-2.5 text-bold text-black ">
-      {wallet.accountId}
-    </div>
+    <>
+      <div className="rounded-md px-5 py-2.5 text-bold text-black ">
+        {wallet.accountId}
+      </div>
+      <button
+        type="button"
+        className="rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white"
+        onClick={() => wallet.signOut()}
+      >
+        Logout
+      </button>
+    </>
   )
 }
 

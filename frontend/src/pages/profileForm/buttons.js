@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProfileFormContext } from ".";
 
-function Buttons() {
+const Buttons = () => {
+
+  const profileFormContext = useContext(ProfileFormContext)
+
+  const onSave = () => {
+    console.log(profileFormContext.form)
+  }
+
   return (
     <div className="py-[9rem]">
       {/* button 1 */}
@@ -9,6 +17,7 @@ function Buttons() {
         <button
           type="button"
           className="bg-black border-solid border-2 border-black text-[#DAFF3E] px-16 py-3 rounded-lg font-bold"
+          onClick={onSave}
         >
           SAVE
         </button>
