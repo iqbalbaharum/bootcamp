@@ -4,7 +4,7 @@ import Bio from "./Bio";
 import Skill from "./Skill";
 import Social from "./Social";
 import Buttons from "./buttons";
-import Other from "./Other";
+import OtherForm from "./OtherForm";
 
 function ProfileForm() {
 
@@ -16,7 +16,7 @@ function ProfileForm() {
             <Bio />
             <Skill />
             <Social />
-            <Other />
+            <OtherForm />
           </div>
           <div>
             <Buttons />

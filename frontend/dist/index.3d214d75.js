@@ -40102,8 +40102,8 @@ var _social = require("./Social");
 var _socialDefault = parcelHelpers.interopDefault(_social);
 var _buttons = require("./buttons");
 var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
-var _other = require("./Other");
-var _otherDefault = parcelHelpers.interopDefault(_other);
+var _otherForm = require("./OtherForm");
+var _otherFormDefault = parcelHelpers.interopDefault(_otherForm);
 function ProfileForm() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "relative min-h-screen overflow-x-hidden bg-[#E5E5E5]",
@@ -40128,7 +40128,7 @@ function ProfileForm() {
                                 lineNumber: 18,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _otherDefault.default), {}, void 0, false, {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _otherFormDefault.default), {}, void 0, false, {
                                 fileName: "src/pages/ProfileForm/Form.js",
                                 lineNumber: 19,
                                 columnNumber: 13
@@ -40177,7 +40177,7 @@ $RefreshReg$(_c, "ProfileForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Bio":"jECNh","./Skill":"e0TUI","./Social":"k2vqn","./buttons":"1J6ZK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Other":"9ha60"}],"jECNh":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Bio":"jECNh","./Skill":"e0TUI","./Social":"k2vqn","./buttons":"1J6ZK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./OtherForm":"lR7R5"}],"jECNh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6344 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40843,11 +40843,11 @@ $RefreshReg$(_c, "Buttons");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru",".":"fCFJF"}],"9ha60":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$42a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru",".":"fCFJF"}],"lR7R5":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$750c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$42a0.prelude(module);
+$parcel$ReactRefreshHelpers$750c.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -40857,7 +40857,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _ = require(".");
 var _s = $RefreshSig$();
-exports.default = Other = _s(()=>{
+const OtherForm = ()=>{
     _s();
     const profileFormContext = (0, _react.useContext)((0, _.ProfileFormContext));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -40872,12 +40872,12 @@ exports.default = Other = _s(()=>{
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
                             children: "OTHER"
                         }, void 0, false, {
-                            fileName: "src/pages/ProfileForm/Other.jsx",
+                            fileName: "src/pages/ProfileForm/OtherForm.jsx",
                             lineNumber: 13,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
-                        fileName: "src/pages/ProfileForm/Other.jsx",
+                        fileName: "src/pages/ProfileForm/OtherForm.jsx",
                         lineNumber: 12,
                         columnNumber: 9
                     }, undefined),
@@ -40893,25 +40893,25 @@ exports.default = Other = _s(()=>{
                                             className: "block text-sm font-semibold text-gray-800 px-4",
                                             children: "COUNTRY"
                                         }, void 0, false, {
-                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                             lineNumber: 18,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                             className: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                         }, void 0, false, {
-                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                             lineNumber: 24,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                     lineNumber: 17,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
-                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                 lineNumber: 16,
                                 columnNumber: 11
                             }, undefined),
@@ -40925,19 +40925,19 @@ exports.default = Other = _s(()=>{
                                             value: profileFormContext.openToJobOpportunity,
                                             onChange: profileFormContext.handleChange
                                         }, void 0, false, {
-                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                             lineNumber: 31,
                                             columnNumber: 17
                                         }, undefined),
                                         "\xa0 Open to job opportunity?"
                                     ]
                                 }, void 0, true, {
-                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                     lineNumber: 30,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
-                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                 lineNumber: 29,
                                 columnNumber: 11
                             }, undefined),
@@ -40951,19 +40951,19 @@ exports.default = Other = _s(()=>{
                                             value: profileFormContext.openToRemoteJob,
                                             onChange: profileFormContext.handleChange
                                         }, void 0, false, {
-                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                             lineNumber: 41,
                                             columnNumber: 17
                                         }, undefined),
                                         "\xa0 Open to remote job?"
                                     ]
                                 }, void 0, true, {
-                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                     lineNumber: 40,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
-                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                 lineNumber: 39,
                                 columnNumber: 13
                             }, undefined),
@@ -40977,47 +40977,52 @@ exports.default = Other = _s(()=>{
                                             value: profileFormContext.receiveNewJobEmail,
                                             onChange: profileFormContext.handleChange
                                         }, void 0, false, {
-                                            fileName: "src/pages/ProfileForm/Other.jsx",
+                                            fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                             lineNumber: 52,
                                             columnNumber: 17
                                         }, undefined),
                                         "\xa0 Received new jobs in your mailbox?"
                                     ]
                                 }, void 0, true, {
-                                    fileName: "src/pages/ProfileForm/Other.jsx",
+                                    fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                     lineNumber: 51,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
-                                fileName: "src/pages/ProfileForm/Other.jsx",
+                                fileName: "src/pages/ProfileForm/OtherForm.jsx",
                                 lineNumber: 50,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
-                        fileName: "src/pages/ProfileForm/Other.jsx",
+                        fileName: "src/pages/ProfileForm/OtherForm.jsx",
                         lineNumber: 15,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
-                fileName: "src/pages/ProfileForm/Other.jsx",
+                fileName: "src/pages/ProfileForm/OtherForm.jsx",
                 lineNumber: 11,
                 columnNumber: 7
             }, undefined)
         }, void 0, false, {
-            fileName: "src/pages/ProfileForm/Other.jsx",
+            fileName: "src/pages/ProfileForm/OtherForm.jsx",
             lineNumber: 10,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/ProfileForm/Other.jsx",
+        fileName: "src/pages/ProfileForm/OtherForm.jsx",
         lineNumber: 9,
         columnNumber: 5
     }, undefined);
-}, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+};
+_s(OtherForm, "PPwPmmKeJKriayXU9nE94gY9Duk=");
+_c = OtherForm;
+exports.default = OtherForm;
+var _c;
+$RefreshReg$(_c, "OtherForm");
 
-  $parcel$ReactRefreshHelpers$42a0.postlude(module);
+  $parcel$ReactRefreshHelpers$750c.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;

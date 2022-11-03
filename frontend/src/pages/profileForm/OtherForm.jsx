@@ -1,7 +1,7 @@
 import react, { useContext } from 'react'
 import { ProfileFormContext } from '.'
 
-export default Other = () => {
+const OtherForm = () => {
 
   const profileFormContext = useContext(ProfileFormContext)
 
@@ -64,3 +64,5 @@ export default Other = () => {
   </div>
   )
 }
+
+export default OtherForm
