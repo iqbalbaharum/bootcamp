@@ -9,10 +9,16 @@ node_modules
 /out
 /dist
 /contract/target
+/integration-tests/target
 
 # keys
 /contract/neardev
 /templates/react/neardev
+/frontend/dist
+
+# parcel
+/frontend/.cache
+/frontend/.parcel-cache
 
 # testing
 /coverage
