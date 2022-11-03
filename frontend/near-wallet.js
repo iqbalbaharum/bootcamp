@@ -41,6 +41,7 @@ export class Wallet {
       setupLedger({ iconUrl: LedgerIconUrl })],
     });
 
+
     const isSignedIn = this.walletSelector.isSignedIn();
 
     if (isSignedIn) {

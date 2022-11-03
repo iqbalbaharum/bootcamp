@@ -1,67 +1,95 @@
 import 'regenerator-runtime/runtime';
-import React from 'react';
+import React, { useContext } from 'react';
 
-import './assets/global.css';
+import './assets/index.css';
 
-import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
+import { Routes, Route } from "react-router-dom";
 
+import "./App.css";
+import NotFound from "./src/pages/error/NotFound";
 
-export default function App({ isSignedIn, helloNEAR, wallet }) {
-  const [valueFromBlockchain, setValueFromBlockchain] = React.useState();
+// context
+import { ConfigContext } from './context/config.context';
+// Component
+import Navbar from './src/components/Navbar';
+// Pages
+import Home from "./src/pages/home";
+import Login from "./src/pages/authentication/Login";
+import ProfileForm from "./src/pages/profileForm/IndexProfileForm";
+import ProfileDisplay from "./src/pages/ProfileDisplay/IndexProfileDisplay";
+import Wallet from "./src/pages/profileConnect/ConnectWallet";
+import IssueEndors from "./src/pages/profileConnect/IssueEndors";
+import MintSuccess from "./src/pages/profileConnect/MintSuccess";
+import EmailLogin from "./src/pages/authentication/EmailLogin";
+import LandingPage from "./src/pages/Landingpage/IndexLandingPage";
+import IndexJobListing from "./src/pages/JobList/IndexJobListing";
+import ListJobDisplay from "./src/pages/JobList/ListJobDisplay";
+import IndexRentTalent from "./src/pages/RentTalent/IndexRentTalent";
+import IndexIssueNft from "./src/pages/IssueNFT/IndexIssueNft";
+import NftLink from "./src/pages/IssueNFT/NftLink";
+import BatchMint from "./src/pages/IssueNFT/BatchMint";
+import JobListing from "./src/pages/ProfileDisplay/JobListing";
+import { NearWalletContext } from './context/wallet.context';
 
-  const [uiPleaseWait, setUiPleaseWait] = React.useState(true);
+export default function App({ isSignedIn, wallet }) {
 
-  // Get blockchian state once on component load
-  React.useEffect(() => {
-    helloNEAR.getGreeting()
-      .then(setValueFromBlockchain)
-      .catch(alert)
-      .finally(() => {
-        setUiPleaseWait(false);
-      });
-  }, []);
-
-  /// If user not signed-in with wallet - show prompt
-  if (!isSignedIn) {
-    // Sign-in flow will reload the page later
-    return <SignInPrompt greeting={valueFromBlockchain} onClick={() => wallet.signIn()}/>;
+  const config = {
+    isAuthEnabled: true,
+    isNavsEnabled: false
   }
 
-  function changeGreeting(e) {
-    e.preventDefault();
-    setUiPleaseWait(true);
-    const { greetingInput } = e.target.elements;
-    helloNEAR.setGreeting(greetingInput.value)
-      .then(async () => {return helloNEAR.getGreeting();})
-      .then(setValueFromBlockchain)
-      .finally(() => {
-        setUiPleaseWait(false);
-      });
+  const near = {
+    isSignedIn,
+    wallet
   }
 
   return (
-    <>
-      <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
-      <main className={uiPleaseWait ? 'please-wait' : ''}>
-        <h1>
-          The contract says: <span className="greeting">{valueFromBlockchain}</span>
-        </h1>
-        <form onSubmit={changeGreeting} className="change">
-          <label>Change greeting:</label>
-          <div>
-            <input
-              autoComplete="off"
-              defaultValue={valueFromBlockchain}
-              id="greetingInput"
-            />
-            <button>
-              <span>Save</span>
-              <div className="loader"></div>
-            </button>
+    <ConfigContext.Provider value={config}>
+      <NearWalletContext.Provider value={near}>
+        <div className="App">
+          <div className="w-full h-screen flex flex-col justify-start ">
+            <Navbar isNavEnabled={config.isNavsEnabled} isAuthEnabled={config.isAuthEnabled} />
+            <Routes>
+
+              {/* Landing Page */}
+              <Route exact path="/" element={<LandingPage />} />
+              
+              <Route exact path="/home" element={<Home />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
+
+              {/* Authentication */}
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/emailogin" element={<EmailLogin />} />
+
+              {/* Profile Display */}
+              <Route exact path="/profiledisplay" element={<ProfileDisplay />} />
+              <Route exact path="/joblisting" element={<JobListing />} />
+
+              {/* Profile Form */}
+              <Route exact path="/profileForm" element={<ProfileForm />} />
+
+              {/* Job Listing */}
+              <Route exact path="/listjobdisplay" element={<ListJobDisplay />} />
+              <Route exact path="/listjob" element={<IndexJobListing />} />
+
+              {/* NFT Endorsement */}
+              <Route exact path="/wallet" element={<Wallet />} />
+              <Route exact path="/issue" element={<IssueEndors />} />
+              <Route exact path="/mintSuccess" element={<MintSuccess />} />
+
+              {/* Rent Talent */}
+              <Route exact path="/rentalent" element={<IndexRentTalent />} />
+
+              {/* Issue NFT */}
+              <Route exact path="/indexissuenft" element={<IndexIssueNft />} />
+              <Route exact path="/nftlink" element={<NftLink />} />
+
+              {/* Batch Minting */}
+              <Route exact path="/batchmint" element={<BatchMint />} />
+            </Routes>
           </div>
-        </form>
-        <EducationalText/>
-      </main>
-    </>
+        </div>
+      </NearWalletContext.Provider>
+    </ConfigContext.Provider>
   );
 }
