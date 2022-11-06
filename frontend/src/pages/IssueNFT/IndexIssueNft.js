@@ -1,10 +1,10 @@
 import React from "react";
 import IssueNftForm from "./IssueNftForm";
 
-function IndexIssueNft() {
+function IndexIssueNft({wallet}) {
   return (
     <div>
-      <IssueNftForm />
+      <IssueNftForm wallet={wallet}/>
     </div>
   );
 }
