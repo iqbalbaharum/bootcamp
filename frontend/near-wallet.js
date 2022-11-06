@@ -15,7 +15,7 @@ import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 
 const THIRTY_TGAS = '30000000000000';
-const NO_DEPOSIT = '0';
+const DEPOSIT = '100000000000000000000000'; //We can change this accordingly
 
 // Wallet that simplifies using the wallet selector
 export class Wallet {
@@ -82,7 +82,7 @@ export class Wallet {
   }
 
   // Call a method that changes the contract's state
-  async callMethod({ contractId, method, args = {}, gas = THIRTY_TGAS, deposit = NO_DEPOSIT }) {
+  async callMethod({ contractId, method, args = {}, gas = THIRTY_TGAS, deposit = DEPOSIT }) {
     // Sign a transaction with the "FunctionCall" action
     return await this.wallet.signAndSendTransaction({
       signerId: this.accountId,
@@ -108,6 +108,7 @@ export class Wallet {
 
     // Retrieve transaction result from the network
     const transaction = await provider.txStatus(txhash, 'unnused');
-    return providers.getTransactionLastResult(transaction);
+    //I changed this because it returns nothing
+    return transaction;
   }
 }

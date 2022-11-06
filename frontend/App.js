@@ -15,7 +15,7 @@ import Navbar from './src/components/Navbar';
 // Pages
 import Home from "./src/pages/home";
 import Login from "./src/pages/authentication/Login";
-import Profile from "./src/pages/ProfileForm";
+import Profile from "./src/pages/profileForm";
 import ProfileDisplay from "./src/pages/ProfileDisplay/IndexProfileDisplay";
 import Wallet from "./src/pages/profileConnect/ConnectWallet";
 import IssueEndors from "./src/pages/profileConnect/IssueEndors";
@@ -74,18 +74,18 @@ export default function App({ isSignedIn, wallet }) {
 
               {/* NFT Endorsement */}
               <Route exact path="/wallet" element={<Wallet />} />
-              <Route exact path="/issue" element={<IssueEndors />} />
+              <Route exact path="/issue" element={<IssueEndors wallet={wallet}/>} />
               <Route exact path="/mintSuccess" element={<MintSuccess />} />
 
               {/* Rent Talent */}
               <Route exact path="/rentalent" element={<IndexRentTalent />} />
 
               {/* Issue NFT */}
-              <Route exact path="/indexissuenft" element={<IndexIssueNft />} />
+              <Route exact path="/indexissuenft" element={<IndexIssueNft wallet={wallet}/>} />
               <Route exact path="/nftlink" element={<NftLink />} />
 
               {/* Batch Minting */}
-              <Route exact path="/batchmint" element={<BatchMint />} />
+              <Route exact path="/batchmint" element={<BatchMint wallet={wallet} />} />
             </Routes>
           </div>
         </div>
