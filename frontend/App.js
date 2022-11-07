@@ -70,7 +70,7 @@ export default function App({ isSignedIn, wallet }) {
 
               {/* Job Listing */}
               <Route exact path="/listjobdisplay" element={<ListJobDisplay />} />
-              <Route exact path="/listjob" element={<IndexJobListing />} />
+              <Route exact path="/job/create" element={<IndexJobListing />} />
 
               {/* NFT Endorsement */}
               <Route exact path="/wallet" element={<Wallet />} />

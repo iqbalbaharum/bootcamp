@@ -8,11 +8,6 @@ function IndexJobListing() {
     <div className="relative min-h-screen overflow-x-hidden bg-[#DAFF3E]">
       <div
         className="w-full h-full"
-        // style={{
-        //   background: `url(${JobFormbg}) no-repeat bottom`,
-        //   backgroundSize: "cover",
-        //   backgroundOrigin: "content-box",
-        // }}
       >
         <div className="mx-[16rem] py-[3rem] font-robotoMono">
           <div className="text-[50px] font-bold text-center py-3 px-3">
