@@ -17,6 +17,8 @@
     "near-cli": "^3.3.0"
   },
   "dependencies": {
-    "@parcel/transformer-css": "^2.7.0"
+    "@parcel/transformer-css": "^2.7.0",
+    "ipfs-core": "^0.17.0",
+    "ipfs-http-client": "33.0.1"
   }
 }

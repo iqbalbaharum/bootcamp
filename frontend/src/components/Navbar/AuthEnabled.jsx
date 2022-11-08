@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { NearWalletContext } from '../../../context/wallet.context';
+import { NearWalletContext } from '../../context/wallet.context';
+import useIpfsFactory from '../../hooks/useIpfsFactory';
 
 
 const LoginButton = ({ wallet }) => {
@@ -30,6 +31,8 @@ const ShowAccountId = ({ wallet }) => {
     navigate('/job/create')
   }
 
+  const { ipfs } = useIpfsFactory({ commands: ['id'] })
+
   return (
     <>
       <div className="rounded-md px-5 py-2.5 text-bold text-black ">
@@ -42,13 +45,13 @@ const ShowAccountId = ({ wallet }) => {
       >
         Logout
       </button>
-      <button
+      {ipfs && <button
         type="button"
         className="rounded-md bg-[#FF5733] px-5 py-2.5 text-bold text-white"
         onClick={goToJobCreationPage}
       >
         Create Job Post
-      </button>
+      </button>}
     </>
   )
 }

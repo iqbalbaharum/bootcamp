@@ -1,15 +1,14 @@
 import 'regenerator-runtime/runtime';
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './assets/index.css';
 
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import NotFound from "./src/pages/error/NotFound";
 
 // context
-import { ConfigContext } from './context/config.context';
+import { ConfigContext } from './src/context/config.context';
 // Component
 import Navbar from './src/components/Navbar';
 // Pages
@@ -29,7 +28,9 @@ import IndexIssueNft from "./src/pages/IssueNFT/IndexIssueNft";
 import NftLink from "./src/pages/IssueNFT/NftLink";
 import BatchMint from "./src/pages/IssueNFT/BatchMint";
 import JobListing from "./src/pages/ProfileDisplay/JobListing";
-import { NearWalletContext } from './context/wallet.context';
+import { NearWalletContext } from './src/context/wallet.context';
+import useIpfsFactory from './src/hooks/useIpfsFactory';
+import useIpfs from './src/hooks/useIpfs';
 
 export default function App({ isSignedIn, wallet }) {
 
@@ -42,6 +43,21 @@ export default function App({ isSignedIn, wallet }) {
     isSignedIn,
     wallet
   }
+
+  const { ipfs, ipfsInitError } = useIpfsFactory({ commands: ['id'] })
+  // const id = useIpfs(ipfs, 'id')
+  const [version, setVersion] = useState()
+
+  useEffect(() => {
+    if (!ipfs) return;
+
+    const getVersion = async () => {
+      const nodeId = await ipfs.version();
+      setVersion(nodeId);
+    }
+
+    getVersion();
+  }, [ipfs])
 
   return (
     <ConfigContext.Provider value={{ config, setConfig }}>
