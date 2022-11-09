@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { NearWalletContext } from '../../../context/wallet.context';
 
 
@@ -22,6 +23,13 @@ const LoginButton = ({ wallet }) => {
 }
 
 const ShowAccountId = ({ wallet }) => {
+
+  const navigate = useNavigate()
+
+  const goToJobCreationPage = () => {
+    navigate('/job/create')
+  }
+
   return (
     <>
       <div className="rounded-md px-5 py-2.5 text-bold text-black ">
@@ -33,6 +41,13 @@ const ShowAccountId = ({ wallet }) => {
         onClick={() => wallet.signOut()}
       >
         Logout
+      </button>
+      <button
+        type="button"
+        className="rounded-md bg-[#FF5733] px-5 py-2.5 text-bold text-white"
+        onClick={goToJobCreationPage}
+      >
+        Create Job Post
       </button>
     </>
   )
