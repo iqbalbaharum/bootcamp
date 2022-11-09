@@ -5,40 +5,34 @@ import { GloryBadge } from "../../nft_contracts/glory-badge";
 import { useNavigate } from 'react-router-dom';
 import { check } from "prettier";
 
-const addresses = [
+var addresses = [
   {
     address: "sordgom_1.testnet",
-    date: "14 Sep 2022 17:25 UTC+0",
+    date: "09 Nov 2022 06:35:47 GMT",
   },
   {
-    address: "sordgom_1.testnet",
-    date: "14 Sep 2022 17:25 UTC+0",
-  },
-  {
-    address: "sordgom_1.testnet",
-    date: "14 Sep 2022 17:25 UTC+0",
-  },
-  {
-    address: "sordgom_1.testnet",
-    date: "14 Sep 2022 17:25 UTC+0",
+    address: "sordgom_2.testnet",
+    date: "09 Nov 2022 06:35:47 GMT",
   },
 ];
 
 /*TODO
-* GENERATE TOKEN IDS
 * Fetch list of addresses...
 * Fetch token information
 */
 function BatchMint({wallet}) {
   const navigate = useNavigate();
-  const contract = new GloryBadge({contractId: "sordgom_2_nft.testnet", walletToUse: wallet });
+  const contract = new GloryBadge({contractId: process.env.GLORY_BADGE_CONTRACT, walletToUse: wallet });
 
   //States of the components
   const [list, setList] = useState([]);
+  const [log, setLog] = useState();
+  const [isClicked, setIsClicked] = useState();
+  const [address, setAddress] = useState();
 
-  //State that tracks whether checkboxes are clicked or not
+  //State that tracks whether checkboxes are ;clicked or not
   const [checkedState, setCheckedState] = useState(
-    new Array(4).fill(false) //Change 4 to the number of address we fetch 
+    new Array(addresses.length).fill(false) //Change 4 to the number of address we fetch 
   );
 
    // Check if there is a transaction hash in the URL
@@ -69,12 +63,16 @@ function BatchMint({wallet}) {
     });
     setCheckedState(updatedCheckedState);
   };
+
+  //Upload wallet address
+  const upload = (e) => {
+    addresses.push(e.target.value);
+  }
   
   //The data is supposed to be fetched from db
   async function handleSubmit(){
     try{
       await contract.bulk_nft_mint(
-      "token-100",
         {
             title: "Test",
             description: "Test",
@@ -92,8 +90,9 @@ function BatchMint({wallet}) {
   }
 
   useEffect(()=> {
-    wallet.createAccessKeyFor = "sordgom_2_nft.testnet" //Change contract address for the current wallet
+    wallet.createAccessKeyFor = process.env.GLORY_BADGE_CONTRACT
     checkTxh();
+    console.log(addresses)
   },[])
 
   //Add the checked address to a list of total addresses
@@ -125,6 +124,7 @@ function BatchMint({wallet}) {
                   <button
                     type="button"
                     className="block w-full px-4 py-2 mt-2 text-center text-gray-700 bg-white border rounded-md"
+                    onClick={() => setIsClicked(!isClicked)}
                   >
                     Upload Wallet Address
                   </button>
@@ -142,6 +142,22 @@ function BatchMint({wallet}) {
                 <div className="flex flex-row text-2xl font-bold justify-center m-[1rem]">
                   Select and Mint in Batch
                 </div>
+                { isClicked ? 
+                <div className="flex flex-row my-[2rem]">
+                  <input type="text" className="bg-white rounded-md border-2 text-xs p-1"  onChange={(e) => setAddress(e.target.value)}/>
+                  <button
+                    type="button"
+                    className="bg-white rounded-md border-2 text-xs p-1"
+                    onClick={() => {addresses.push({
+                      address: address,
+                      date: new Date().toUTCString(),
+                    },);
+                  setIsClicked(!isClicked)}}
+                  >
+                    Add Address
+                  </button>
+                </div>
+                :
                 <div className="flex flex-row my-[2rem]">
                   <button
                     type="button"
@@ -150,6 +166,7 @@ function BatchMint({wallet}) {
                     Select All
                   </button>
                 </div>
+                }
                 <div className="flex flex-col text-sm">
                   <div className="flex flex-row justify-between mb-4">
                     <div className="ml-[1rem]">Wallet Address</div>
