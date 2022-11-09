@@ -11,11 +11,13 @@ import { useNavigate } from 'react-router-dom';
 function IssueEndors({wallet}) {
   const navigate = useNavigate();
 
-  const contract = new Endorsement({contractId: "sordgom_1_endorsement.testnet", walletToUse: wallet });
+  const contract = new Endorsement({contractId: process.env.ENDORSEMENT_CONTRACT, walletToUse: wallet });
 
   const [receiverId, setReceiverId] = React.useState();
   const [text, setText] = React.useState();
+  const [name, setName] = React.useState();
 
+  const [log, setLog] = React.useState();
 
    // Check if there is a transaction hash in the URL
    const urlParams = new URLSearchParams(window.location.search);
@@ -42,27 +44,23 @@ function IssueEndors({wallet}) {
       }
       // argument name and value - pass empty object if no args required
       await contract.nft_mint(
-        "token-10000", 
         {
-            title: "TEST-ENDORSEMENT",
+            title: name,
             description:text,
             text : text
         },
         receiverId
-      ).then((res) => {
-        console.log(res);
-        navigate('/mintSuccess');
-      });
+      );
     }catch(error){
       console.log(error)
     }
   }
 
   useEffect(()=> {
-    wallet.createAccessKeyFor = "sordgom_1_endorsement.testnet" //Change contract address for the current wallet
+    console.log(process.env.ENDORSEMENT_CONTRACT)
+    wallet.createAccessKeyFor = process.env.ENDORSEMENT_CONTRACT //Change contract address for the current wallet
     checkTxh();
   },[])
-
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
@@ -97,9 +95,22 @@ function IssueEndors({wallet}) {
                 <div className="mb-2 text-left">
                   <label
                     htmlFor="endorsing"
+                    className="block text-sm font-bold text-[#000000]"
+                  >
+                    Name (Project/Your Name)
+                  </label>
+                  <input
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  />
+                </div>
+                <div className="mb-2 text-left">
+                  <label
+                    htmlFor="endorsing"
                     className="block text-sm font-semibold text-black"
                   >
-                    Your endorsing
+                    Endorsement
                   </label>
                   <input
                     type="text"
