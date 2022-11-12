@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../../assets/img/logoSmall.png";
+import { useWallet } from "../../hooks/useWallet";
 import { AuthEnabled } from "./AuthEnabled";
 
 const navigation = [
@@ -47,6 +48,9 @@ function NavsEnabled() {
 }
 
 export default function Navbar(props) {
+
+  const { accountId } = useWallet()
+
   return (
     <header aria-label="SEED Header">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -59,7 +63,15 @@ export default function Navbar(props) {
           </div>
 
           {props.isNavEnabled && <NavsEnabled />}
-          {props.isAuthEnabled && <AuthEnabled />}
+
+          <div className="flex items-center gap-4">
+            <div className="sm:flex sm:gap-4 font-robotoMono text-bold">
+            {accountId && (
+              {accountId}
+            )}
+            </div>
+          </div>
+          
         </div>
       </div>
     </header>

@@ -5,19 +5,22 @@ import useIpfsFactory from '../../hooks/useIpfsFactory';
 
 
 const LoginButton = ({ wallet }) => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <button
         type="button"
         className="rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white"
-        onClick={() => wallet.signIn()}
+        onClick={() => navigate('/login')}
       >
         Login
       </button>
       <div className="hidden sm:flex">
-      <a className="rounded-md bg-black px-5 py-2.5 text-white" href="/">
+      <button type="button" className="rounded-md bg-black px-5 py-2.5 text-white" onClick={() => navigate('/register')}>
         Register
-      </a>
+      </button>
     </div>
     </>
   )
