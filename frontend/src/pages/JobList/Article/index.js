@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ArticleCard(job) {
+export default function ArticleCard({ job }) {
   const [applied, setApply] = useState(false);
 
   function onClickApply() {

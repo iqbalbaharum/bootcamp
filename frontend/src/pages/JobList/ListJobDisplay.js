@@ -26,24 +26,24 @@ function ToggleFilter(props) {
   );
 }
 
-function SearchTag(tag) {
+function SearchTag(prop) {
   return (
     <a
       className={classNames(
-        tag.selected
+        prop.tag.selected
           ? "bg-black text-[#DAFF3E]"
           : "border-black text-black hover:bg-[#DAFF3E]",
         "border-2 rounded-full px-2 py-1 font-bold"
       )}
-      key={tag.name}
+      key={prop.tag.name}
       href="#"
     >
-      {tag.name}
+      {prop.tag.name}
     </a>
   );
 }
 
-function ListingA1(props) {
+function ListingA1() {
 
   const [tags] = useState([
     { name: "Full Stack Dev", selected: false },
@@ -176,7 +176,7 @@ function ListingA1(props) {
           </div>
         </div>
         <div className="flex items-center gap-1 font-robotoMono mt-4">
-          {tags.map((tag) => SearchTag(tag))}
+          {tags.map((tag) => <SearchTag tag={tag} key={tag.name} />)}
         </div>
         <div className="my-4 text-[#EDEDED]">
           <hr />
@@ -221,7 +221,7 @@ function ListingA1(props) {
               </button>
             </div>
           </form>
-          {jobs.map((job) => ArticleCard(job))}
+          {jobs.map((job) => <ArticleCard job={job} key={job.name} />)}
         </div>
       </div>
     </>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import logo from "../../../assets/img/logoSmall.png";
 import { useWallet } from "../../hooks/useWallet";
 import { AuthEnabled } from "./AuthEnabled";
@@ -49,7 +50,7 @@ function NavsEnabled() {
 
 export default function Navbar(props) {
 
-  const { accountId } = useWallet()
+  const { wallet, accountId } = useWallet()
 
   return (
     <header aria-label="SEED Header">
@@ -64,13 +65,7 @@ export default function Navbar(props) {
 
           {props.isNavEnabled && <NavsEnabled />}
 
-          <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4 font-robotoMono text-bold">
-            {accountId && (
-              {accountId}
-            )}
-            </div>
-          </div>
+          <AuthEnabled />
           
         </div>
       </div>

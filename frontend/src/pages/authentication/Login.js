@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import near from "../../../assets/img/near.png";
 import bg from "../../../assets/img/globe.png";
 import email from "../../../assets/img/email.png";
@@ -8,8 +8,13 @@ import { useWallet } from "../../hooks/useWallet";
 
 function Login() {
 
-  const { signIn } = useWallet()
-
+  const { accountId, signIn } = useWallet()
+  const navigate = useNavigate()
+    
+  if(accountId) {
+    navigate('/jobs')
+  }
+  
   const onHandleNearButton = () => {
     signIn('seed.bonebon.testnet')
   }

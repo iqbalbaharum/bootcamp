@@ -26,7 +26,6 @@ export const WalletProvider = ({ children }) => {
   const [contractId, setContractId] = useState(null)
 
   useEffect(() => {
-    console.log(walletSelector)
     if(!walletSelector) {
       startUp()
     }
