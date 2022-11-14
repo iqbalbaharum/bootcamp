@@ -16,7 +16,7 @@ function FirstSection() {
         <div>
           <a
             className="inline-flex text-[60px] my-8 items-center bg-black font-bold w-full text-[#DAFF3E] rounded border px-12 py-3 text-white hover:bg-[#FF5733] hover:text-black focus:bg-black focus:text-[#DAFF3E] active:bg-blue-500 sm:w-auto"
-            href="/listjobdisplay"
+            href="/jobs"
           >
             <span className="text-3xl"> CAREER HUB </span>
 

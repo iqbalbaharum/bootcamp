@@ -1,20 +1,20 @@
 import 'regenerator-runtime/runtime';
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './assets/index.css';
 
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import NotFound from "./src/pages/error/NotFound";
 
 // context
-import { ConfigContext } from './context/config.context';
+import { ConfigContext } from './src/context/config.context';
 // Component
 import Navbar from './src/components/Navbar';
 // Pages
 import Home from "./src/pages/home";
 import Login from "./src/pages/authentication/Login";
+import Register from './src/pages/authentication/Register'
 import Profile from "./src/pages/profileForm";
 import ProfileDisplay from "./src/pages/ProfileDisplay/IndexProfileDisplay";
 import Wallet from "./src/pages/profileConnect/ConnectWallet";
@@ -29,7 +29,12 @@ import IndexIssueNft from "./src/pages/IssueNFT/IndexIssueNft";
 import NftLink from "./src/pages/IssueNFT/NftLink";
 import BatchMint from "./src/pages/IssueNFT/BatchMint";
 import JobListing from "./src/pages/ProfileDisplay/JobListing";
-import { NearWalletContext } from './context/wallet.context';
+import { NearWalletContext } from './src/context/wallet.context';
+import useIpfsFactory from './src/hooks/useIpfsFactory';
+import useIpfs from './src/hooks/useIpfs';
+import NavbarLayout from './src/components/Layout/NavbarLayout';
+import FullScreenLayout from './src/components/Layout/FullscreenLayout';
+import ProtectedLayout from './src/components/Layout/ProtectedLayout';
 
 export default function App({ isSignedIn, wallet }) {
 
@@ -43,34 +48,52 @@ export default function App({ isSignedIn, wallet }) {
     wallet
   }
 
+  const { ipfs, ipfsInitError } = useIpfsFactory({ commands: ['id'] })
+  // const id = useIpfs(ipfs, 'id')
+  const [version, setVersion] = useState()
+
+  useEffect(() => {
+    if (!ipfs) return;
+
+    const getVersion = async () => {
+      const nodeId = await ipfs.version();
+      setVersion(nodeId);
+    }
+
+    getVersion();
+    
+  }, [ipfs])
+
   return (
     <ConfigContext.Provider value={{ config, setConfig }}>
       <NearWalletContext.Provider value={near}>
         <div className="App">
           <div className="w-full h-screen flex flex-col justify-start ">
-            <Navbar isNavEnabled={config.isNavsEnabled} isAuthEnabled={config.isAuthEnabled} />
             <Routes>
+              <Route path="/" element={<NavbarLayout isNavEnabled={config.isNavsEnabled} isAuthEnabled={config.isAuthEnabled} />}>
+                {/* Job Listing */}
+                <Route exact path="/jobs" element={<ListJobDisplay />} />
+                <Route exact path="/job/create" element={<IndexJobListing />} />
+              </Route>
 
-              {/* Landing Page */}
-              <Route exact path="/" element={<LandingPage />} />
-              
+              <Route path="/user" element={<ProtectedLayout />}>
+                <Route path="profile/form" element={<Profile />} />
+              </Route>
+
+              <Route path="/" element={<FullScreenLayout />}>
+                {/* Landing Page */}
+                <Route index element={<LandingPage />} />
+                {/* Authentication */}
+                <Route exact path="/register" element={<Register />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/emailogin" element={<EmailLogin />} />
+              </Route>
               <Route exact path="/home" element={<Home />} />
               {/* <Route path="*" element={<NotFound />} /> */}
-
-              {/* Authentication */}
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/emailogin" element={<EmailLogin />} />
 
               {/* Profile Display */}
               <Route exact path="/profiledisplay" element={<ProfileDisplay wallet={wallet}/>} />
               <Route exact path="/joblisting" element={<JobListing />} />
-
-              {/* Profile Form */}
-              <Route path="/profile/form" element={<Profile />} />
-
-              {/* Job Listing */}
-              <Route exact path="/listjobdisplay" element={<ListJobDisplay />} />
-              <Route exact path="/job/create" element={<IndexJobListing />} />
 
               {/* NFT Endorsement */}
               <Route exact path="/wallet" element={<Wallet />} />
@@ -86,6 +109,7 @@ export default function App({ isSignedIn, wallet }) {
 
               {/* Batch Minting */}
               <Route exact path="/batchmint" element={<BatchMint wallet={wallet} />} />
+              <Route path="*" element={<LandingPage />} />
             </Routes>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
 import logo from "../../../assets/img/logoSmall.png";
+import { useWallet } from "../../hooks/useWallet";
 import { AuthEnabled } from "./AuthEnabled";
 
 const navigation = [
@@ -19,14 +21,14 @@ function NavButton(props) {
     <li>
       <a
         className={classNames(
-          props.current
+          props.nav.current
             ? "bg-black text-[#DAFF3E]"
             : "border-black text-black hover:bg-[#DAFF3E]",
           "border-2 rounded-full px-4 py-2 font-bold"
         )}
-        href={props.href}
+        href={props.nav.href}
       >
-        {props.name}
+        {props.nav.name}
       </a>
     </li>
   );
@@ -38,7 +40,7 @@ function NavsEnabled() {
       <div className="hidden md:block">
         <nav aria-label="Site Nav">
           <ul className="flex items-center gap-1 font-robotoMono">
-            {navigation.map((e) => NavButton(e))}
+            {navigation.map((nav) => <NavButton nav={nav} key={nav.name} />)}
           </ul>
         </nav>
       </div>
@@ -47,6 +49,9 @@ function NavsEnabled() {
 }
 
 export default function Navbar(props) {
+
+  const { wallet, accountId } = useWallet()
+
   return (
     <header aria-label="SEED Header">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -59,7 +64,9 @@ export default function Navbar(props) {
           </div>
 
           {props.isNavEnabled && <NavsEnabled />}
-          {props.isAuthEnabled && <AuthEnabled />}
+
+          <AuthEnabled />
+          
         </div>
       </div>
     </header>

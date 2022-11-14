@@ -1,28 +1,33 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { NearWalletContext } from '../../../context/wallet.context';
+import { NearWalletContext } from '../../context/wallet.context';
+import useIpfsFactory from '../../hooks/useIpfsFactory';
+import { useWallet } from '../../hooks/useWallet';
 
 
-const LoginButton = ({ wallet }) => {
+const LoginButton = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <button
         type="button"
         className="rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white"
-        onClick={() => wallet.signIn()}
+        onClick={() => navigate('/login')}
       >
         Login
       </button>
       <div className="hidden sm:flex">
-      <a className="rounded-md bg-black px-5 py-2.5 text-white" href="/">
+      <button type="button" className="rounded-md bg-black px-5 py-2.5 text-white" onClick={() => navigate('/register')}>
         Register
-      </a>
+      </button>
     </div>
     </>
   )
 }
 
-const ShowAccountId = ({ wallet }) => {
+const ShowAccountId = ({ wallet, accountId }) => {
 
   const navigate = useNavigate()
 
@@ -30,37 +35,44 @@ const ShowAccountId = ({ wallet }) => {
     navigate('/job/create')
   }
 
+  const onHandleClickLogout = () => {
+    wallet.signOut()
+    navigate('/login')
+  }
+
+  const { ipfs } = useIpfsFactory({ commands: ['id'] })
+
   return (
     <>
       <div className="rounded-md px-5 py-2.5 text-bold text-black ">
-        {wallet.accountId}
+        {accountId}
       </div>
       <button
         type="button"
         className="rounded-md bg-[#BD33FF] px-5 py-2.5 text-bold text-white"
-        onClick={() => wallet.signOut()}
+        onClick={onHandleClickLogout}
       >
         Logout
       </button>
-      <button
+      {ipfs && <button
         type="button"
         className="rounded-md bg-[#FF5733] px-5 py-2.5 text-bold text-white"
         onClick={goToJobCreationPage}
       >
         Create Job Post
-      </button>
+      </button>}
     </>
   )
 }
 
 export const AuthEnabled = () => {
-  const walletContext = useContext(NearWalletContext)
+  const { wallet, accountId } = useWallet()
   return (
     <>
       <div className="flex items-center gap-4">
         <div className="sm:flex sm:gap-4 font-robotoMono text-bold">
-        {!walletContext.wallet.accountId ?
-          <LoginButton wallet={walletContext.wallet} /> : <ShowAccountId wallet={walletContext.wallet} />}
+        {!accountId ?
+          <LoginButton /> : <ShowAccountId wallet={wallet} accountId={accountId} />}
         </div>
       </div>
     </>
