@@ -71,7 +71,7 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-type-animation": "^2.1.2",
-    "regenerator-runtime": "^0.13.10",
+    "regenerator-runtime": "^0.13.10"
   },
   "resolutions": {
     "@babel/preset-env": "7.13.8"

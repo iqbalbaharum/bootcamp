@@ -1,9 +1,26 @@
-import React from "react";
+import React ,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import image from "../../../assets/img/image.png";
 import logoBig from "../../../assets/img/logoBig.png";
+import { Endorsement } from "../../nft_contracts/endorsement";
 
-function Endorsement() {
+function Endorsements({wallet}) {
+  const [nfts, setNfts] = useState([]);
+  const contract = new Endorsement({contractId: process.env.ENDORSEMENT_CONTRACT, walletToUse: wallet });
+  
+  async function getTokens() { 
+    await contract.owner_tokens(wallet.accountId).then(setNfts)
+  }
+
+  useEffect(()=> {
+    wallet.createAccessKeyFor = process.env.ENDORSEMENT_CONTRACT
+    getTokens() 
+  },[])
+
+  useEffect(()=> {
+    console.log(nfts)
+  },[nfts])
+
   return (
     <div className="px-[10rem] py-[3rem] mt-8 font-robotoMono">
       <div>
@@ -29,30 +46,24 @@ function Endorsement() {
             </div>
             {/* -------------------------------------------------------- content ------------------------------------------------------------------------------- */}
           </div>
-
-          <div className="flex flex-row pt-5 mx-[6rem]">
-            <div className="flex flex-col">
-              <div className="flex text-left">
-                <img src={image} alt="" className="w-[50px] h-[50px]" />
-                <div className="px-[2rem]">
-                  <b>Illia is an excellent engineer</b> <br />
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        
+         {
+           nfts.length > 0 && 
+           nfts.map((val,key) => {
+             return (
+              <div className="flex flex-col" key={key}>
+                <div className="flex text-left">
+                  <img src={image} alt="" className="w-[50px] h-[50px]" />
+                  <div className="px-[2rem]">
+                    <b>{val.metadata.title}</b> <br />
+                    {val.metadata.description}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex text-left">
-                <img src={image} alt="" className="w-[50px] h-[50px]" />
-                <div className="px-[2rem]">
-                  <b>Illia is an excellent engineer</b> <br />
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </div>
-              </div>
-            </div>
-          </div>
+             )
+           })
+         }
+            
           {/* ------------------------------------------------ logo & button ---------------------------------------------------------------- */}
           <div className="mb-2 text-left px-[6rem] py-[7rem]">
             <div className="flex flex-row justify-center">
@@ -83,4 +94,4 @@ function Endorsement() {
   );
 }
 
-export default Endorsement;
+export default Endorsements;

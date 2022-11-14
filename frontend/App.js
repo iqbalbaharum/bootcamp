@@ -92,7 +92,7 @@ export default function App({ isSignedIn, wallet }) {
               {/* <Route path="*" element={<NotFound />} /> */}
 
               {/* Profile Display */}
-              <Route exact path="/profiledisplay" element={<ProfileDisplay />} />
+              <Route exact path="/profiledisplay" element={<ProfileDisplay wallet={wallet}/>} />
               <Route exact path="/joblisting" element={<JobListing />} />
 
               {/* NFT Endorsement */}
