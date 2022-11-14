@@ -4,19 +4,23 @@ export class GloryBadge {
       this.wallet = walletToUse;    
     }
     
-    async nft_token() {
-        return await this.wallet.viewMethod({ contractId: this.contractId, method: 'nft_token' });
+    async nft_token(tokenId) {
+        return await this.wallet.viewMethod({ contractId: this.contractId, method: 'nft_token' , args:{ token_id : tokenId}});
     }
 
     async nft_metadata() {
         return await this.wallet.viewMethod({ contractId: this.contractId, method: 'nft_metadata' });
     }
 
-    async nft_mint(tokenId, Metadata, receiverId) {
-        return await this.wallet.callMethod({ contractId: this.contractId, method: 'nft_mint', args: { token_id: tokenId, metadata: Metadata, receiver_id: receiverId } });
+    async nft_mint(Metadata, receiverId) {
+        return await this.wallet.callMethod({ contractId: this.contractId, method: 'nft_mint', args: { metadata: Metadata, receiver_id: receiverId } });
     }
 
-    async bulk_nft_mint(tokenId, Metadata, list) {
-        return await this.wallet.callMethod({ contractId: this.contractId, method: 'bulk_nft_mint', args: { token_id: tokenId, metadata: Metadata, list: list } });
+    async bulk_nft_mint(Metadata, list) {
+        return await this.wallet.callMethod({ contractId: this.contractId, method: 'bulk_nft_mint', args: { metadata: Metadata, list: list } });
+    }
+
+    async owner_tokens(account_id) {
+        return await this.wallet.viewMethod({ contractId: this.contractId, method: 'nft_tokens_for_owner' , args:{ account_id : account_id, from_index:"0", limit:"200"}});
     }
 }

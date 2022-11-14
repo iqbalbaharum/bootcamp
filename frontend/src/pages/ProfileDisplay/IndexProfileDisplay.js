@@ -2,13 +2,14 @@ import React from "react";
 import Basicdetails from "./BasicDetails";
 // import JobListing from "./JobListing";
 import Skills from "./skills";
-import Endorsement from "./Endorsement";
+import Endorsements from "./Endorsement";
 import Career from "./CareerCredentials";
 import Education from "./Education";
 import IntHobby from "./InterestHobby";
 import Socialmedia from "./SocialMedia";
 
-function IndexProfileDisplay() {
+//NFT fetching is implemented in CareerCredentials 
+function IndexProfileDisplay({wallet}) {
   return (
     <div>
       <form>
@@ -18,11 +19,11 @@ function IndexProfileDisplay() {
             <Socialmedia />
             <Skills />
             {/* <JobListing /> */}
-            <Career />
+            <Career wallet={wallet}/>
             <Education />
             <IntHobby />
             <div className="flex justify-center items-center mb-[10rem]">
-              <Endorsement />
+              <Endorsements wallet={wallet} />
             </div>
           </div>
         </div>
