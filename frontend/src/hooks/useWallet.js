@@ -53,23 +53,28 @@ export const WalletProvider = ({ children }) => {
       const keystore = new keyStores.BrowserLocalStorageKeyStore()
       const keyPair = await keystore.getKey(network, accountId)
 
-      const msg = Buffer.from(new Date().toString());
-      const { signature } = keyPair.sign(msg)
+      // get nonce
+      const nonce = await getNonce(accountId)
 
-      const data = {
-        accountId: accountId,
-        publicKey: `ed25519:${keyPair.secretKey}`,
-        signature: Buffer.from(signature).toString('base64')
+      if(nonce.data) {
+        const msg = Buffer.from(`message=${nonce.data}`);
+        const { signature } = keyPair.sign(msg)
+
+        const data = {
+          account: accountId,
+          publicAddress: `ed25519:${keyPair.secretKey}`,
+          signature: Buffer.from(signature).toString('base64')
+        }
+
+        const response = await beApi({
+          method: 'POST',
+          url: '/auth/near',
+          data
+        })
+
+        // TODO
+        console.log(response) 
       }
-
-      const response = await beApi({
-        method: 'POST',
-        url: '/auth/near',
-        data
-      })
-
-      // TODO
-      console.log(response)
     }
 
     return isSignedIn;
@@ -82,6 +87,13 @@ export const WalletProvider = ({ children }) => {
     const description = 'Please select a wallet to sign in.';
     const modal = setupModal(walletSelector, { contractId, description });
     modal.show();
+  }
+
+  const getNonce = async (accountId) => {
+    return beApi({
+      method: 'GET',
+      url: `/auth/nonce?address=${accountId}`
+    })
   }
 
   // Sign-out method
