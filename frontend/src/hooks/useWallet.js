@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // near api js
-import { providers } from 'near-api-js';
+import { providers, keyStores } from 'near-api-js';
 
 // wallet selector UI
 import '@near-wallet-selector/modal-ui/styles.css';
@@ -14,6 +14,7 @@ import MyNearIconUrl from '@near-wallet-selector/my-near-wallet/assets/my-near-w
 import { setupWalletSelector } from '@near-wallet-selector/core';
 import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
+import { beApi } from "../services/api";
 
 const WalletContext = createContext()
 
@@ -48,6 +49,27 @@ export const WalletProvider = ({ children }) => {
 
       const accountId = walletSelector.store.getState().accounts[0].accountId;
       setAccountId(accountId)
+
+      const keystore = new keyStores.BrowserLocalStorageKeyStore()
+      const keyPair = await keystore.getKey(network, accountId)
+
+      const msg = Buffer.from(new Date().toString());
+      const { signature } = keyPair.sign(msg)
+
+      const data = {
+        accountId: accountId,
+        publicKey: `ed25519:${keyPair.secretKey}`,
+        signature: Buffer.from(signature).toString('base64')
+      }
+
+      const response = await beApi({
+        method: 'POST',
+        url: '/auth/near',
+        data
+      })
+
+      // TODO
+      console.log(response)
     }
 
     return isSignedIn;

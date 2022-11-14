@@ -1,14 +1,9 @@
 // React
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { WalletProvider } from './src/hooks/useWallet';
-
-// NEAR
-import { HelloNEAR } from './near-interface';
-import { Wallet } from './near-wallet';
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
