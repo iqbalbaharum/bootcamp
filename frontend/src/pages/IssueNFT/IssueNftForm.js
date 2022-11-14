@@ -42,7 +42,7 @@ function IssueNftForm({wallet}) {
     let data = await getMetadata(result?.data[0].token_ids[0])
     //We only have issued date for now, so I'm sending it twice
     await createEvent(data.metadata?.title, data.metadata?.description, data.metadata?.Date, data.metadata?.Date) 
-    .then(navigate('/nftlink'));
+    .then(navigate(`/nftlink?link=${logs.txh}`));
   }
 
   const createEvent = async (name,description, startDate, endDate) => {

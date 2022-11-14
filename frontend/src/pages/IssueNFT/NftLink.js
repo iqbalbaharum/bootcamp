@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bg from "../../../assets/img/globe2.png";
+import { useSearchParams } from "react-router-dom";
 
 function NftLink() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [copyText, setCopyText] = useState("");
   const onCopy = () => {
     navigator.clipboard.writeText(copyText);
   };
+
+  useEffect(() => {
+    let txh = searchParams.get("link")
+    setCopyText(`http://localhost:1234/claim?txh=${txh}`)
+    console.log(navigator)
+  },[])
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">

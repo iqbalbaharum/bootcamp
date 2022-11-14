@@ -62,7 +62,7 @@ export default function App({ isSignedIn, wallet }) {
               <Route exact path="/emailogin" element={<EmailLogin />} />
 
               {/* Profile Display */}
-              <Route exact path="/profiledisplay" element={<ProfileDisplay />} />
+              <Route exact path="/profiledisplay" element={<ProfileDisplay wallet={wallet}/>} />
               <Route exact path="/joblisting" element={<JobListing />} />
 
               {/* Profile Form */}
