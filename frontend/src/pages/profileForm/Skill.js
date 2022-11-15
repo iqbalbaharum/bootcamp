@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { ProfileFormContext } from ".";
 
 const Skill = () => {
-
-  const profileFormContext = useContext(ProfileFormContext)
+  const profileFormContext = useContext(ProfileFormContext);
 
   return (
-    <div className="px-[10rem] font-robotoMono">
+    <div className="font-robotoMono">
       <div className="bg-[#DAFF3E] rounded-xl shadow-md">
         <div className="mx-[5rem] py-[2rem]">
           <div className="text-xl py-sm">
@@ -34,15 +33,13 @@ const Skill = () => {
               >
                 OTHER SKILL
               </label>
-              <input
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
+              <input className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Skill;

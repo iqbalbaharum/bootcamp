@@ -8,12 +8,14 @@ import Education from "./Education";
 import IntHobby from "./InterestHobby";
 import Socialmedia from "./SocialMedia";
 
-function IndexProfileDisplay() {
+function IndexProfileDisplay(props) {
+  props.funcNav(false);
+
   return (
     <div>
       <form>
         <div className="relative min-h-screen overflow-x-hidden p-[2rem] bg-[#DAFF3E]">
-          <div>
+          <div className="sm:mx-[6rem] py-[3rem]">
             <Basicdetails />
             <Socialmedia />
             <Skills />
@@ -21,9 +23,8 @@ function IndexProfileDisplay() {
             <Career />
             <Education />
             <IntHobby />
-            <div className="flex justify-center items-center mb-[10rem]">
-              <Endorsement />
-            </div>
+
+            <Endorsement />
           </div>
         </div>
       </form>

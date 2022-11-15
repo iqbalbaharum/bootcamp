@@ -2,7 +2,9 @@ import React from "react";
 
 import bg from "../../../assets/img/globe.png";
 
-function EmailLogin() {
+function EmailLogin(props) {
+  props.funcNav(false);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
       <div

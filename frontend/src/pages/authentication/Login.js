@@ -5,7 +5,8 @@ import bg from "../../../assets/img/globe.png";
 import email from "../../../assets/img/email.png";
 import google from "../../../assets/img/google.png";
 
-function Login() {
+function Login(props) {
+  props.funcNav(false);
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
       <div
@@ -59,7 +60,7 @@ function Login() {
                     </div>
                   </button>
                 </Link>
-                <Link to="/profileForm">
+                <Link to="/profile/form">
                   <button
                     type="button"
                     className="bg-[#DAFF3E]  px-6 py-3 w-[230px] mb-4 rounded-2xl"

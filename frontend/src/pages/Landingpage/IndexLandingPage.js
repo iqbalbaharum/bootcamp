@@ -2,9 +2,10 @@ import React from "react";
 import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
 import ThirdSection from "./ThirdSection";
-import Navbar from "../../components/Navbar";
 
 function IndexLandingPage() {
+  // props.funcNav(false);
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[#DAFF3E]">
       <FirstSection />

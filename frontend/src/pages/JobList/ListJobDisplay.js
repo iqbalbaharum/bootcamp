@@ -44,7 +44,6 @@ function SearchTag(tag) {
 }
 
 function ListingA1(props) {
-
   const [tags] = useState([
     { name: "Full Stack Dev", selected: false },
     { name: "Solidity", selected: false },
@@ -124,6 +123,7 @@ function ListingA1(props) {
           <div className="flex flex-col bg-[#DAFF3E] text-black w-[1077px]  md:h-[200px] justify-center items-center  mr-4 rounded-3xl">
             <p className="font-bold text-4xl">LIST JOB</p>
             <p className="font-bold text-normal">Unlock 7+ million talents</p>
+
             <img
               src={Graphic1}
               alt=""

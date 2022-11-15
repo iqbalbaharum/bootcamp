@@ -4,11 +4,10 @@ import { ProfileFormContext } from ".";
 import image from "../../../assets/img/image.png";
 
 function Bio() {
-
-  const profileFormContext = useContext(ProfileFormContext)
+  const profileFormContext = useContext(ProfileFormContext);
 
   return (
-    <div className="px-[10rem] py-[3rem] mt- font-robotoMono">
+    <div className="py-[3rem] mt- font-robotoMono">
       <div className="text-4xl font-bold text-left py-3 px-3">
         <p>MY WEB3 PROFILE</p>
       </div>
