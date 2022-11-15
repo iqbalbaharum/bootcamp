@@ -45,10 +45,8 @@ export const WalletProvider = ({ children }) => {
 
     if (isSignedIn) {
       const wallet = await walletSelector.wallet();
-      setWallet(wallet)
-
       const accountId = walletSelector.store.getState().accounts[0].accountId;
-      setAccountId(accountId)
+      
 
       const keystore = new keyStores.BrowserLocalStorageKeyStore()
       const keyPair = await keystore.getKey(network, accountId)
@@ -57,23 +55,30 @@ export const WalletProvider = ({ children }) => {
       const nonce = await getNonce(accountId)
 
       if(nonce.data) {
-        const msg = Buffer.from(`message=${nonce.data}`);
+        const msg = Buffer.from(nonce.data);
         const { signature } = keyPair.sign(msg)
 
         const data = {
           account: accountId,
-          publicAddress: `ed25519:${keyPair.secretKey}`,
+          publicAddress: keyPair.publicKey.toString(),
           signature: Buffer.from(signature).toString('base64')
         }
 
-        const response = await beApi({
-          method: 'POST',
-          url: '/auth/near',
-          data
-        })
+        try {
+          const response = await beApi({
+            method: 'POST',
+            url: '/auth/near',
+            data
+          })
 
-        // TODO
-        console.log(response) 
+          window.localStorage.setItem('token', response.data.jwt || '')
+
+        } catch(e) {
+          console.log(e)
+        }
+
+        setWallet(wallet)
+        setAccountId(accountId)
       }
     }
 
