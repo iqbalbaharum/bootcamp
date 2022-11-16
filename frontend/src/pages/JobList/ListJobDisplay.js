@@ -3,7 +3,7 @@ import ArticleCard from "./Article/index";
 import Graphic1 from "../../../assets/img/bowl2.png";
 import Graphic2 from "../../../assets/img/graphic.png";
 import Search from "../../../assets/img/search.png";
-import { ConfigContext } from "../../../context/config.context";
+import { ConfigContext } from "../../context/config.context";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -24,24 +24,24 @@ function ToggleFilter(props) {
   );
 }
 
-function SearchTag(tag) {
+function SearchTag(prop) {
   return (
     <a
       className={classNames(
-        tag.selected
+        prop.tag.selected
           ? "bg-black text-[#DAFF3E]"
           : "border-black text-black hover:bg-[#DAFF3E]",
         "border-2 rounded-full px-2 py-1 font-bold"
       )}
-      key={tag.name}
+      key={prop.tag.name}
       href="#"
     >
-      {tag.name}
+      {prop.tag.name}
     </a>
   );
 }
 
-function ListingA1(props) {
+function ListingA1() {
   const [tags] = useState([
     { name: "Full Stack Dev", selected: false },
     { name: "Solidity", selected: false },
@@ -300,14 +300,18 @@ function ListingA1(props) {
           </div>
         </div>
         <div className="flex items-center gap-1 font-robotoMono mt-4">
-          {tags.map((tag) => SearchTag(tag))}
+          {tags.map((tag) => (
+            <SearchTag tag={tag} key={tag.name} />
+          ))}
         </div>
         <div className="my-4 text-[#EDEDED]">
           <hr />
         </div>
 
         <div className="grid grid-cols-3 gap-4 w-full mt-8 mb-4">
-          {jobs.map((job) => ArticleCard(job))}
+          {jobs.map((job) => (
+            <ArticleCard job={job} key={job.name} />
+          ))}
         </div>
       </div>
     </>

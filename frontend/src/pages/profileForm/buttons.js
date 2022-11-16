@@ -2,23 +2,16 @@ import React, { useContext } from "react";
 import { ProfileFormContext } from ".";
 
 const Buttons = () => {
-  const profileFormContext = useContext(ProfileFormContext);
 
-  const onSave = () => {
-    console.log(profileFormContext.form);
-  };
-
-  function profile() {
-    window.open("/profiledisplay", "_blank");
-  }
+  const profileFormContext = useContext(ProfileFormContext)
 
   return (
     <div className="py-[7rem]">
       <div className="py-3">
         <button
           type="button"
-          className="bg-black border-solid border-2 border-black hover:bg-[#DAFF3E] hover:text-black text-[#DAFF3E] px-16 py-3 rounded-lg font-bold"
-          onClick={onSave}
+          className="bg-black border-solid border-2 border-black text-[#DAFF3E] px-16 py-3 rounded-lg font-bold"
+          onClick={profileFormContext.onSubmit}
         >
           SAVE
         </button>

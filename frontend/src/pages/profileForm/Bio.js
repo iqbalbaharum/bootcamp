@@ -1,10 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProfileFormContext } from ".";
 
 import image from "../../../assets/img/image.png";
 
 function Bio() {
-  const profileFormContext = useContext(ProfileFormContext);
+
+  const profileFormContext = useContext(ProfileFormContext)
+  const [preview, setPreview] = useState()
+
+  const onFileChange = (e) => {
+    profileFormContext.setProfileImg(e.target.files[0])
+  }
+
+  useEffect(() => {
+    if (!profileFormContext.profileImg) {
+      setPreview(undefined)
+      return
+    }
+
+    const objectUrl = URL.createObjectURL(profileFormContext.profileImg)
+    setPreview(objectUrl)
+
+    return () => URL.revokeObjectURL(objectUrl)
+  }, [profileFormContext.profileImg])
 
   return (
     <div className="py-[3rem] mt- font-robotoMono">
@@ -20,15 +38,16 @@ function Bio() {
           <div>
             <div className="mt-5 mb-2">
               <div className="flex justify-center">
-                <img src={image} alt="" />
+                <img src={preview} alt="" />
               </div>
               <div className="py-[1rem]">
-                <button
-                  type="button"
-                  className="bg-black text-[#DAFF3E] px-5 py-1 rounded-full"
+                <input id="avatar" type="file" onChange={onFileChange} hidden />
+                <label
+                  for="avatar"
+                  className="bg-black text-[#DAFF3E] rounded-full px-4 py-2 cursor-pointer"
                 >
                   UPLOAD
-                </button>
+                </label>
               </div>
             </div>
             <div className="flex flex-row">

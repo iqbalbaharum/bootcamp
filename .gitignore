@@ -19,6 +19,7 @@ node_modules
 # parcel
 /frontend/.cache
 /frontend/.parcel-cache
+/frontend/dist
 
 # testing
 /coverage

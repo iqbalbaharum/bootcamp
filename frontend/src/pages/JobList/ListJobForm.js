@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
+import { JobCreationFormContext } from "./IndexJobListing";
+import {setProperty} from 'dot-prop'
 
 function ListJobForm() {
+
+  const jobCreationFormContext = useContext(JobCreationFormContext)
+
+  const {
+    min,
+    max,
+  } = jobCreationFormContext.form.salary;
+
   return (
     <form>
       <div className="mr-[3rem] px-[3rem] text-left">
         {/* -------------------------------------------------------- 1 ----------------------------------------------------------- */}
         <div className="mb-3 ">
           <label
-            htmlFor="email"
+            htmlFor="position"
             className="block font-semibold text-left text-lg  text-gray-800 px-2"
           >
             Position
           </label>
           <input
-            type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="position"
+            value={jobCreationFormContext.form.position}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* -------------------------------------------------------- 2 ----------------------------------------------------------*/}
@@ -26,7 +38,12 @@ function ListJobForm() {
             Description
           </label>
           <div>
-            <textarea className="resize-y rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+            <textarea 
+              name="description"
+              className="resize-y rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              value={jobCreationFormContext.form.description}
+              onChange={jobCreationFormContext.handleChange}
+            />
           </div>
         </div>
         {/* ------------------------------------------------------- 3 ----------------------------------------------------------*/}
@@ -40,6 +57,9 @@ function ListJobForm() {
           <input
             type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="company"
+            value={jobCreationFormContext.form.company}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* ------------------------------------------------------- 4 ----------------------------------------------------------*/}
@@ -53,6 +73,9 @@ function ListJobForm() {
           <input
             type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="skills"
+            value={jobCreationFormContext.form.skills}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* ------------------------------------------------------- 5 ----------------------------------------------------------*/}
@@ -64,8 +87,10 @@ function ListJobForm() {
             Other Skills Required
           </label>
           <input
-            type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="otherskills"
+            value={jobCreationFormContext.form.otherskills}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* ------------------------------------------------------ 6 ----------------------------------------------------------*/}
@@ -79,16 +104,22 @@ function ListJobForm() {
           <div className="flex flex-row">
             <div className="basis-2/4 mr-3">
               <input
-                type=""
+                type="number"
                 className="rounded-md text-sm block w-full px-5 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Min Yearly Salary in USD"
+                name="min"
+                value={min}
+                onChange={jobCreationFormContext.handleChange}
               />
             </div>
             <div className="basis-2/4">
               <input
-                type=""
+                type="number"
                 className="rounded-md text-sm block w-full px-5 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Max Yearly Salary in USD"
+                name="max"
+                value={max}
+                onChange={jobCreationFormContext.handleChange}
               />
             </div>
           </div>
@@ -104,6 +135,9 @@ function ListJobForm() {
           <input
             type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="location"
+            value={jobCreationFormContext.form.location}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* ----------------------------------------------------- 8 ---------------------------------------------------------- */}
@@ -117,6 +151,9 @@ function ListJobForm() {
           <input
             type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="email"
+            value={jobCreationFormContext.form.email}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* ---------------------------------------------------- 9 ------------------------------------------------------------- */}
@@ -125,11 +162,14 @@ function ListJobForm() {
             htmlFor="email"
             className="block text-lg  font-semibold text-left text-gray-800 px-2"
           >
-            Company Twitter/Website
+            Company Twitter/Website URL
           </label>
           <input
             type=""
             className="rounded-md block w-full px-1 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            name="website"
+            value={jobCreationFormContext.form.website}
+            onChange={jobCreationFormContext.handleChange}
           />
         </div>
         {/* ---------------------------------------------------- 10 ---------------------------------------------------------- */}
@@ -137,6 +177,9 @@ function ListJobForm() {
           <label
             htmlFor="email"
             className="block text-lg  font-semibold text-left text-gray-800 px-2"
+            name="logo"
+            value={jobCreationFormContext.form.logo}
+            onChange={jobCreationFormContext.handleChange}
           >
             Company Logo
           </label>

@@ -1,12 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import near from "../../../assets/img/near.png";
 import bg from "../../../assets/img/globe.png";
 import email from "../../../assets/img/email.png";
 import google from "../../../assets/img/google.png";
+import { useWallet } from "../../hooks/useWallet";
 
-function Login(props) {
-  props.funcNav(false);
+function Login() {
+  const { accountId, signIn } = useWallet();
+  const navigate = useNavigate();
+
+  if (accountId) {
+    navigate("/jobs");
+  }
+
+  const onHandleNearButton = () => {
+    signIn("seed.bonebon.testnet");
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
       <div
@@ -60,44 +71,13 @@ function Login(props) {
                     </div>
                   </button>
                 </Link>
-                <Link to="/profile/form">
-                  <button
-                    type="button"
-                    className="bg-[#DAFF3E]  px-6 py-3 w-[230px] mb-4 rounded-2xl"
-                  >
-                    <div className="flex justify-between">
-                      <div className="uppercase font-bold text-[3vh] text-black">
-                        <p>near</p>
-                      </div>
-                      <div>
-                        <img
-                          src={near}
-                          alt=""
-                          className="w-[28px] h-[28px] mt-1"
-                        />
-                      </div>
-                    </div>
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="text-[#DAFF3E] text-xs mt-5 w-full">
-            By signing in, you are agree to our terms of services
-          </div>
-
-          {/* <div className="w-[30%] px-8 py-[7rem] m-auto bg-[#DAFF3E] rounded-3xl font-robotoMono">
-            <p className="text-[5vh] font-bold text-center text-black uppercase font-robotoMono">
-              CONNECT WALLET TO ENDORSE
-            </p>
-            <div className="flex flex-col justify-center items-center mt-28 mx-[6rem]">
-              <div>
                 <button
                   type="button"
-                  className="bg-white px-6 py-3 w-[230px] mb-4 rounded-2xl"
+                  className="bg-[#DAFF3E]  px-6 py-3 w-[230px] mb-4 rounded-2xl"
+                  onClick={onHandleNearButton}
                 >
                   <div className="flex justify-between">
-                    <div className="uppercase font-bold text-[3vh]">
+                    <div className="uppercase font-bold text-[3vh] text-black">
                       <p>near</p>
                     </div>
                     <div>
@@ -111,7 +91,10 @@ function Login(props) {
                 </button>
               </div>
             </div>
-          </div> */}
+          </div>
+          <div className="text-[#DAFF3E] text-xs mt-5 w-full">
+            By signing in, you are agree to our terms of services
+          </div>
         </div>
       </div>
     </div>

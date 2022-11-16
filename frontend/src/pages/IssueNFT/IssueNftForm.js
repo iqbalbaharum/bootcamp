@@ -10,20 +10,19 @@ import { useNavigate } from "react-router-dom";
 
 function IssueNftForm({ wallet }) {
   const navigate = useNavigate();
-  const contract = new GloryBadge({
-    contractId: "sordgom_2_nft.testnet",
-    walletToUse: wallet,
-  });
+  const contract = new GloryBadge({contractId: process.env.GLORY_BADGE_CONTRACT, walletToUse: wallet });
 
   const [log, setLog] = useState();
-
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [artwork, setArtwork] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
-  // Check if there is a transaction hash in the URL
+  /*
+  * This method will check for params in the link that near-wallet-selector returns 
+  * If the transaction is successful (i.e the only param is transaction hash), then it'll push a post request to our BE
+  */
   const urlParams = new URLSearchParams(window.location.search);
   const logs = {
     txh: urlParams.get("transactionHashes"),
@@ -38,21 +37,48 @@ function IssueNftForm({ wallet }) {
     if (logs.txh == null) {
       return;
     }
+    
     // Get result from the transactions
-    let result = await wallet.getTransactionResult(logs.txh);
-    setLog(result);
-    navigate("/nftlink");
+    let result =await wallet.getTransactionResult(logs.txh);
+    setLog(result)
+
+    let data = await getMetadata(result?.data[0].token_ids[0])
+    //We only have issued date for now, so I'm sending it twice
+    await createEvent(data.metadata?.title, data.metadata?.description, data.metadata?.Date, data.metadata?.Date) 
+    .then(navigate(`/nftlink?link=${logs.txh}`));
   }
 
+  const createEvent = async (name,description, startDate, endDate) => {
+    await fetch('https://goldfish-app-xsljf.ondigitalocean.app/event',{
+      method: 'POST',
+      body: JSON.stringify(
+      {
+        "name": name,
+        "description": description,
+        "startDate": startDate,
+        "expiryDate": endDate
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then((res) => {console.log(res)})
+  }
+
+  //Get token metadata
+  async function getMetadata(token_id) {
+    return await contract.nft_token(token_id);
+  }
+
+
   //Mint nft
-  async function handleSubmit() {
-    try {
-      if (!name || !artwork || !startDate || !endDate) {
-        console.log("Somethings missing");
-        return;
-      }
+  async function handleSubmit(){
+    try{
+      // if(!name || !artwork || !startDate || !endDate) {
+      //   console.log('Somethings missing');
+      //   return ; 
+      // }
       await contract.nft_mint(
-        "token-16",
+        'http://localhost:1234/indexissuenft?status=success',
         {
           title: name,
           description: description,
@@ -63,14 +89,14 @@ function IssueNftForm({ wallet }) {
           extra: "Creator", //This is supposed to reference who's minting (1 for owner, 2 for claimers  or something)
         },
         wallet.accountId
-      );
-    } catch (error) {
-      console.log(error);
+      )
+    }catch(error){
+      console.log(error)
     }
   }
 
-  useEffect(() => {
-    wallet.createAccessKeyFor = "sordgom_2_nft.testnet"; //Change contract address for the current wallet
+  useEffect(()=> {
+    wallet.createAccessKeyFor = process.env.GLORY_BADGE_CONTRACT //Change contract address for the current wallet
     checkTxh();
   }, []);
 
