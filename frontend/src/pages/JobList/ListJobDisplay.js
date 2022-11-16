@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ArticleCard from "./Article/index";
@@ -6,6 +6,8 @@ import Graphic1 from "../../../assets/img/bowl2.png";
 import Graphic2 from "../../../assets/img/graphic.png";
 import Search from "../../../assets/img/search.png";
 import { ConfigContext } from "../../context/config.context";
+import { useWallet } from "../../hooks/useWallet";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -43,7 +45,9 @@ function SearchTag(prop) {
   );
 }
 
-function ListingA1() {
+function JobsList() {
+
+  const { viewMethod } = useWallet()
 
   const [tags] = useState([
     { name: "Full Stack Dev", selected: false },
@@ -54,7 +58,7 @@ function ListingA1() {
     { name: "Product Manager", selected: false },
   ]);
 
-  const [jobs] = useState([
+  const [jobs, setJobs] = useState([
     {
       title: "PHP Developer",
       description:
@@ -85,37 +89,22 @@ function ListingA1() {
       },
       status: 0,
     },
-    {
-      title: "PHP Developer",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
-      company: "Iqbal Pte Ltd",
-      skills: ["Community", "Hardhead", "Slang"],
-      salary: {
-        min: 0,
-        max: 10000,
-        currency: "USD",
-      },
-      location: "Kuala Lumpur, MY",
-      email: "iqbal@seed.io",
-      socials: [
-        {
-          type: "website",
-          url: "https://website.com",
-        },
-        {
-          type: "twitter",
-          url: "@iqbalbaharum",
-        },
-      ],
-      logo: "Qymd...",
-      bounty: {
-        amount: 1,
-        currency: "USD",
-      },
-      status: 0,
-    },
   ]);
+
+  useEffect(() => {
+    
+    const getAllJobs = async () => {
+      const respond = await viewMethod('seed.bonebon.testnet', 'get_all_jobs')
+      if(respond) {
+        setJobs(respond)
+      } else {
+        setJobs([])
+      }
+    }
+
+    getAllJobs()
+
+  }, [setJobs, viewMethod])
 
   return (
     <>
@@ -227,4 +216,4 @@ function ListingA1() {
     </>
   );
 }
-export default ListingA1;
+export default JobsList;

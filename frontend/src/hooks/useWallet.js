@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // near api js
-import { keyStores } from 'near-api-js';
+import { keyStores, providers } from 'near-api-js';
 
 // wallet selector UI
 import '@near-wallet-selector/modal-ui/styles.css';
@@ -43,7 +43,7 @@ export const WalletProvider = ({ children }) => {
 
     const isSignedIn = walletSelector.isSignedIn();
 
-    if (isSignedIn) {
+    if (isSignedIn && !window.localStorage.getItem('token')) {
       const wallet = await walletSelector.wallet();
       const accountId = walletSelector.store.getState().accounts[0].accountId;
       
@@ -112,13 +112,31 @@ export const WalletProvider = ({ children }) => {
     window.location.replace(window.location.origin + window.location.pathname);
   }
 
+  const viewMethod = async (contractId, method, args = {}) => {
+    if(!walletSelector) { return }
+
+    const { network } = walletSelector.options;
+    const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
+
+    let res = await provider.query({
+      request_type: 'call_function',
+      account_id: contractId,
+      method_name: method,
+      args_base64: Buffer.from(JSON.stringify(args)).toString('base64'),
+      finality: 'optimistic',
+    });
+
+    return JSON.parse(Buffer.from(res.result).toString());
+  }
+
   const value = {
     wallet,
     accountId,
     contractId,
     startUp,
     signIn,
-    signOut
+    signOut,
+    viewMethod
   }
 
   return <WalletContext.Provider value={value}>{children}</WalletContext.Provider>;
