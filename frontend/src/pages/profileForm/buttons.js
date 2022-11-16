@@ -27,7 +27,7 @@ const Buttons = () => {
       <div className="py-3">
         <button
           type="button"
-          className="bg-transparent border-solid border-2 border-black text-[#000000] px-14 py-3 rounded-lg font-bold"
+          className="bg-transparent border-solid border-2 border-black hover:bg-[#DAFF3E] text-[#000000] px-14 py-3 rounded-lg font-bold"
         >
           DISCARD
         </button>
@@ -35,7 +35,7 @@ const Buttons = () => {
       <div className="py-3">
         <button
           type="button"
-          className="bg-transparent border-solid border-2 border-black text-[#000000] px-14 py-3 rounded-lg font-bold"
+          className="bg-transparent border-solid border-2 border-black hover:bg-[#DAFF3E] text-[#000000] px-14 py-3 rounded-lg font-bold"
           onClick={profile}
         >
           PREVIEW

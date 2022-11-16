@@ -5,80 +5,71 @@ import logoBig from "../../../assets/img/logoBig.png";
 
 function Endorsement() {
   return (
-    <div className="px-[10rem] py-[3rem] mt-8 font-robotoMono">
-      <div>
-        <form>
-          <div>
-            <div className="mb-2 text-left px-[6rem]">
-              <div className="flex flex-row justify-between">
-                <div className="flex flex-col">
-                  <div className="text-2xl">
-                    <b>Endorsement</b>
-                  </div>
-                </div>
-
-                <div className="flex flex-col just">
-                  <button
-                    type="button"
-                    className="bg-black border-2 border-black text-[#DAFF3E] mt-1 px-5 py-1 rounded-full"
-                  >
-                    <Link to="/wallet">ISSUE NEW</Link>
-                  </button>
-                </div>
-              </div>
-            </div>
-            {/* -------------------------------------------------------- content ------------------------------------------------------------------------------- */}
-          </div>
-
-          <div className="flex flex-row pt-5 mx-[6rem]">
+    <div className="sm:mt-[15rem] mt-[5rem] font-robotoMono">
+      <form>
+        <div className="mb-2 text-left sm:px-[6rem]">
+          <div className="flex flex-row justify-between">
             <div className="flex flex-col">
-              <div className="flex text-left">
-                <img src={image} alt="" className="w-[50px] h-[50px]" />
-                <div className="px-[2rem]">
-                  <b>Illia is an excellent engineer</b> <br />
+              <div className="sm:text-2xl text-lg font-bold">Endorsement</div>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <a
+                type="button"
+                className="bg-black border-2 border-black text-[#DAFF3E] px-5 py-1 rounded-full sm:text-base text-[1.5vh]"
+                href="/indexissuenft"
+              >
+                ISSUE NEW
+              </a>
+            </div>
+          </div>
+        </div>
+        {/* -------------------------------------------------------- content ------------------------------------------------------------------------------- */}
+
+        <div className="flex flex-row pt-5 sm:mx-[6rem]">
+          <div className="flex flex-col">
+            <div className="flex text-left">
+              <img src={image} alt="" className="w-[50px] h-[50px]" />
+              <div className="sm:px-[2rem] sm:text-base text-[1.4vh] mx-[0.7rem]">
+                <b>Illia is an excellent engineer</b>
+                <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </div>
+                </p>
               </div>
             </div>
+          </div>
 
-            <div className="flex flex-col">
-              <div className="flex text-left">
-                <img src={image} alt="" className="w-[50px] h-[50px]" />
-                <div className="px-[2rem]">
-                  <b>Illia is an excellent engineer</b> <br />
+          <div className="flex flex-col">
+            <div className="flex text-left">
+              <img src={image} alt="" className="w-[50px] h-[50px]" />
+              <div className="sm:px-[2rem] sm:text-base text-[1.4vh] mx-[0.7rem]">
+                <b>Illia is an excellent engineer</b>
+                <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </div>
+                </p>
               </div>
             </div>
           </div>
-          {/* ------------------------------------------------ logo & button ---------------------------------------------------------------- */}
-          <div className="mb-2 text-left px-[6rem] py-[7rem]">
-            <div className="flex flex-row justify-center">
-              <div className="flex flex-col">
-                <div className="flex">
-                  <div>
-                    <img
-                      src={logoBig}
-                      alt=""
-                      className="w-auto h-[41px] pr-4"
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type="button"
-                      className="bg-black border-2 border-black text-[#DAFF3E] mt-1 px-4 py-1 rounded-full"
-                    >
-                      CREATE MY WEB3 PROFILE
-                    </button>
-                  </div>
-                </div>
-              </div>
+        </div>
+        {/* ------------------------------------------------ logo & button ---------------------------------------------------------------- */}
+        <div className="sm:mb-2 text-left sm:px-[6rem] sm:py-[7rem] py-[5rem]">
+          <div className="flex flex-row sm:justify-center items-center justify-between">
+            <div className="sm:mr-4">
+              <img src={logoBig} alt="" className="w-auto h-[41px]" />
+            </div>
+            <div className="mt-4 ">
+              <button
+                type="button"
+                className="bg-black border-2 border-black text-[#DAFF3E] px-4 py-1 rounded-full sm:text-base text-[1vh]"
+              >
+                CREATE MY WEB3 PROFILE
+              </button>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

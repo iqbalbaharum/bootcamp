@@ -1,6 +1,4 @@
 import React, { useContext, useState } from "react";
-// import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar";
 import ArticleCard from "./Article/index";
 import Graphic1 from "../../../assets/img/bowl2.png";
 import Graphic2 from "../../../assets/img/graphic.png";
@@ -17,7 +15,7 @@ function ToggleFilter(props) {
       <label htmlFor={props.label} className="relative h-6 w-14 cursor-pointer">
         <input type="checkbox" id={props.label} className="peer sr-only" />
 
-        <span className="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500" />
+        <span className="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-black" />
 
         <span className="absolute inset-0 m-1 h-4 w-6 rounded-full bg-white transition peer-checked:translate-x-6" />
       </label>
@@ -83,6 +81,7 @@ function ListingA1(props) {
         currency: "USD",
       },
       status: 0,
+      refer: 0,
     },
     {
       title: "PHP Developer",
@@ -113,6 +112,131 @@ function ListingA1(props) {
         currency: "USD",
       },
       status: 0,
+      refer: 0,
+    },
+    {
+      title: "PHP Developer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+      company: "Iqbal Pte Ltd",
+      skills: ["Community", "Hardhead", "Slang"],
+      salary: {
+        min: 0,
+        max: 10000,
+        currency: "USD",
+      },
+      location: "Kuala Lumpur, MY",
+      email: "iqbal@seed.io",
+      socials: [
+        {
+          type: "website",
+          url: "https://website.com",
+        },
+        {
+          type: "twitter",
+          url: "@iqbalbaharum",
+        },
+      ],
+      logo: "Qymd...",
+      bounty: {
+        amount: 1,
+        currency: "USD",
+      },
+      status: 0,
+      refer: 0,
+    },
+    {
+      title: "PHP Developer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+      company: "Iqbal Pte Ltd",
+      skills: ["Community", "Hardhead", "Slang"],
+      salary: {
+        min: 0,
+        max: 10000,
+        currency: "USD",
+      },
+      location: "Kuala Lumpur, MY",
+      email: "iqbal@seed.io",
+      socials: [
+        {
+          type: "website",
+          url: "https://website.com",
+        },
+        {
+          type: "twitter",
+          url: "@iqbalbaharum",
+        },
+      ],
+      logo: "Qymd...",
+      bounty: {
+        amount: 1,
+        currency: "USD",
+      },
+      status: 0,
+      refer: 0,
+    },
+    {
+      title: "PHP Developer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+      company: "Iqbal Pte Ltd",
+      skills: ["Community", "Hardhead", "Slang"],
+      salary: {
+        min: 0,
+        max: 10000,
+        currency: "USD",
+      },
+      location: "Kuala Lumpur, MY",
+      email: "iqbal@seed.io",
+      socials: [
+        {
+          type: "website",
+          url: "https://website.com",
+        },
+        {
+          type: "twitter",
+          url: "@iqbalbaharum",
+        },
+      ],
+      logo: "Qymd...",
+      bounty: {
+        amount: 1,
+        currency: "USD",
+      },
+      status: 0,
+      refer: 0,
+    },
+    {
+      title: "PHP Developer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+      company: "Iqbal Pte Ltd",
+      skills: ["Community", "Hardhead", "Slang"],
+      salary: {
+        min: 0,
+        max: 10000,
+        currency: "USD",
+      },
+      location: "Kuala Lumpur, MY",
+      email: "iqbal@seed.io",
+      socials: [
+        {
+          type: "website",
+          url: "https://website.com",
+        },
+        {
+          type: "twitter",
+          url: "@iqbalbaharum",
+        },
+      ],
+      logo: "Qymd...",
+      bounty: {
+        amount: 1,
+        currency: "USD",
+      },
+      status: 0,
+      refer: 0,
     },
   ]);
 
@@ -145,20 +269,20 @@ function ListingA1(props) {
         </div>
         <div className="flex flex-row w-full mt-8">
           <div className="relative flex justify-start w-[50%]">
-            <span className="absolute inset-y-0 left-0 flex items-center py-4">
-              <button
-                type="submit"
-                className="p-2 focus:outline-none focus:ring"
-              >
-                <img src={Search} alt="" />
-              </button>
-            </span>
             <input
               type="search"
               name="Search"
               placeholder="Skill or Location"
               className="text-left w-full py-2 pl-10 text-sm rounded-md border-solid border-2 border-black focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
+            <span className="absolute inset-y-0 left-0 flex items-center py-4">
+              <button
+                type="submit"
+                className="p-2 focus:outline-none focus:ring"
+              >
+                <img src={Search} alt="" className="w-5 h-5" />
+              </button>
+            </span>
           </div>
           <div className="flex flex-row pl-4 justify-between">
             <div className="flex flex-row items-center px-1">
@@ -183,44 +307,6 @@ function ListingA1(props) {
         </div>
 
         <div className="grid grid-cols-3 gap-4 w-full mt-8 mb-4">
-          <form className="p-8 w-full bg-[#DAFF3E] boxShadow rounded-2xl">
-            <div className="mb-2 text-left mt-4">
-              <label
-                htmlFor="email"
-                className="block text-2xl font-semibold text-black "
-              >
-                What do you have in mind
-              </label>
-              <input
-                type=""
-                required
-                placeholder="Paste Profile Link"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <div className="mb-2 text-left mt-4">
-              <label
-                htmlFor="email"
-                className="block text-base font-medium text-black "
-              >
-                No Profile Yet?
-              </label>
-              <input
-                type=""
-                required
-                placeholder="Enter Email"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <div className="mt-8 flex justify-center items-center">
-              <button
-                type="button"
-                className="bg-black border-black rounded-full px-4 py-1 font-bold text-[#DAFF3E] text-base"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
           {jobs.map((job) => ArticleCard(job))}
         </div>
       </div>

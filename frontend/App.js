@@ -12,7 +12,7 @@ import Navbar from "./src/components/Navbar";
 import Home from "./src/pages/home";
 import Login from "./src/pages/authentication/Login";
 import Profile from "./src/pages/profileForm";
-import ProfileDisplay from "./src/pages/ProfileDisplay/IndexProfileDisplay";
+import ProfileDisplay from "./src/pages/ProfileDisplay/display";
 import Wallet from "./src/pages/profileConnect/ConnectWallet";
 import IssueEndors from "./src/pages/profileConnect/IssueEndors";
 import MintSuccess from "./src/pages/profileConnect/MintSuccess";
@@ -24,8 +24,9 @@ import IndexRentTalent from "./src/pages/RentTalent/IndexRentTalent";
 import IndexIssueNft from "./src/pages/IssueNFT/IndexIssueNft";
 import NftLink from "./src/pages/IssueNFT/NftLink";
 import BatchMint from "./src/pages/IssueNFT/BatchMint";
-import JobListing from "./src/pages/ProfileDisplay/JobListing";
+import JobListing from "./src/pages/ProfileDisplay/MyJob";
 import { NearWalletContext } from "./context/wallet.context";
+import JobMgmt from "./src/pages/JobManagement/JobMgmt";
 
 export default function App({ isSignedIn, wallet }) {
   const [config, setConfig] = useState({
@@ -54,7 +55,11 @@ export default function App({ isSignedIn, wallet }) {
               )}
               <Routes>
                 {/* Landing Page */}
-                <Route exact path="/" element={<LandingPage />} />
+                <Route
+                  exact
+                  path="/"
+                  element={<LandingPage funcNav={setShowNav} />}
+                />
 
                 <Route exact path="/home" element={<Home />} />
                 {/* <Route path="*" element={<NotFound />} /> */}
@@ -116,6 +121,9 @@ export default function App({ isSignedIn, wallet }) {
                   path="/batchmint"
                   element={<BatchMint wallet={wallet} />}
                 />
+
+                {/* Job Management */}
+                <Route exact path="/jobmgmt" element={<JobMgmt />} />
               </Routes>
             </div>
           </div>
