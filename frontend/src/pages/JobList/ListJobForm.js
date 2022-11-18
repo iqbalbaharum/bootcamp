@@ -6,11 +6,6 @@ function ListJobForm() {
 
   const jobCreationFormContext = useContext(JobCreationFormContext)
 
-  const {
-    min,
-    max,
-  } = jobCreationFormContext.form.salary;
-
   return (
     <form>
       <div className="mr-[3rem] px-[3rem] text-left">
@@ -107,8 +102,8 @@ function ListJobForm() {
                 type="number"
                 className="rounded-md text-sm block w-full px-5 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Min Yearly Salary in USD"
-                name="min"
-                value={min}
+                name="salary_min"
+                value={jobCreationFormContext.form.salary_min}
                 onChange={jobCreationFormContext.handleChange}
               />
             </div>
@@ -117,8 +112,8 @@ function ListJobForm() {
                 type="number"
                 className="rounded-md text-sm block w-full px-5 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Max Yearly Salary in USD"
-                name="max"
-                value={max}
+                name="salary_max"
+                value={jobCreationFormContext.form.salary_max}
                 onChange={jobCreationFormContext.handleChange}
               />
             </div>
@@ -178,13 +173,12 @@ function ListJobForm() {
             htmlFor="email"
             className="block text-lg  font-semibold text-left text-gray-800 px-2"
             name="logo"
-            value={jobCreationFormContext.form.logo}
-            onChange={jobCreationFormContext.handleChange}
           >
             Company Logo
           </label>
           <input
             type="file"
+            onChange={jobCreationFormContext.onFileChange}
             className="rounded-md block w-full px-5 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
           />
           <div className="text-sm m-2 mb-[3rem]">
@@ -289,6 +283,8 @@ function ListJobForm() {
           </label>
           <input
             type="text"
+            value={jobCreationFormContext.form.bounty_amount}
+            onChange={jobCreationFormContext.handleChange}
             className="rounded-md block w-full px-5 py-2 mt-2 text-gray-700 bg-white border  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
           />
           <div className="text-sm mx-[1rem] my-[1rem]">

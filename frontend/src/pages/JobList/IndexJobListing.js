@@ -2,61 +2,83 @@ import React, { createContext, useState } from "react";
 import ListJobForm from "./ListJobForm";
 import Testimonial from "./Testimonial";
 import JobFormbg from "../../../assets/img/jobformbg2.png";
+import useIpfsFactory from "../../hooks/useIpfsFactory";
+import { useWallet } from "../../hooks/useWallet";
 
 export const JobCreationFormContext = createContext()
 
 function IndexJobListing() {
 
+  const { ipfs } = useIpfsFactory()
+  const { callMethod } = useWallet()
+
+  const [logoImg, setLogoImg] = useState()
+  
   const [form, setForm] = useState({
     position: '',
     description: '',
     company: '',
-    skills: [],
-    salary: {
-      min: 0,
-      max: 0,
-      currency: 'USD'
-    },
+    skills: '',
+    salary_max: 0,
+    salary_min: 0,
+    salary_currency: 'USD',
+    bounty_amount: 0,
+    bounty_currency: 'NEAR',
     location: '',
     email: '',
     website: '',
     logo: '',
-    bounty: {
-      amount: 0,
-      currency: 'NEAR'
-    }
+    expired: 1671337675,
   })
 
   const handleChange = (evt) => {
-    const { name, value } = evt.target
+    const { type, name, value } = evt.target
 
-    console.log(name, value)
     switch(name) {
-      case 'min':
-      case 'max':
-        setForm((form) => ({
-          ...form.salary,
-          salary: {
-            [name]: parseInt(value)
-          }
-        }))
-        break
       default:
         setForm({
           ...form,
-          [name]: value
+          [name]: type === 'number' ? parseInt(value) : value
         })
         break
     }
   }
 
-  const onHandleSubmit = (evt) => {
+  const onHandleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log(form)
+    try {
+
+      if(logoImg) {
+        const cid = await ipfs.add(logoImg)
+        setForm({
+          ...form,
+          logo: `ipfs://${cid[0].hash}`
+        })
+
+        if(logoImg) {
+          const res = await callMethod({
+            contractId: process.env.CONTRACT_NAME,
+            method: 'new_job',
+            args: {
+              detail: form
+            }
+          })
+
+          console.log(res)
+        }
+      }
+      
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  const onFileChange = (e) => {
+    setLogoImg(e.target.files[0])
   }
   
   return (
-    <JobCreationFormContext.Provider value={{form, setForm, handleChange}}>
+    <JobCreationFormContext.Provider value={{form, setForm, handleChange, onFileChange}}>
       <div className="relative min-h-screen overflow-x-hidden bg-[#DAFF3E]">
         <div
           className="w-full h-full"
