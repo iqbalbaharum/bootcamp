@@ -1,15 +1,14 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import bg from "../../../assets/img/globe2.png";
 import { GloryBadge } from "../../nft_contracts/glory-badge";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 /*TODO
-* GENERATE TOKEN IDS
-*/
+ * GENERATE TOKEN IDS
+ */
 
-function IssueNftForm({wallet}) {
-
+function IssueNftForm({ wallet }) {
   const navigate = useNavigate();
   const contract = new GloryBadge({contractId: process.env.GLORY_BADGE_CONTRACT, walletToUse: wallet });
 
@@ -25,14 +24,18 @@ function IssueNftForm({wallet}) {
   * If the transaction is successful (i.e the only param is transaction hash), then it'll push a post request to our BE
   */
   const urlParams = new URLSearchParams(window.location.search);
-  const logs = { txh : urlParams.get("transactionHashes"), errorCode: urlParams.get("errorCode"), errorMessage: urlParams.get("errorMessage")};
+  const logs = {
+    txh: urlParams.get("transactionHashes"),
+    errorCode: urlParams.get("errorCode"),
+    errorMessage: urlParams.get("errorMessage"),
+  };
   async function checkTxh() {
-    if(logs.errorCode){
+    if (logs.errorCode) {
       console.log(`Error: ${logs.errorCode}`);
-      return ; 
+      return;
     }
-    if(logs.txh == null){
-     return ; 
+    if (logs.txh == null) {
+      return;
     }
     
     // Get result from the transactions
@@ -77,14 +80,14 @@ function IssueNftForm({wallet}) {
       await contract.nft_mint(
         'http://localhost:1234/indexissuenft?status=success',
         {
-            title: name,
-            description: description,
-            media : artwork,
-            issued_at : new Date().toISOString() ,
-            expires_at : endDate ,
-            starts_at : startDate ,
-            extra: "Creator" //This is supposed to reference who's minting (1 for owner, 2 for claimers  or something)
-        },  
+          title: name,
+          description: description,
+          media: artwork,
+          issued_at: new Date().toISOString(),
+          expires_at: endDate,
+          starts_at: startDate,
+          extra: "Creator", //This is supposed to reference who's minting (1 for owner, 2 for claimers  or something)
+        },
         wallet.accountId
       )
     }catch(error){
@@ -95,7 +98,7 @@ function IssueNftForm({wallet}) {
   useEffect(()=> {
     wallet.createAccessKeyFor = process.env.GLORY_BADGE_CONTRACT //Change contract address for the current wallet
     checkTxh();
-  },[])
+  }, []);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
@@ -148,7 +151,7 @@ function IssueNftForm({wallet}) {
                     Artwork
                   </label>
                   <input
-                    type=""//Changed "file" to "" temporarily till we implement IPFS
+                    type="" //Changed "file" to "" temporarily till we implement IPFS
                     onChange={(e) => setArtwork(e.target.value)}
                     className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
@@ -191,7 +194,7 @@ function IssueNftForm({wallet}) {
                     onClick={handleSubmit}
                     className="bg-white px-4 py-1 rounded-full font-bold  text-gray-700 border  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-60"
                   >
-                    {/* <Link to="/nftlink">SUBMIT</Link> */}
+                    SUBMIT
                   </button>
                 </div>
               </form>

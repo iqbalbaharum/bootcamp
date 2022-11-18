@@ -6,9 +6,8 @@ import { AuthEnabled } from "./AuthEnabled";
 
 const navigation = [
   { name: "My Profile", href: "/profile/form", current: false },
-  // { name: "Jobs", href: "#", current: false },
-  // { name: "Career Hub", href: "#", current: false },
-  // { name: "Rent Talent", href: "#", current: false },
+  { name: "Career Hub", href: "/listjobdisplay", current: false },
+  { name: "Rent Talent", href: "/rentalent", current: false },
   // { name: "Academy", href: "#", current: false },
 ];
 
@@ -54,12 +53,12 @@ export default function Navbar(props) {
 
   return (
     <header aria-label="SEED Header">
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-xl overflow-y-hidden px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
             <a className="block text-teal-600" href="/">
               <span className="sr-only">Home</span>
-              <img src={logo} alt="" className="w-[140px] h-[40px]" />
+              <img src={logo} alt="" className="w-[100px] h-[32px]" />
             </a>
           </div>
 

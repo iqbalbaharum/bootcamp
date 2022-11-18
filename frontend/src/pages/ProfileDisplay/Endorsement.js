@@ -22,29 +22,23 @@ function Endorsements({wallet}) {
   },[nfts])
 
   return (
-    <div className="px-[10rem] py-[3rem] mt-8 font-robotoMono">
-      <div>
-        <form>
-          <div>
-            <div className="mb-2 text-left px-[6rem]">
-              <div className="flex flex-row justify-between">
-                <div className="flex flex-col">
-                  <div className="text-2xl">
-                    <b>Endorsement</b>
-                  </div>
-                </div>
-
-                <div className="flex flex-col just">
-                  <button
-                    type="button"
-                    className="bg-black border-2 border-black text-[#DAFF3E] mt-1 px-5 py-1 rounded-full"
-                  >
-                    <Link to="/wallet">ISSUE NEW</Link>
-                  </button>
-                </div>
-              </div>
+    <div className="sm:mt-[15rem] mt-[5rem] font-robotoMono">
+      <form>
+        <div className="mb-2 text-left sm:px-[6rem]">
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col">
+              <div className="sm:text-2xl text-lg font-bold">Endorsement</div>
             </div>
-            {/* -------------------------------------------------------- content ------------------------------------------------------------------------------- */}
+
+            <div className="flex flex-col items-center">
+              <a
+                type="button"
+                className="bg-black border-2 border-black text-[#DAFF3E] px-5 py-1 rounded-full sm:text-base text-[1.5vh]"
+                href="/indexissuenft"
+              >
+                ISSUE NEW
+              </a>
+            </div>
           </div>
         
          {
@@ -88,8 +82,8 @@ function Endorsements({wallet}) {
               </div>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React from "react";
 import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
 import ThirdSection from "./ThirdSection";
-import Navbar from "../../components/Navbar";
 
 function IndexLandingPage() {
   return (
