@@ -17,8 +17,11 @@
     "near-cli": "^3.3.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
+    "@icon-park/react": "^1.4.2",
     "@parcel/transformer-css": "^2.7.0",
     "ipfs-core": "^0.17.0",
-    "ipfs-http-client": "33.0.1"
+    "ipfs-http-client": "^33.0.1",
+    "react-icons": "^4.6.0"
   }
 }

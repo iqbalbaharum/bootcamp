@@ -6,7 +6,7 @@ const OtherForm = () => {
   const profileFormContext = useContext(ProfileFormContext)
 
   return (
-    <div className="px-[10rem] mt-[2rem] font-robotoMono">
+    <div className="mt-[2rem] font-robotoMono">
     <div className="bg-[#DAFF3E] rounded-xl shadow-md">
       <div className="mx-[5rem] py-[2rem]">
         <div className="text-xl py-sm">

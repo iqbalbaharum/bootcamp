@@ -8,10 +8,6 @@ import Testimonial from "./Testimonial";
 function IndexRentTalent() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[black] text-[#DAFF3E]">
-      <div className="w-full flex ml-8 mt-4">
-        <img src={logo} alt="" className="w-[140px] h-[40px]" />
-      </div>
-
       <div>
         <div className="mx-[16rem] py-[3rem] font-robotoMono">
           <div className="text-[50px] font-bold text-center py-3 px-2">

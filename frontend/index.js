@@ -21,4 +21,4 @@ window.onload = async () => {
       </WalletProvider>
     </BrowserRouter>
   );
-}
+};

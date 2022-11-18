@@ -1,5 +1,7 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+// import bg from "../../assets/img/globe.png";
+// import logo from "../../assets/img/logo.png";
 import cursor from "../../../assets/img/cursor.png";
 
 function FirstSection() {
@@ -42,8 +44,9 @@ function FirstSection() {
               className="relative left-10 bottom-5 h-[120px] justify-right"
             />
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      
     </div>
   );
 }
