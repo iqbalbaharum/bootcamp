@@ -30,17 +30,13 @@ export default function ArticleCard({ job }) {
 
       <div className="flex flex-row justify-between my-4 text-left">
         <p className="text-[#D7F050] text-base font-medium">
-          ${job.salary.min} - ${job.salary.max}
+          ${job.salary_min} - ${job.salary_max}
         </p>
         <p className="text-black text-base font-medium mr-3">REMOTE</p>
       </div>
 
       <p className="mt-2 text-left text-sm leading-relaxed text-gray-500 line-clamp-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-        dolores, possimus pariatur animi temporibus nesciunt praesentium dolore
-        sed nulla ipsum eveniet corporis quidem, mollitia itaque minus soluta,
-        voluptates neque explicabo tempora nisi culpa eius atque dignissimos.
-        Molestias explicabo corporis voluptatem?
+        {job.description}
       </p>
 
       <div className="mt-8 justify-between flex">
@@ -52,7 +48,7 @@ export default function ArticleCard({ job }) {
           {job.status === 0 ? "FAST APPLY" : "Check Status"}
         </button>
         <a className="border-2 rounded-full px-4 py-2 font-bold bg-black text-[#DAFF3E]">
-          REFER & GET {job.bounty.amount} {job.bounty.currency}
+          REFER & GET {job.bounty_amount} {job.bounty_currency}
         </a>
       </div>
     </article>

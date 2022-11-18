@@ -43,7 +43,7 @@ export const WalletProvider = ({ children }) => {
 
     const isSignedIn = walletSelector.isSignedIn();
 
-    if (isSignedIn && !window.localStorage.getItem('token')) {
+    if (isSignedIn) {
       const wallet = await walletSelector.wallet();
       const accountId = walletSelector.store.getState().accounts[0].accountId;
       
@@ -129,6 +129,26 @@ export const WalletProvider = ({ children }) => {
     return JSON.parse(Buffer.from(res.result).toString());
   }
 
+  const callMethod = async ({ contractId, method, args = {}, gas = process.env.THIRTY_TGAS, deposit = process.env.DEPOSIT }) => {
+    // Sign a transaction with the "FunctionCall" action
+    console.log(args, JSON.stringify(args))
+    return await wallet.signAndSendTransaction({
+      signerId: accountId,
+      receiverId: contractId,
+      actions: [
+        {
+          type: 'FunctionCall',
+          params: {
+            methodName: method,
+            args,
+            gas,
+            deposit,
+          },
+        },
+      ],
+    });
+  }
+
   const value = {
     wallet,
     accountId,
@@ -136,7 +156,8 @@ export const WalletProvider = ({ children }) => {
     startUp,
     signIn,
     signOut,
-    viewMethod
+    viewMethod,
+    callMethod
   }
 
   return <WalletContext.Provider value={value}>{children}</WalletContext.Provider>;

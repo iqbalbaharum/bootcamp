@@ -58,45 +58,14 @@ function JobsList() {
     { name: "Product Manager", selected: false },
   ]);
 
-  const [jobs, setJobs] = useState([
-    {
-      title: "PHP Developer",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
-      company: "Iqbal Pte Ltd",
-      skills: ["Community", "Hardhead", "Slang"],
-      salary: {
-        min: 0,
-        max: 10000,
-        currency: "USD",
-      },
-      location: "Kuala Lumpur, MY",
-      email: "iqbal@seed.io",
-      socials: [
-        {
-          type: "website",
-          url: "https://website.com",
-        },
-        {
-          type: "twitter",
-          url: "@iqbalbaharum",
-        },
-      ],
-      logo: "Qymd...",
-      bounty: {
-        amount: 500,
-        currency: "USD",
-      },
-      status: 0,
-    },
-  ]);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     
     const getAllJobs = async () => {
       const respond = await viewMethod('seed.bonebon.testnet', 'get_all_jobs')
       if(respond) {
-        setJobs(respond)
+        setJobs(respond.map((e) => e.detail))
       } else {
         setJobs([])
       }
