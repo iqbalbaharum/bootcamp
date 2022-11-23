@@ -76,7 +76,7 @@ export const WalletProvider = ({ children }) => {
         } catch(e) {
           console.log(e)
         }
-
+        
         setWallet(wallet)
         setAccountId(accountId)
       }

@@ -3,18 +3,18 @@ import logo from "../../../assets/img/companyLogo.png";
 import rec from "../../../assets/img/Rectangle.png";
 import { GloryBadge } from "../../nft_contracts/glory-badge";
 
-function Career({wallet}) {
+function Career() {
   const [nfts, setNfts] = useState([]);
-  const contract = new GloryBadge({contractId: process.env.GLORY_BADGE_CONTRACT, walletToUse: wallet });
+  // const contract = new GloryBadge({contractId: process.env.GLORY_BADGE_CONTRACT, walletToUse: wallet });
   
-  async function getTokens() { 
-    await contract.owner_tokens(wallet.accountId).then(setNfts)
-  }
+  // async function getTokens() { 
+  //   await contract.owner_tokens(wallet.accountId).then(setNfts)
+  // }
 
-  useEffect(()=> {
-    wallet.createAccessKeyFor = process.env.GLORY_BADGE_CONTRACT
-    getTokens() 
-  },[])
+  // useEffect(()=> {
+  //   wallet.createAccessKeyFor = process.env.GLORY_BADGE_CONTRACT
+  //   getTokens() 
+  // },[])
 
   return (
     <div className="px-[10rem] mt-10 font-robotoMono pb-10">

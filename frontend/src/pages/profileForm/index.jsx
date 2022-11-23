@@ -4,20 +4,20 @@ import ProfileForm from "./Form";
 import { NearWalletContext } from "../../context/wallet.context";
 import useIpfs from "../../hooks/useIpfs";
 import useIpfsFactory from "../../hooks/useIpfsFactory";
+import { useWallet } from "../../hooks/useWallet";
 
 export const ProfileFormContext = createContext()
 
 const Profile = () => {
 
-  const walletContext = useContext(NearWalletContext)
-
   const { ipfs } = useIpfsFactory()
+  const { accountId } = useWallet()
 
   const [form, setForm] = useState({
     name: "",
     handle: "",
     bio: "",
-    nearAddress: walletContext.wallet.accountId,
+    nearAddress: accountId,
     email: "",
     twitter: "",
     github: "",
@@ -52,7 +52,7 @@ const Profile = () => {
 
   return (
     <ProfileFormContext.Provider value={{form, profileImg, setProfileImg, onSubmit, handleChange}}>
-      {walletContext.wallet.accountId && <ProfileForm />}
+      {accountId && <ProfileForm />}
     </ProfileFormContext.Provider>
   );
 }

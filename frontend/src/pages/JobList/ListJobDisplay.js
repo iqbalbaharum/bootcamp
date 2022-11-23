@@ -8,6 +8,7 @@ import Graphic2 from "../../../assets/img/graphic.png";
 import Search from "../../../assets/img/search.png";
 import { ConfigContext } from "../../context/config.context";
 import { useWallet } from "../../hooks/useWallet";
+import { useNavigate } from "react-router-dom";
 
 
 function classNames(...classes) {
@@ -49,7 +50,16 @@ function SearchTag(prop) {
 function JobsList() {
 
   const { viewMethod } = useWallet()
-  
+  const navigate = useNavigate()
+
+  const goToJobCreationPage = () => {
+    navigate('/job/create')
+  }
+
+  const goToRentalPage = () => {
+    navigate('/user/rental')
+  }
+
   const [tags] = useState([
     { name: "Full Stack Dev", selected: false },
     { name: "Solidity", selected: false },
@@ -80,7 +90,7 @@ function JobsList() {
     <>
       <div className="mx-8 font-robotoMono">
         <div className="flex flex-row justify-center w-full mt-[2rem]">
-          <div className="flex flex-col bg-[#DAFF3E] text-black w-[1077px]  md:h-[200px] justify-center items-center  mr-4 rounded-3xl">
+          <a onClick={goToJobCreationPage} href="" className="flex flex-col bg-[#DAFF3E] text-black w-[1077px]  md:h-[200px] justify-center items-center  mr-4 rounded-3xl">
             <p className="font-bold text-4xl">LIST JOB</p>
             <p className="font-bold text-normal">Unlock 7+ million talents</p>
 
@@ -89,9 +99,9 @@ function JobsList() {
               alt=""
               className="absolute scale-[0.3] mt-[3.7rem]"
             />
-          </div>
+          </a>
 
-          <div className="static flex flex-col bg-black text-[#DAFF3E] w-[1077px]  md:h-[200px] justify-center items-center rounded-3xl">
+          <a href="#" onClick={goToRentalPage}  className="static flex flex-col bg-black text-[#DAFF3E] w-[1077px]  md:h-[200px] justify-center items-center rounded-3xl">
             <p className="font-bold text-4xl">RENT TALENT</p>
             <p className="font-bold text-normal">
               Rent our dev team to churn out your dream project
@@ -101,7 +111,7 @@ function JobsList() {
               alt=""
               className="absolute scale-[0.3] mt-[3.7rem] ml-[13.8rem]"
             />
-          </div>
+          </a>
         </div>
         <div className="flex flex-row w-full mt-8">
           <div className="relative flex justify-start w-[50%]">

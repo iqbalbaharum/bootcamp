@@ -9,7 +9,7 @@ import IntHobby from "./InterestHobby";
 import Socialmedia from "./SocialMedia";
 
 //NFT fetching is implemented in CareerCredentials
-function IndexProfileDisplay({ wallet }) {
+function IndexProfileDisplay() {
   return (
     <div>
       <form>
@@ -19,11 +19,11 @@ function IndexProfileDisplay({ wallet }) {
             <Socialmedia />
             <Skills />
             {/* <JobListing /> */}
-            <Career wallet={wallet} />
+            <Career />
             <Education />
             <IntHobby />
             <div className="flex justify-center items-center mb-[10rem]">
-              <Endorsements wallet={wallet} />
+              <Endorsements />
             </div>
           </div>
         </div>

@@ -4,22 +4,22 @@ import image from "../../../assets/img/image.png";
 import logoBig from "../../../assets/img/logoBig.png";
 import { Endorsement } from "../../nft_contracts/endorsement";
 
-function Endorsements({wallet}) {
+function Endorsements() {
   const [nfts, setNfts] = useState([]);
-  const contract = new Endorsement({contractId: process.env.ENDORSEMENT_CONTRACT, walletToUse: wallet });
+  // const contract = new Endorsement({contractId: process.env.ENDORSEMENT_CONTRACT, walletToUse: wallet });
   
-  async function getTokens() { 
-    await contract.owner_tokens(wallet.accountId).then(setNfts)
-  }
+  // async function getTokens() { 
+  //   await contract.owner_tokens(wallet.accountId).then(setNfts)
+  // }
 
-  useEffect(()=> {
-    wallet.createAccessKeyFor = process.env.ENDORSEMENT_CONTRACT
-    getTokens() 
-  },[])
+  // useEffect(()=> {
+  //   wallet.createAccessKeyFor = process.env.ENDORSEMENT_CONTRACT
+  //   getTokens() 
+  // },[])
 
-  useEffect(()=> {
-    console.log(nfts)
-  },[nfts])
+  // useEffect(()=> {
+  //   console.log(nfts)
+  // },[nfts])
 
   return (
     <div className="sm:mt-[15rem] mt-[5rem] font-robotoMono">

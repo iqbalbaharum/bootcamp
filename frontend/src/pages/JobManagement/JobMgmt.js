@@ -1,12 +1,10 @@
-/* eslint-disable import/no-unresolved */
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import { Down, Up } from "@icon-park/react";
+import { useNavigate } from "react-router-dom";
+// import { Down, Up } from "@icon-park/react";
 
-// import circle from "../../assets/img/jobcircle.png";
 
 function JobMgmt() {
-  // Timestamp generator using W3C https://timestampgenerator.com/1668370887/+08:00
   const calculateTimeLeft = () => {
     const difference = +new Date("2022-11-15T03:21:27+08:00") - +new Date();
 
@@ -30,6 +28,8 @@ function JobMgmt() {
     }, 1000);
   });
 
+  const navigate = useNavigate()
+
   return (
     <div className="relative overflow-x-hidden bg-[#DAFF3E] w-full h-screen">
       <div className="mx-[8rem] my-8 font-robotoMono">
@@ -51,11 +51,12 @@ function JobMgmt() {
               type="button"
               className="bg-white border-solid text-black px-16 py-3 rounded-lg font-bold"
             >
-              Refferrals
+              Referrals
             </button>
             <button
               type="button"
               className="bg-black border-solid text-[#DAFF3E] px-16 py-3 rounded-lg font-bold mb-4 bottom-4 fixed"
+              onClick={() => navigate('/user/profile/form')}
             >
               Back to Profile
             </button>
@@ -76,12 +77,12 @@ function JobMgmt() {
                         <span className="text-black pl-2 font-bold text-lg">
                           Database Programmer
                         </span>
-                        <Down
+                        {/* <Down
                           size="24"
                           className={`${
                             open ? "rotate-180 transform ml-2" : ""
                           }  text-black ml-2`}
-                        />
+                        /> */}
                       </button>
                     </Disclosure.Button>
                     <Disclosure.Panel as="ul">
@@ -192,14 +193,14 @@ function JobMgmt() {
                         <span className="text-black pl-2 font-normal text-lg">
                           Intern Programmer
                         </span>
-                        <Up
+                        {/* <Up
                           size="24"
                           className={`${
                             open
                               ? "rotate-180 transform ml-2"
                               : "rotate-90 transform ml-2"
                           }  text-[#D7F050] ml-2`}
-                        />
+                        /> */}
                       </button>
                     </Disclosure.Button>
                     <Disclosure.Panel as="ul">

@@ -12,7 +12,7 @@ const NavbarLayout = (props) => {
   }
 
   return (<>
-    <Navbar isNavEnabled={props.isNavsEnabled} isAuthEnabled={true} />
+    <Navbar isNavEnabled={true} isAuthEnabled={true} />
     {outlet}
   </>)
 }

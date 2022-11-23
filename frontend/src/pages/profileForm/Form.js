@@ -8,7 +8,7 @@ import OtherForm from "./OtherForm";
 
 function ProfileForm() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#E5E5E5]">
+    <div className="relative min-h-screen overflow-x-hidden">
       <form>
         <div className="mx-[16rem] py-[3rem] font-robotoMono">
           <div className="flex flex-row">
@@ -18,7 +18,7 @@ function ProfileForm() {
             <a
               type="button"
               className="bg-black border-solid border-2 border-black hover:bg-[#DAFF3E] hover:text-black text-[#DAFF3E] py-2 px-10 rounded-lg font-bold"
-              href="/jobmgmt"
+              href="/user/job/manage"
             >
               MANAGE
             </a>

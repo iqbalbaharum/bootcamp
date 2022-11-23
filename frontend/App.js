@@ -34,6 +34,7 @@ import useIpfs from "./src/hooks/useIpfs";
 import NavbarLayout from "./src/components/Layout/NavbarLayout";
 import FullScreenLayout from "./src/components/Layout/FullscreenLayout";
 import ProtectedLayout from "./src/components/Layout/ProtectedLayout";
+import JobMgmt from "./src/pages/JobManagement/JobMgmt";
 
 export default function App({ isSignedIn, wallet }) {
   const [config, setConfig] = useState({
@@ -83,6 +84,8 @@ export default function App({ isSignedIn, wallet }) {
 
               <Route path="/user" element={<ProtectedLayout />}>
                 <Route path="profile/form" element={<Profile />} />
+                <Route path="rental" element={<IndexRentTalent />} />
+                <Route path="job/manage" element={<JobMgmt />} />
               </Route>
 
               <Route path="/" element={<FullScreenLayout />}>
@@ -92,15 +95,12 @@ export default function App({ isSignedIn, wallet }) {
                 <Route exact path="/register" element={<Register />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/emailogin" element={<EmailLogin />} />
+                <Route
+                  path="profile/preview"
+                  element={<ProfileDisplay wallet={wallet} />}
+                />
               </Route>
               <Route exact path="/home" element={<Home />} />
-
-              {/* Profile Display */}
-              <Route
-                exact
-                path="/profiledisplay"
-                element={<ProfileDisplay wallet={wallet} />}
-              />
 
               {/* NFT Endorsement */}
               <Route exact path="/wallet" element={<Wallet />} />
@@ -110,9 +110,6 @@ export default function App({ isSignedIn, wallet }) {
                 element={<IssueEndors wallet={wallet} />}
               />
               <Route exact path="/mintSuccess" element={<MintSuccess />} />
-
-              {/* Rent Talent */}
-              <Route exact path="/rentalent" element={<IndexRentTalent />} />
 
               {/* Issue NFT */}
               <Route

@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { ProfileFormContext } from ".";
 
 const Buttons = () => {
 
   const profileFormContext = useContext(ProfileFormContext)
 
+  const openPreviewPage = () => {
+    window.open('/profile/preview')
+  }
+  
   return (
     <div className="py-[7rem]">
       <div className="py-3">
@@ -29,7 +34,7 @@ const Buttons = () => {
         <button
           type="button"
           className="bg-transparent border-solid border-2 border-black hover:bg-[#DAFF3E] text-[#000000] px-14 py-3 rounded-lg font-bold"
-          onClick={profile}
+          onClick={() => openPreviewPage()}
         >
           PREVIEW
         </button>

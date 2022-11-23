@@ -31,10 +31,6 @@ const ShowAccountId = ({ wallet, accountId }) => {
 
   const navigate = useNavigate()
 
-  const goToJobCreationPage = () => {
-    navigate('/job/create')
-  }
-
   const onHandleClickLogout = () => {
     wallet.signOut()
     navigate('/login')
@@ -54,13 +50,6 @@ const ShowAccountId = ({ wallet, accountId }) => {
       >
         Logout
       </button>
-      {ipfs && <button
-        type="button"
-        className="rounded-md bg-[#FF5733] px-5 py-2.5 text-bold text-white"
-        onClick={goToJobCreationPage}
-      >
-        Create Job Post
-      </button>}
     </>
   )
 }
