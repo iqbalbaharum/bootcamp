@@ -96,8 +96,8 @@ export default function App({ isSignedIn, wallet }) {
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/emailogin" element={<EmailLogin />} />
                 <Route
-                  path="profile/preview"
-                  element={<ProfileDisplay wallet={wallet} />}
+                  path="profile/preview/:account"
+                  element={<ProfileDisplay />}
                 />
               </Route>
               <Route exact path="/home" element={<Home />} />

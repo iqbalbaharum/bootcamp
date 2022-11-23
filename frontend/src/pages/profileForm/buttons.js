@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProfileFormContext } from ".";
+import { useWallet } from "../../hooks/useWallet";
 
 const Buttons = () => {
 
   const profileFormContext = useContext(ProfileFormContext)
 
+  const { accountId } = useWallet()
+
   const openPreviewPage = () => {
-    window.open('/profile/preview')
+    window.open(`/profile/preview/${accountId}`)
   }
   
   return (

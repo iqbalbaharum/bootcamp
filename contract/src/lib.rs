@@ -18,6 +18,7 @@ pub enum StorageKey {
     JobsPerOwner,
     JobMetadataById,
     JobPerOwnerInner { account_id_hash: CryptoHash },
+    ProfileByAccountId,
 }
 
 // Define the contract structure
@@ -28,6 +29,7 @@ pub struct Contract {
     pub jobs_per_owner: LookupMap<AccountId, UnorderedSet<JobId>>,
     pub job_detail_by_id: UnorderedMap<JobId, JobDetail>,
     pub next_job_id: u64,
+    pub profile_by_account_id: LookupMap<AccountId, Profile>,
 }
 
 // Define the default, which automatically initializes the contract
@@ -38,6 +40,9 @@ impl Default for Contract {
             jobs_per_owner: LookupMap::new(StorageKey::JobsPerOwner.try_to_vec().unwrap()),
             job_detail_by_id: UnorderedMap::new(StorageKey::JobMetadataById.try_to_vec().unwrap()),
             next_job_id: 0,
+            profile_by_account_id: LookupMap::new(
+                StorageKey::ProfileByAccountId.try_to_vec().unwrap(),
+            ),
         };
 
         this

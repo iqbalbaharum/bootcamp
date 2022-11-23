@@ -6,6 +6,8 @@ pub trait JobCore {
     fn get_job_by_id(&self, job_id: JobId) -> Option<JsonJob>;
     fn get_all_jobs(&self, from_index: Option<U128>, limit: Option<u64>) -> Vec<JsonJob>;
     fn new_job(&mut self, detail: JobDetail);
+    fn add_profile(&mut self, profile: Profile);
+    fn view_profile(&self, account_id: AccountId) -> Option<JsonProfile>;
     // fn refer_a_job(&mut self, job_id: JobId, referee_id: &AccountId, referal_id: &AccountId);
 }
 
@@ -85,6 +87,31 @@ impl JobCore for Contract {
 
         refund_deposit(required_storage_in_bytes);
     }
+
+    #[payable]
+    fn add_profile(&mut self, profile: Profile) {
+        let initial_storage_cost = env::storage_usage();
+
+        let account_id = env::predecessor_account_id();
+
+        self.profile_by_account_id.insert(&account_id, &profile);
+
+        let required_storage_in_bytes = env::storage_usage() - initial_storage_cost;
+
+        refund_deposit(required_storage_in_bytes);
+    }
+
+    fn view_profile(&self, account_id: AccountId) -> Option<JsonProfile> {
+        if let Some(profile) = self.profile_by_account_id.get(&account_id) {
+            Some(JsonProfile {
+                owner_id: account_id,
+                profile,
+            })
+        } else {
+            None
+        }
+    }
+
     // TODO
     // Add another cross contract call - which send back the notification to
     // fn refer_a_job(&mut self, job_id: JobId, referee_id: &AccountId, referal_id: &AccountId) {

@@ -23,6 +23,9 @@ const OtherForm = () => {
               </label>
               <input
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                name="country"
+                value={profileFormContext.form.country}
+                onChange={profileFormContext.handleChange}
               />
             </div>
           </div>
@@ -30,8 +33,8 @@ const OtherForm = () => {
               <b>
                 <input 
                   type="checkbox"
-                  name="openToJobOpportunity"
-                  value={profileFormContext.openToJobOpportunity}
+                  name="is_open_for_work"
+                  checked={profileFormContext.form.is_open_for_work}
                   onChange={profileFormContext.handleChange} />
                 &nbsp; Open to job opportunity?
               </b>
@@ -40,8 +43,8 @@ const OtherForm = () => {
               <b>
                 <input 
                   type="checkbox"
-                  name="openToRemoteJob"
-                  value={profileFormContext.openToRemoteJob}
+                  name="is_open_for_remote"
+                  value={profileFormContext.form.is_open_for_remote}
                   onChange={profileFormContext.handleChange}
                 />
                 &nbsp; Open to remote job?
@@ -51,8 +54,8 @@ const OtherForm = () => {
               <b>
                 <input 
                   type="checkbox"
-                  name="receiveNewJobEmail"
-                  value={profileFormContext.receiveNewJobEmail}
+                  name="is_subscribe"
+                  value={profileFormContext.form.is_subscribe}
                   onChange={profileFormContext.handleChange}
                 />
                 &nbsp; Received new jobs in your mailbox?

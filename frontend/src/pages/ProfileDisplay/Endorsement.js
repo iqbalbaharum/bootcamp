@@ -2,24 +2,23 @@ import React ,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import image from "../../../assets/img/image.png";
 import logoBig from "../../../assets/img/logoBig.png";
-import { Endorsement } from "../../nft_contracts/endorsement";
+import { useWallet } from "../../hooks/useWallet";
 
 function Endorsements() {
   const [nfts, setNfts] = useState([]);
-  // const contract = new Endorsement({contractId: process.env.ENDORSEMENT_CONTRACT, walletToUse: wallet });
-  
-  // async function getTokens() { 
-  //   await contract.owner_tokens(wallet.accountId).then(setNfts)
-  // }
 
-  // useEffect(()=> {
-  //   wallet.createAccessKeyFor = process.env.ENDORSEMENT_CONTRACT
-  //   getTokens() 
-  // },[])
+  const { accountId, viewMethod } = useWallet()
 
-  // useEffect(()=> {
-  //   console.log(nfts)
-  // },[nfts])
+  const getTokens = async () => {
+    const res = await viewMethod(process.env.ENDORSEMENT_CONTRACT, 'nft_tokens_for_owner', { account_id: accountId, from_index:"0", limit:"200"})
+    setNfts(res)
+  }
+
+  useEffect(()=> {
+    if(accountId) {
+      getTokens()
+    }
+  },[accountId, getTokens])
 
   return (
     <div className="sm:mt-[15rem] mt-[5rem] font-robotoMono">

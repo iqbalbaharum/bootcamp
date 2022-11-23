@@ -43,7 +43,7 @@ function Bio() {
               <div className="py-[1rem]">
                 <input id="avatar" type="file" onChange={onFileChange} hidden />
                 <label
-                  for="avatar"
+                  htmlFor="avatar"
                   className="bg-black text-[#DAFF3E] rounded-full px-4 py-2 cursor-pointer"
                 >
                   UPLOAD
@@ -61,8 +61,8 @@ function Bio() {
                 <input
                   required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                  name="name"
-                  value={profileFormContext.name}
+                  name="full_name"
+                  value={profileFormContext.form.full_name}
                   onChange={profileFormContext.handleChange}
                 />
               </div>
@@ -77,8 +77,8 @@ function Bio() {
               <input
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                name="handle"
-                value={profileFormContext.handle}
+                name="handler"
+                value={profileFormContext.form.handler}
                 onChange={profileFormContext.handleChange}
               />
             </div>
@@ -92,7 +92,7 @@ function Bio() {
               <textarea
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 name="bio"
-                value={profileFormContext.bio}
+                value={profileFormContext.form.bio}
                 onChange={profileFormContext.handleChange}
               />
             </div>
@@ -108,7 +108,7 @@ function Bio() {
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 name="email"
-                value={profileFormContext.email}
+                value={profileFormContext.form.email}
                 onChange={profileFormContext.handleChange}
               />
             </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Basicdetails from "./BasicDetails";
 // import JobListing from "./JobListing";
 import Skills from "./skills";
@@ -9,25 +9,24 @@ import IntHobby from "./InterestHobby";
 import Socialmedia from "./SocialMedia";
 
 //NFT fetching is implemented in CareerCredentials 
-function IndexProfileDisplay({wallet}) {
+function IndexProfileDisplay() {
+
   return (
     <div>
-      <form>
         <div className="relative min-h-screen overflow-x-hidden p-[2rem] bg-[#DAFF3E]">
-          <div>
+          {accountId && (<div>
             <Basicdetails />
             <Socialmedia />
             <Skills />
             {/* <JobListing /> */}
-            <Career wallet={wallet}/>
+            <Career/>
             <Education />
             <IntHobby />
             <div className="flex justify-center items-center mb-[10rem]">
-              <Endorsements wallet={wallet} />
+              <Endorsements />
             </div>
-          </div>
+          </div>)}
         </div>
-      </form>
     </div>
   );
 }

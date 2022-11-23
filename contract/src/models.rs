@@ -27,6 +27,25 @@ pub struct JobDetail {
     pub status: Option<i8>, // pub referrals: HashMap<AccountId, AccountId>,
 }
 
+#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct Profile {
+    pub full_name: String,
+    pub handler: String,
+    pub bio: String,
+    pub email: String,
+    pub skills: Vec<String>,
+    pub otherskills: Vec<String>,
+    pub twitter: Option<String>,
+    pub github: Option<String>,
+    pub linkedin: Option<String>,
+    pub website: Option<String>,
+    pub country: Option<String>,
+    pub is_open_for_work: bool,
+    pub is_open_for_remote: bool,
+    pub is_subscribe: bool,
+}
+
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Job {
     pub owner_id: AccountId,
@@ -39,4 +58,11 @@ pub struct JsonJob {
     pub job_id: JobId,
     pub owner_id: AccountId,
     pub detail: JobDetail,
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct JsonProfile {
+    pub owner_id: AccountId,
+    pub profile: Profile,
 }

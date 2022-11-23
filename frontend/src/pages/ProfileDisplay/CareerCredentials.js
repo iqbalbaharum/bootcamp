@@ -1,20 +1,23 @@
 import React ,{useEffect, useState} from "react";
 import logo from "../../../assets/img/companyLogo.png";
 import rec from "../../../assets/img/Rectangle.png";
+import { useWallet } from "../../hooks/useWallet";
 import { GloryBadge } from "../../nft_contracts/glory-badge";
 
 function Career() {
   const [nfts, setNfts] = useState([]);
-  // const contract = new GloryBadge({contractId: process.env.GLORY_BADGE_CONTRACT, walletToUse: wallet });
-  
-  // async function getTokens() { 
-  //   await contract.owner_tokens(wallet.accountId).then(setNfts)
-  // }
+  const { accountId, viewMethod } = useWallet()
 
-  // useEffect(()=> {
-  //   wallet.createAccessKeyFor = process.env.GLORY_BADGE_CONTRACT
-  //   getTokens() 
-  // },[])
+  const getTokens = async () => {
+    const res = await viewMethod(process.env.GLORY_BADGE_CONTRACT, 'nft_tokens_for_owner', { account_id: accountId, from_index:"0", limit:"200"})
+    setNfts(res)
+  }
+
+  useEffect(()=> {
+    if(accountId) {
+      getTokens()
+    }
+  },[accountId, nfts, getTokens])
 
   return (
     <div className="px-[10rem] mt-10 font-robotoMono pb-10">
@@ -22,8 +25,6 @@ function Career() {
         <p className="text-left text-[40px] font-bold">Career Credentials</p>
         <div className="bg-black text-[#DAFF3E] text-left h-[180px] w-[950px] text-xl pl-10 py-6 font-bold rounded-2xl">
           <p>Senior Architect at Google</p>
-          <p>Senior Product Lead at Google</p>
-          <p>Senior Product Lead at Meta</p>
         </div>
         <div className="grid grid-cols-3 gap-4 mt-8">
           {

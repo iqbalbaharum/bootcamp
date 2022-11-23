@@ -21,8 +21,8 @@ const Skill = () => {
               </label>
               <input
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                name="mainSkill"
-                value={profileFormContext.mainSkill}
+                name="skills"
+                value={profileFormContext.form.mainSkill}
                 onChange={profileFormContext.handleChange}
               />
             </div>
@@ -33,7 +33,10 @@ const Skill = () => {
               >
                 OTHER SKILL
               </label>
-              <input className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input name="skills"
+                value={profileFormContext.form.otherskills}
+                onChange={profileFormContext.handleChange}
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
             </div>
           </div>
         </div>

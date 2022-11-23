@@ -21,7 +21,7 @@ const Social = () => {
               </label>
               <input
                 name="twitter"
-                value={profileFormContext.twitter}
+                value={profileFormContext.form.twitter}
                 onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -35,7 +35,7 @@ const Social = () => {
               </label>
               <input
                 name="github"
-                value={profileFormContext.github}
+                value={profileFormContext.form.github}
                 onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -49,7 +49,7 @@ const Social = () => {
               </label>
               <input
                 name="linkedin"
-                value={profileFormContext.linkedin}
+                value={profileFormContext.form.linkedin}
                 onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -63,7 +63,7 @@ const Social = () => {
               </label>
               <input
                 name="website"
-                value={profileFormContext.website}
+                value={profileFormContext.form.website}
                 onChange={profileFormContext.handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
