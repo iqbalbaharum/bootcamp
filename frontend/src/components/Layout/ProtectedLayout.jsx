@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Navigate, useOutlet } from "react-router-dom"
 import { useWallet } from "../../hooks/useWallet";
-import Navbar from "../Navbar";
+import Navbar from "../NavbarLearn";
 
 const ProtectedLayout = () => {
   const { accountId } = useWallet()

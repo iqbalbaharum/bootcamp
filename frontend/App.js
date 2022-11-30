@@ -35,6 +35,9 @@ import NavbarLayout from "./src/components/Layout/NavbarLayout";
 import FullScreenLayout from "./src/components/Layout/FullscreenLayout";
 import ProtectedLayout from "./src/components/Layout/ProtectedLayout";
 import JobMgmt from "./src/pages/JobManagement/JobMgmt";
+import Tutorials from "./src/pages/Tutorials";
+import TutorialSingle from "./src/pages/TutorialSingle";
+import Hackathons from "./src/pages/Hackathons";
 
 export default function App({ isSignedIn, wallet }) {
   const [config, setConfig] = useState({
@@ -86,6 +89,12 @@ export default function App({ isSignedIn, wallet }) {
                 <Route path="profile/form" element={<Profile />} />
                 <Route path="rental" element={<IndexRentTalent />} />
                 <Route path="job/manage" element={<JobMgmt />} />
+              </Route>
+
+              <Route path="/academy" element={<ProtectedLayout />}>
+                <Route path="tutorials" element={<Tutorials />} />
+                <Route path="tutorial/:id" element={<TutorialSingle />} />
+                <Route path="hackathons" element={<Hackathons />} />
               </Route>
 
               <Route path="/" element={<FullScreenLayout />}>

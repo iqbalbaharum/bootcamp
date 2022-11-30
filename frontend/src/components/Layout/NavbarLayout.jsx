@@ -1,6 +1,6 @@
 import { useOutlet } from "react-router-dom"
 import { useWallet } from "../../hooks/useWallet"
-import Navbar from "../Navbar"
+import Navbar from "../NavbarLearn"
 
 const NavbarLayout = (props) => {
 
