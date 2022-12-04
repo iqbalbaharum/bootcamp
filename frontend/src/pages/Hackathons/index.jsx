@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom"
 import HackCard from "./HackCard"
 
 const hackathons = [
   {
+    "id": 1,
     "type": "bootcamp",
     "title": "NEAR x Google Bootcamp for Beginner",
     "start_date": "2022-12-05T00:00:00+0000",
@@ -9,6 +11,7 @@ const hackathons = [
     "logo": "ipfs://"
   },
   {
+    "id": 2,
     "type": "hackathon",
     "title": "NEAR hackathon",
     "start_date": "2022-12-05T00:00:00+0000",
@@ -18,6 +21,9 @@ const hackathons = [
 ]
 
 const Hackathons = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="container mx-auto mt-10 text-left">
       <h2 className="my-1 text-4xl font-medium text-gray-900">

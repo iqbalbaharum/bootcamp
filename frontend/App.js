@@ -38,6 +38,9 @@ import JobMgmt from "./src/pages/JobManagement/JobMgmt";
 import Tutorials from "./src/pages/Tutorials";
 import TutorialSingle from "./src/pages/TutorialSingle";
 import Hackathons from "./src/pages/Hackathons";
+import Dashboard from "./src/pages/Dashboard";
+import Event from "./src/pages/Event";
+import EventProject from "./src/pages/Event/Project";
 
 export default function App({ isSignedIn, wallet }) {
   const [config, setConfig] = useState({
@@ -89,12 +92,15 @@ export default function App({ isSignedIn, wallet }) {
                 <Route path="profile/form" element={<Profile />} />
                 <Route path="rental" element={<IndexRentTalent />} />
                 <Route path="job/manage" element={<JobMgmt />} />
+                <Route path="dashboard" element={<Dashboard />} />
               </Route>
 
               <Route path="/academy" element={<ProtectedLayout />}>
                 <Route path="tutorials" element={<Tutorials />} />
                 <Route path="tutorial/:id" element={<TutorialSingle />} />
                 <Route path="hackathons" element={<Hackathons />} />
+                <Route path="event/:id/home" element={<Event />} />
+                <Route path="event/:id/project" element={<EventProject />} />
               </Route>
 
               <Route path="/" element={<FullScreenLayout />}>

@@ -25,7 +25,7 @@ const UserButton = ({ wallet, accountId }) => {
         {accountId}
       </a>
 
-      <div className={isOpen ? 'relative': ''} >
+      <div className={isOpen ? '': 'relative'} >
         <button
           type="button"
           className="inline-flex h-full items-center justify-center rounded-r-md border-l border-black px-2 text-gray-600 hover:bg-gray-50 hover:text-gray-700"
@@ -54,19 +54,11 @@ const UserButton = ({ wallet, accountId }) => {
             <div className="-my-2 divide-y divide-gray-100">
               <div className="p-2">
                 <a
-                  href="#"
+                  href="/user/dashboard"
                   className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                   role="menuitem"
                 >
-                  Courses
-                </a>
-
-                <a
-                  href="#"
-                  className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                  role="menuitem"
-                >
-                   Hackathons
+                  Dashboard
                 </a>
               </div>
 
