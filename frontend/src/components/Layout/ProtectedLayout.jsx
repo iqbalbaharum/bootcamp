@@ -4,7 +4,7 @@ import { useWallet } from "../../hooks/useWallet";
 import Navbar from "../NavbarLearn";
 
 const ProtectedLayout = () => {
-  const { accountId } = useWallet()
+  // const { accountId } = useWallet()
   const outlet = useOutlet();
   
   // if (!accountId) {

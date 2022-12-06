@@ -12,29 +12,13 @@ import { ConfigContext } from "./src/context/config.context";
 // Component
 import Navbar from "./src/components/Navbar";
 // Pages
-import Home from "./src/pages/home";
-import Login from "./src/pages/authentication/Login";
-import Register from "./src/pages/authentication/Register";
 import Profile from "./src/pages/profileForm";
-import ProfileDisplay from "./src/pages/ProfileDisplay/display";
-import Wallet from "./src/pages/profileConnect/ConnectWallet";
-import IssueEndors from "./src/pages/profileConnect/IssueEndors";
-import MintSuccess from "./src/pages/profileConnect/MintSuccess";
-import EmailLogin from "./src/pages/authentication/EmailLogin";
-import LandingPage from "./src/pages/Landingpage/IndexLandingPage";
 import IndexJobListing from "./src/pages/JobList/IndexJobListing";
 import ListJobDisplay from "./src/pages/JobList/ListJobDisplay";
-import IndexRentTalent from "./src/pages/RentTalent/IndexRentTalent";
-import IndexIssueNft from "./src/pages/IssueNFT/IndexIssueNft";
-import NftLink from "./src/pages/IssueNFT/NftLink";
-import BatchMint from "./src/pages/IssueNFT/BatchMint";
 import { NearWalletContext } from "./src/context/wallet.context";
 import useIpfsFactory from "./src/hooks/useIpfsFactory";
-import useIpfs from "./src/hooks/useIpfs";
 import NavbarLayout from "./src/components/Layout/NavbarLayout";
-import FullScreenLayout from "./src/components/Layout/FullscreenLayout";
 import ProtectedLayout from "./src/components/Layout/ProtectedLayout";
-import JobMgmt from "./src/pages/JobManagement/JobMgmt";
 import Tutorials from "./src/pages/Tutorials";
 import TutorialSingle from "./src/pages/TutorialSingle";
 import Hackathons from "./src/pages/Hackathons";
@@ -90,57 +74,17 @@ export default function App({ isSignedIn, wallet }) {
 
               <Route path="/user" element={<ProtectedLayout />}>
                 <Route path="profile/form" element={<Profile />} />
-                <Route path="rental" element={<IndexRentTalent />} />
-                <Route path="job/manage" element={<JobMgmt />} />
                 <Route path="dashboard" element={<Dashboard />} />
               </Route>
 
-              <Route path="/academy" element={<ProtectedLayout />}>
-                <Route path="tutorials" element={<Tutorials />} />
-                <Route path="tutorial/:id" element={<TutorialSingle />} />
-                <Route path="hackathons" element={<Hackathons />} />
-                <Route path="event/:id/home" element={<Event />} />
-                <Route path="event/:id/project" element={<EventProject />} />
+              <Route path="/" element={<ProtectedLayout />}>
+                <Route index element={<Tutorials />} />
+                <Route exact path="tutorial/:id" element={<TutorialSingle />} />
+                <Route exact path="hackathons" element={<Hackathons />} />
+                <Route exact path="event/:id/home" element={<Event />} />
+                <Route exact path="event/:id/project" element={<EventProject />} />
+                <Route exact path="*" element={<Tutorials />} />
               </Route>
-
-              <Route path="/" element={<FullScreenLayout />}>
-                {/* Landing Page */}
-                <Route index element={<LandingPage />} />
-                {/* Authentication */}
-                <Route exact path="/register" element={<Register />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/emailogin" element={<EmailLogin />} />
-                <Route
-                  path="profile/preview/:account"
-                  element={<ProfileDisplay />}
-                />
-              </Route>
-              <Route exact path="/home" element={<Home />} />
-
-              {/* NFT Endorsement */}
-              <Route exact path="/wallet" element={<Wallet />} />
-              <Route
-                exact
-                path="/issue"
-                element={<IssueEndors wallet={wallet} />}
-              />
-              <Route exact path="/mintSuccess" element={<MintSuccess />} />
-
-              {/* Issue NFT */}
-              <Route
-                exact
-                path="/indexissuenft"
-                element={<IndexIssueNft wallet={wallet} />}
-              />
-              <Route exact path="/nftlink" element={<NftLink />} />
-
-              {/* Batch Minting */}
-              <Route
-                exact
-                path="/batchmint"
-                element={<BatchMint wallet={wallet} />}
-              />
-              <Route path="*" element={<LandingPage />} />
             </Routes>
           </div>
         </div>

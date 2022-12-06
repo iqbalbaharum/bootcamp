@@ -13,7 +13,7 @@ const TutorialSingle = () => {
   const { id } = useParams()
 
   const [tutorial, setTutorial] = useState({})
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   
   useEffect(() => {
 
@@ -31,7 +31,7 @@ const TutorialSingle = () => {
     setTutorial(tutorial)
 
     fetchUrl(`${process.env.IPFS_GATEWAY}/${tutorial.content}`)
-  }, tutorial)
+  }, [tutorial])
 
 
   return (
@@ -55,11 +55,11 @@ const TutorialSingle = () => {
 
           <hr />
 
-          <div class="grid grid-cols-3 gap-4 mt-5">
-            <div class="col-span-2 ...">
+          <div className="grid grid-cols-3 gap-4 mt-5">
+            <div className="col-span-2 ...">
               <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose" children={content} />
             </div>
-            <div class="...">
+            <div className="...">
               <p>Table of Content</p>
             </div>
           </div>

@@ -15,12 +15,12 @@ const Tutorials = () => {
   const navigate = useNavigate()
 
   const onHandleArticleClick = (tutorial) => {
-    navigate(`/academy/tutorial/${tutorial.id}`, {state: { tutorial: tutorial}})
+    navigate(`/tutorial/${tutorial.id}`, {state: { tutorial: tutorial}})
   }
 
   return (
     <div className="container mx-auto mt-10">
-      <div class="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         {posts && posts.map((tutorial) =>
           (<ArticleCard tutorial={tutorial} key={tutorial.id} onHandleArticleClick={e => onHandleArticleClick(tutorial)} />)
         )}

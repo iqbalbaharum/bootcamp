@@ -1,7 +1,7 @@
 // React
 import React from 'react';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { WalletProvider } from './src/hooks/useWallet';
 
@@ -15,10 +15,12 @@ window.onload = async () => {
   const root = createRoot(document.getElementById("root"));
 
   root.render(
-    <BrowserRouter>
-      <WalletProvider>
-        <App />
-      </WalletProvider>
-    </BrowserRouter>
+    <React.StrictMode>
+      <HashRouter>
+        <WalletProvider>
+          <App />
+        </WalletProvider>
+      </HashRouter>
+    </React.StrictMode>
   );
 };

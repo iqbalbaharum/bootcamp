@@ -22,7 +22,7 @@ const Dashboard = () => {
     switch(hack.status) {
       case 'registered':
       case 'draft':
-        navigate(`/academy/event/${hack.id}/home`)
+        navigate(`/event/${hack.id}/home`)
         break
       case 'submit':
         break
