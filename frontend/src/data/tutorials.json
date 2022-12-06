@@ -2,9 +2,25 @@
   {
     "id": 1,
     "chain": "NEAR",
-    "title": "Build Crowdfunding DAPP on NEAR",
-    "difficulty": "beginner",
-    "description": "Discover the power of your NEAR account and pursue quests for glory on a public blockchain",
+    "title": "P2P Crowdfunding DAPP",
+    "difficulty": "Beginner",
+    "description": "P2P Crowdfunding DAPP",
     "content": "QmYxd8u7QWBksSRC57s2kxjht7KCviWA2rHPbqZsmdBVJq"
+  },
+  {
+    "id": 2,
+    "chain": "NEAR",
+    "title": "Hello World!",
+    "difficulty": "Beginner",
+    "description": "A simple tutorial to familiar yourself with NEAR",
+    "content": "QmczAw1PubE7vC2enm3uzrJSsn4cC9iMvt44rAGW5t9AHo"
+  },
+  {
+    "id": 3,
+    "chain": "NEAR",
+    "title": "Count",
+    "difficulty": "Beginner",
+    "description": "Decentralized app that stores a number and exposes methods to increment, decrement, and reset it",
+    "content": "QmV6FgJcYdo9eYqyd5zNZ3mrggcG9CngmA73u7yWZ5Xw1b"
   }
 ]
