@@ -26,11 +26,9 @@ const ArticleCard = ({ tutorial, onHandleArticleClick }) => {
         </svg>
       </span>
 
-      <a href="#">
-        <h2 className="my-1 text-2xl font-medium text-gray-900">
-          {tutorial.title}
-        </h2>
-      </a>
+      <h2 className="my-1 text-2xl font-medium text-gray-900">
+        {tutorial.title}
+      </h2>
 
       <DifficultyBadge difficulty={tutorial.difficulty} />
 

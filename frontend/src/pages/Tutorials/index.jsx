@@ -1,35 +1,16 @@
 import { useNavigate } from "react-router-dom"
 import ArticleCard from "./ArticleCard"
+import TutorialArray from '../../data/tutorials.json'
+import { useEffect } from "react"
+import { useState } from "react"
 
-const posts = [
-  {
-    "id": 0,
-    "chain": "NEAR",
-    "title": "Stats Gallery",
-    "difficulty": "beginner",
-    "description": "Discover the power of your NEAR account and pursue quests for glory on a public blockchain",
-    "content": "ipfs://"
-  },
-  {
-    "id": 1,
-    "chain": "NEAR",
-    "title": "Stats Gallery",
-    "difficulty": "intermediate",
-    "description": "Discover the power of your NEAR account and pursue quests for glory on a public blockchain",
-    "content": "ipfs://"
-  },
-  {
-    "id": 2,
-    "chain": "NEAR",
-    "title": "Stats Gallery",
-    "difficulty": "hard",
-    "description": "Discover the power of your NEAR account and pursue quests for glory on a public blockchain",
-    "content": "ipfs://"
-  }
-]
 const Tutorials = () => {
 
-  // const [posts, setPosts] = ([])
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    setPosts(TutorialArray)
+  }, [posts])
 
   const navigate = useNavigate()
 
@@ -40,7 +21,7 @@ const Tutorials = () => {
   return (
     <div className="container mx-auto mt-10">
       <div class="grid grid-cols-3 gap-4">
-        {posts.map((tutorial) =>
+        {posts && posts.map((tutorial) =>
           (<ArticleCard tutorial={tutorial} key={tutorial.id} onHandleArticleClick={e => onHandleArticleClick(tutorial)} />)
         )}
       </div>
