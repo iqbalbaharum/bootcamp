@@ -60,7 +60,8 @@ const TutorialSingle = () => {
               <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose" children={content} />
             </div>
             <div className="...">
-              <p>Table of Content</p>
+              {/* <p>Table of Content</p>
+              <Toc content={content} /> */}
             </div>
           </div>
         </>

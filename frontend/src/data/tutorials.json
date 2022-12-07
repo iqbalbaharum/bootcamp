@@ -3,23 +3,23 @@
     "id": 1,
     "chain": "NEAR",
     "title": "Hello World!",
-    "difficulty": "Beginner",
+    "difficulty": "beginner",
     "description": "A simple tutorial to familiar yourself with NEAR",
-    "content": "QmczAw1PubE7vC2enm3uzrJSsn4cC9iMvt44rAGW5t9AHo"
+    "content": "QmbevhwqRxQFUTFxyFqPAHqippHHhJM4ynePJ5D7uAMTdU"
   },
   {
     "id": 2,
     "chain": "NEAR",
     "title": "Count",
-    "difficulty": "Beginner",
+    "difficulty": "beginner",
     "description": "Decentralized app that stores a number and exposes methods to increment, decrement, and reset it",
-    "content": "QmV6FgJcYdo9eYqyd5zNZ3mrggcG9CngmA73u7yWZ5Xw1b"
+    "content": "QmXYGGZcBqFgTfzkYTybVqs2VT8jqd8DK2AK7P7V7RuQNz"
   },
   {
     "id": 3,
     "chain": "NEAR",
     "title": "P2P Crowdfunding DAPP",
-    "difficulty": "Beginner",
+    "difficulty": "beginner",
     "description": "P2P Crowdfunding DAPP",
     "content": "QmYxd8u7QWBksSRC57s2kxjht7KCviWA2rHPbqZsmdBVJq"
   }
