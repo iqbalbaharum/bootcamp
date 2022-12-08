@@ -1,0 +1,104 @@
+{
+  "08 Dec 2022": [
+    {
+      "title": "Bootcamp Briefing",
+      "speakers": [
+        { "pic": "", "name": "Iqbal Baharum" },
+        { "pic": "", "name": "Constance" }
+      ],
+      "time": "3:30 PM - 4:30 PM"
+    }
+  ],
+  "09 Dec 2022": [
+    {
+      "title": "Hackathon Opening & Briefing",
+      "speakers": [
+        { "pic": "", "name": "Iqbal Baharum" },
+        { "pic": "", "name": "Ann Liew" },
+        { "pic": "", "name": "Constance" }
+      ],
+      "time": "3:30 PM - 4:30 PM"
+    },
+    {
+      "title": "Web3 Insider Series: Web3 Ecosystem in Singapore",
+      "speakers": [
+        { "pic": "", "name": "Ernie Teo" },
+        { "pic": "", "name": "Wilson Cheng" },
+        { "pic": "", "name": "Marouen zelleg" }
+      ],
+      "time": "8:00 PM - 9:00 PM"
+    }
+  ],
+  "10 Dec 2022": [
+    {
+      "title": "Idea Brainstorming Session",
+      "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
+      "time": "8:30 PM"
+    }
+  ],
+  "12 Dec 2022": [
+    {
+      "title": "Idea Brainstorming Session",
+      "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
+      "time": "8:30 PM"
+    },
+    {
+      "title": "Team Formation",
+      "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
+      "time": "9:00 PM"
+    }
+  ],
+  "13 Dec 2022": [
+    {
+      "title": "Hackathon Feedback Session",
+      "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
+      "time": "8:00 PM - 9:00 PM"
+    }
+  ],
+  "14 Dec 2022": [
+    {
+      "title": "Web3 = Decentralised Applications?",
+      "speakers": [
+        { "pic": "", "name": "Jon Hook" },
+        { "pic": "", "name": "Riqi" },
+        { "pic": "", "name": "EY" }
+      ],
+      "time": "8:00 PM - 9:00 PM"
+    }
+  ],
+  "16 Dec 2022": [
+    {
+      "title": "Submission Due",
+      "speakers": [],
+      "time": "2:00 PM"
+    },
+    {
+      "title": "Voting start",
+      "speakers": [],
+      "time": "6:00 PM"
+    }
+  ],
+  "17 Dec 2022": [
+    {
+      "title": "Voting end",
+      "speakers": [],
+      "time": "6:00 PM"
+    }
+  ],
+  "18 Dec 2022": [
+    {
+      "title": "Taking off in Web3",
+      "speakers": [
+        { "pic": "", "name": "Jay (Leonis Capital)" },
+        { "pic": "", "name": "Kyle (McKinsey)" },
+        { "pic": "", "name": "Danish (AWS)" }
+      ],
+      "time": "11:00 AM - 12:00 PM"
+    },
+    {
+      "title": "Demo day",
+      "speakers": [{ "pic": "", "name": "Ann Liew" }],
+      "time": "2:00 PM - 5:00 PM"
+    }
+  ]
+}

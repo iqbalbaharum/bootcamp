@@ -25,6 +25,7 @@ import Hackathons from "./src/pages/Hackathons";
 import Dashboard from "./src/pages/Dashboard";
 import Event from "./src/pages/Event";
 import EventProject from "./src/pages/Event/Project";
+import SeedLandingPage from "./src/pages/Landingpage/Seed";
 
 export default function App({ isSignedIn, wallet }) {
   const [config, setConfig] = useState({
@@ -78,12 +79,13 @@ export default function App({ isSignedIn, wallet }) {
               </Route>
 
               <Route path="/" element={<ProtectedLayout />}>
-                <Route index element={<Tutorials />} />
+                <Route index element={<SeedLandingPage />} />
+                <Route exact path="tutorials" element={<Tutorials />} />
                 <Route exact path="tutorial/:id" element={<TutorialSingle />} />
                 <Route exact path="hackathons" element={<Hackathons />} />
                 <Route exact path="event/:id/home" element={<Event />} />
                 <Route exact path="event/:id/project" element={<EventProject />} />
-                <Route exact path="*" element={<Tutorials />} />
+                <Route exact path="*" element={<SeedLandingPage />} />
               </Route>
             </Routes>
           </div>
