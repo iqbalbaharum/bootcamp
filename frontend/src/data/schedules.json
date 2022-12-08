@@ -18,22 +18,6 @@
         { "pic": "", "name": "Constance" }
       ],
       "time": "3:30 PM - 4:30 PM"
-    },
-    {
-      "title": "Web3 Insider Series: Web3 Ecosystem in Singapore",
-      "speakers": [
-        { "pic": "", "name": "Ernie Teo" },
-        { "pic": "", "name": "Wilson Cheng" },
-        { "pic": "", "name": "Marouen zelleg" }
-      ],
-      "time": "8:00 PM - 9:00 PM"
-    }
-  ],
-  "10 Dec 2022": [
-    {
-      "title": "Idea Brainstorming Session",
-      "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
-      "time": "8:30 PM"
     }
   ],
   "12 Dec 2022": [
@@ -46,13 +30,6 @@
       "title": "Team Formation",
       "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
       "time": "9:00 PM"
-    }
-  ],
-  "13 Dec 2022": [
-    {
-      "title": "Hackathon Feedback Session",
-      "speakers": [{ "pic": "", "name": "Iqbal Baharum" }],
-      "time": "8:00 PM - 9:00 PM"
     }
   ],
   "14 Dec 2022": [

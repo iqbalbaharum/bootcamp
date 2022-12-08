@@ -1,12 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../../assets/img/logoSmall.png";
 import { useWallet } from "../../hooks/useWallet";
 import { AuthEnabled } from "./AuthEnabled";
 
 const navigation = [
   // { name: "My Profile", href: "/user/profile/form", current: false },
-  { name: "Tutorials", href: "/", current: false },
+  { name: "Tutorials", href: "/tutorials", current: false },
   // { name: "Hackathons", href: "/hackathons", current: false },
   // { name: "Academy", href: "#", current: false },
 ];
@@ -18,17 +19,17 @@ function classNames(...classes) {
 function NavButton(props) {
   return (
     <li>
-      <a
+      <Link
         className={classNames(
           props.nav.current
             ? "bg-black text-[#DAFF3E]"
             : "border-black text-black hover:bg-[#DAFF3E]",
           "border-2 rounded-full px-4 py-2 font-bold"
         )}
-        href={props.nav.href}
+        to={props.nav.href}
       >
         {props.nav.name}
-      </a>
+      </Link>
     </li>
   );
 }
@@ -52,10 +53,10 @@ export default function Navbar(props) {
       <div className="mx-auto max-w-screen-xl overflow-y-hidden px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
-            <a className="block text-teal-600" href="/">
+            <Link className="block text-teal-600" to="/">
               <span className="sr-only">Home</span>
               <img src={logo} alt="" className="w-[100px] h-[32px]" />
-            </a>
+            </Link>
           </div>
 
           {/* {props.isNavEnabled && <NavsEnabled />} */}
