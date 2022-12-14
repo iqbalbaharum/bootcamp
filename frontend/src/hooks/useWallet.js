@@ -64,18 +64,18 @@ export const WalletProvider = ({ children }) => {
           signature: Buffer.from(signature).toString('base64')
         }
 
-        try {
-          const response = await beApi({
-            method: 'POST',
-            url: '/auth/near',
-            data
-          })
+        // try {
+        //   const response = await beApi({
+        //     method: 'POST',
+        //     url: '/auth/near',
+        //     data
+        //   })
 
-          window.localStorage.setItem('token', response.data.jwt || '')
+        //   window.localStorage.setItem('token', response.data.jwt || '')
 
-        } catch(e) {
-          console.log(e)
-        }
+        // } catch(e) {
+        //   console.log(e)
+        // }
         
         setWallet(wallet)
         setAccountId(accountId)

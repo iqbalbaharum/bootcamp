@@ -8,7 +8,7 @@ import { AuthEnabled } from "./AuthEnabled";
 const navigation = [
   // { name: "My Profile", href: "/user/profile/form", current: false },
   { name: "Tutorials", href: "/tutorials", current: false },
-  // { name: "Hackathons", href: "/hackathons", current: false },
+  { name: "Hackathons", href: "/hackathons", current: false },
   // { name: "Academy", href: "#", current: false },
 ];
 
@@ -62,7 +62,7 @@ export default function Navbar(props) {
           {/* {props.isNavEnabled && <NavsEnabled />} */}
           <div className="md:flex md:items-center md:gap-12">
             <NavsEnabled />
-            {/* <AuthEnabled /> */}
+            <AuthEnabled />
           </div>
           
         </div>

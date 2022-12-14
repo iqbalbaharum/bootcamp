@@ -1,22 +1,26 @@
 import { useNavigate } from "react-router-dom"
 import HackCard from "./HackCard"
 
+import { Fluence } from '@fluencelabs/fluence';
+import { krasnodar } from '@fluencelabs/fluence-network-environment';
+
 const hackathons = [
-  {
-    "id": 1,
-    "type": "bootcamp",
-    "title": "NEAR x Google Bootcamp for Beginner",
-    "start_date": "2022-12-05T00:00:00+0000",
-    "end_date": "2022-12-17T00:00:00+0000",
-    "logo": "ipfs://"
-  },
+  // {
+  //   "id": 1,
+  //   "type": "bootcamp",
+  //   "title": "NEAR x Google Bootcamp for Beginner",
+  //   "start_date": "2022-12-05T00:00:00+0000",
+  //   "end_date": "2022-12-17T00:00:00+0000",
+  //   "logo": "ipfs://"
+  // },
   {
     "id": 2,
     "type": "hackathon",
     "title": "NEAR hackathon",
     "start_date": "2022-12-05T00:00:00+0000",
     "end_date": "2022-12-17T00:00:00+0000",
-    "logo": "ipfs://"
+    "logo": "ipfs://",
+    "submission_url": "https://forms.gle/oVHPPZ4cdaGeyAHo8"
   }
 ]
 
@@ -24,13 +28,17 @@ const Hackathons = () => {
 
   const navigate = useNavigate()
 
+  const onHandleHackClick = (id) => {
+    navigate('/#/event/1/home')
+  }
+
   return (
     <div className="container mx-auto mt-10 text-left">
       <h2 className="my-1 text-4xl font-medium text-gray-900">
         Upcoming
       </h2>
       <div class="grid grid-cols-3 gap-4 mt-5">
-        {hackathons.map((hack) => <HackCard hack={hack} />)}
+        {hackathons.map((hack, index) => <HackCard hack={hack} onHandleHackClick={onHandleHackClick} key={index} />)}
       </div>
     </div>
   )

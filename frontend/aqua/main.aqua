@@ -1,0 +1,20 @@
+import "./backend.aqua"
+
+const NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
+const NODE_RELAY_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
+const BACKEND_SERVICE_ID ?= "1e740ce4-81f6-4dd4-9bed-8d86e9c2fa50"
+
+const SERVICE_PEER ?= "12D3KooWR2Fcs8KLsrNhULeUgn9d9totR14FEnaVqJZC7ESrRfZA"
+const SERVICE_ID ?= "academy_backend"
+
+func get_event(id: i64) -> Event:
+  on NODE_PEER_ID:
+    AcademyBackend SERVICE_ID
+    res <- AcademyBackend.get_event(id)
+  <- res
+
+func get_live_events() -> []Event:
+  on NODE_PEER_ID:
+    AcademyBackend SERVICE_ID
+    res <- AcademyBackend.get_live_events()
+  <- res

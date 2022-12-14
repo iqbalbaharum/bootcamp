@@ -1,0 +1,66 @@
+module AcademyBackend declares *
+
+data Event:
+  id: i64
+  title: string
+  event_type: string
+  start_date: string
+  end_date: string
+  logo: string
+  status: i64
+  err_msg: string
+  success: bool
+
+data IFResult:
+  success: bool
+  err_msg: string
+
+data Submission:
+  uuid: i64
+  event_id: i64
+  project_name: string
+  description: string
+  thumbnail: string
+  git_url: string
+  live_demo_url: string
+  video_demo_url: string
+  submit_by: string
+  status: i64
+  created_by: string
+  err_msg: string
+  success: bool
+
+data User:
+  near_address: string
+  email: string
+  first_name: string
+  last_name: string
+  is_student: i64
+  country: string
+  git_handler: string
+  linkedin_handler: string
+  twitter_handler: string
+  err_msg: string
+  success: bool
+
+service AcademyBackend:
+  add_event(title: string, event_type: string, start_date: string, end_date: string, logo: string) -> Event
+  am_i_owner() -> bool
+  close_event(id: i64) -> Event
+  draft(event_id: i64, name: string, description: string, thumbnail: string, git: string, live_url: string, video_url: string, submit_by: string) -> Submission
+  get_event(id: i64) -> Event
+  get_event_submissions(event_id: i64) -> []Submission
+  get_events() -> []Event
+  get_init_peer_id() -> string
+  get_live_events() -> []Event
+  get_submission(id: i64) -> Submission
+  get_submissions() -> []Submission
+  get_user(near_address: string) -> User
+  get_user_event_submission(address: string, event_id: i64) -> Submission
+  init_service() -> IFResult
+  register_user(near_address: string, email: string) -> User
+  reset_service() -> IFResult
+  submit(id: i64) -> Submission
+  update_event(id: i64, title: string, event_type: string, start_date: string, end_date: string, logo: string) -> Event
+  update_submission(id: i64, name: string, description: string, thumbnail: string, git: string, live_url: string, video_url: string)  
+  update_user(near_address: string, first_name: string, last_name: string, is_student: u8, country: string, git: string, linkedin: string, twitter: string) -> User

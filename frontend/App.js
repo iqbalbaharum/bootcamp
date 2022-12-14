@@ -26,6 +26,7 @@ import Dashboard from "./src/pages/Dashboard";
 import Event from "./src/pages/Event";
 import EventProject from "./src/pages/Event/Project";
 import SeedLandingPage from "./src/pages/Landingpage/Seed";
+import Login from './src/pages/authentication/Login'
 
 export default function App({ isSignedIn, wallet }) {
   const [config, setConfig] = useState({
@@ -59,6 +60,9 @@ export default function App({ isSignedIn, wallet }) {
         <div className="App">
           <div className="w-full h-screen flex flex-col justify-start ">
             <Routes>
+
+              <Route exact path="/login" element={<Login />} />
+
               <Route
                 path="/"
                 element={

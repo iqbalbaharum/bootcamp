@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const UserButton = ({ wallet, accountId }) => {
 
@@ -13,7 +13,12 @@ const UserButton = ({ wallet, accountId }) => {
 
   const onHandleClickLogout = () => {
     wallet.signOut()
-    navigate('/login')
+    navigate('/#/login')
+  }
+
+  const onHandleGoToDashboard = () => {
+    navigate('/#/user/dashboard')
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -53,13 +58,14 @@ const UserButton = ({ wallet, accountId }) => {
           <div className="flow-root py-2">
             <div className="-my-2 divide-y divide-gray-100">
               <div className="p-2">
-                <a
-                  href="/user/dashboard"
+                <Link
+                  to="/user/dashboard"
+                  onClick={onHandleGoToDashboard}
                   className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                   role="menuitem"
                 >
                   Dashboard
-                </a>
+                </Link>
               </div>
 
               <div className="p-2">

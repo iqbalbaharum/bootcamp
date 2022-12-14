@@ -4,6 +4,7 @@ import App from './App';
 import { HashRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { WalletProvider } from './src/hooks/useWallet';
+// import { FluenceProvider } from './src/hooks/useFluence';
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
