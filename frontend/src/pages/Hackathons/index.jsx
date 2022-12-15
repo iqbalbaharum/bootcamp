@@ -20,7 +20,8 @@ const hackathons = [
     "start_date": "2022-12-05T00:00:00+0000",
     "end_date": "2022-12-17T00:00:00+0000",
     "logo": "ipfs://",
-    "submission_url": "https://forms.gle/oVHPPZ4cdaGeyAHo8"
+    // "submission_url": "https://forms.gle/oVHPPZ4cdaGeyAHo8"
+    "submission_url": "https://tally.so/r/mYjpvJ"
   }
 ]
 
