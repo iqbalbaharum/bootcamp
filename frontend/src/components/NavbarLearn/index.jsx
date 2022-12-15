@@ -62,7 +62,7 @@ export default function Navbar(props) {
           {/* {props.isNavEnabled && <NavsEnabled />} */}
           <div className="md:flex md:items-center md:gap-12">
             <NavsEnabled />
-            <AuthEnabled />
+            {/* <AuthEnabled /> */}
           </div>
           
         </div>

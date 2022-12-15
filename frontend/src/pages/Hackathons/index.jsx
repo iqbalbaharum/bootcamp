@@ -14,13 +14,12 @@ const hackathons = [
   //   "logo": "ipfs://"
   // },
   {
-    "id": 2,
-    "type": "hackathon",
-    "title": "NEAR hackathon",
+    "id": 1,
+    "type": "Hackathon",
+    "title": "BUIDL on NEAR Mini Hackathon",
     "start_date": "2022-12-05T00:00:00+0000",
     "end_date": "2022-12-17T00:00:00+0000",
     "logo": "ipfs://",
-    // "submission_url": "https://forms.gle/oVHPPZ4cdaGeyAHo8"
     "submission_url": "https://tally.so/r/mYjpvJ"
   }
 ]
@@ -30,7 +29,7 @@ const Hackathons = () => {
   const navigate = useNavigate()
 
   const onHandleHackClick = (id) => {
-    navigate('/#/event/1/home')
+    navigate(`/#/event/${id}/home`)
   }
 
   return (
@@ -38,7 +37,7 @@ const Hackathons = () => {
       <h2 className="my-1 text-4xl font-medium text-gray-900">
         Upcoming
       </h2>
-      <div class="grid grid-cols-3 gap-4 mt-5">
+      <div className="grid grid-cols-3 gap-4 mt-5">
         {hackathons.map((hack, index) => <HackCard hack={hack} onHandleHackClick={onHandleHackClick} key={index} />)}
       </div>
     </div>
