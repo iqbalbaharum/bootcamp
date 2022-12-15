@@ -4,9 +4,6 @@
   "license": "(MIT AND Apache-2.0)",
   "homepage": ".",
   "scripts": {
-    "postinstall": "copy-marine public",
-    "prestart": "npm run compile-aqua",
-    "prebuild": "npm run compile-aqua",
     "start": "env-cmd -f ./.env parcel index.html --open",
     "build": "npx parcel build index.html --public-url ./",
     "compile-aqua": "aqua -i ./aqua/ -o ./src/_aqua",
