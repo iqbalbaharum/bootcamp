@@ -17,8 +17,6 @@
     "near-cli": "^3.3.0"
   },
   "dependencies": {
-    "@fluencelabs/fluence": "^0.27.4",
-    "@fluencelabs/fluence-network-environment": "^1.0.13",
     "@headlessui/react": "^1.7.4",
     "@icon-park/react": "^1.4.2",
     "@parcel/transformer-css": "^2.7.0",

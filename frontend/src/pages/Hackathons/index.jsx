@@ -1,9 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import HackCard from "./HackCard"
-
-import { Fluence } from '@fluencelabs/fluence';
-import { krasnodar } from '@fluencelabs/fluence-network-environment';
-
 const hackathons = [
   // {
   //   "id": 1,
